@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdl.nlfdc.persistence.ResMapper">
+
+    <!-- 获取老师的资源 -->
+    <select id="getTeacherResourceCount" resultType="int">
+        select
+            count(*)
+        from 
+            res 
+            inner join res_entity 
+                on res.resId = res_entity.resId
+        where 
+            res.isDeleted = 0
+            and res_entity.teaId = #{teaId}
+            and (
+            	res.bookId = 0 
+            	or res.bookId in (
+                    select bookId
+                    from tea_book
+                    where teaId = #{teaId}
+                )
+            )
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+    </select>
+
+    <select id="getTeacherResource" resultType="Res">
+        select
+            *
+        from 
+            res 
+            inner join res_entity 
+                on res.resId = res_entity.resId
+        where 
+            res.isDeleted = 0
+            and res_entity.teaId = #{teaId}
+            and (
+            	res.bookId = 0 
+            	or res.bookId in (
+                    select bookId
+                    from tea_book
+                    where teaId = #{teaId}
+                )
+            )
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+        order by 
+            res.resOrder desc
+        limit
+            #{limitBegin}, #{pageSize}
+    </select>
+
+    <!-- 获取系统源 -->
+    <select id="getSystemResourceForTeacherCount" resultType="int">
+        select
+            count(*)
+        from 
+            res 
+        where 
+                res.isDeleted = 0
+            and res.fromType = 3
+            and (
+            	res.bookId in (
+                    select bookId
+                    from tea_book
+                    where teaId = #{teaId}
+                )
+            )
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+    </select>
+
+    <select id="getSystemResourceForTeacher" resultType="Res">
+        select
+            *
+        from 
+            res 
+        where 
+                res.isDeleted = 0
+            and res.fromType = 3
+            and (
+            	res.bookId in (
+                    select bookId
+                    from tea_book
+                    where teaId = #{teaId}
+                )
+            )
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+        order by 
+            res.resOrder desc
+        limit
+            #{limitBegin}, #{pageSize}
+    </select>
+
+    <!-- 获取一个学校的资源 -->
+    <select id="getSchoolResourceCount" resultType="int">
+        select
+            count(*)
+        from 
+            res 
+            inner join res_entity 
+                on res.resId = res_entity.resId
+        where 
+                res.isDeleted = 0
+            and res_entity.schoolId = #{schoolId}
+            <if test ="shareToSchool != -1">
+                and res_entity.shareToSchool = #{shareToSchool}
+            </if>
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+            <if test ="createTime != 0">
+                and res.createTime &lt;= #{createTime}
+            </if>
+    </select>
+
+    <select id="getSchoolResource" resultType="Res">
+        select
+             res.*, res_entity.*, user.userName as creatorName
+        from 
+            res, res_entity, user 
+        where 
+            res_entity.teaId = user.userId
+            and res_entity.resId = res.resId
+            and res.isDeleted = 0
+            and res_entity.schoolId = #{schoolId}
+            <if test ="shareToSchool != -1">
+                and res_entity.shareToSchool = #{shareToSchool}
+            </if>
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+            <if test ="createTime != 0">
+                and res.createTime &lt;= #{createTime}
+            </if>
+        order by
+            res.resOrder DESC
+        limit
+            #{limitBegin}, #{pageSize}
+    </select>
+
+    <!-- 获取一个学校的资源，限制课本范围 -->
+    <select id="getSchoolResourceForTeacherCount" resultType="int">
+        select
+            count(*)
+        from 
+            res join res_entity using(resId)
+        where 
+                res.isDeleted = 0
+            and (
+            	res.bookId in (
+                    select bookId
+                    from tea_book
+                    where teaId = #{teaId}
+                )
+            )
+            and res_entity.schoolId = #{schoolId}
+            <if test ="shareToSchool != -1">
+                and res_entity.shareToSchool = #{shareToSchool}
+            </if>
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+    </select>
+
+    <select id="getSchoolResourceForTeacher" resultType="Res">
+        select
+            res.*, res_entity.*, user.userName as creatorName
+        from 
+            res, res_entity, user 
+        where 
+            res_entity.teaId = user.userId
+            and res_entity.resId = res.resId
+            and res.isDeleted = 0
+            and (
+            	res.bookId in (
+                    select bookId
+                    from tea_book
+                    where teaId = #{teaId}
+                )
+            )
+            and res_entity.schoolId = #{schoolId}
+            <if test ="shareToSchool != -1">
+                and res_entity.shareToSchool = #{shareToSchool}
+            </if>
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+        order by
+            res.updateTime DESC
+        limit
+            #{limitBegin}, #{pageSize}
+    </select>
+
+    <!-- 资源基本操作 -->
+    <select id="getResourceInfo" parameterType="int" resultType="Res">
+        select
+            res.*, res_file.fileSuffix as resFileSuffix
+        from
+            res join res_file using(resId)
+        where
+            res.resId = #{resId}
+    </select>
+
+    <insert id="insertResourceInfo" useGeneratedKeys="true" keyProperty="resId" parameterType="Res">
+        insert into res
+            (resName, resType, fromType, 
+            creatorId, createTime, updatorId, updateTime, 
+            resTag, isDeleted, openTimes, 
+            subjectId, bookId, chapterId, sectionId, resOrder)
+        values
+            (#{resName}, #{resType}, #{fromType}, 
+            #{creatorId}, #{createTime}, #{updatorId}, #{updateTime}, 
+            #{resTag}, #{isDeleted}, #{openTimes}, 
+            #{subjectId}, #{bookId}, #{chapterId}, #{sectionId}, #{resOrder})
+    </insert>
+
+    <insert id="insertResourceEntity" useGeneratedKeys="true" keyProperty="resEntityId" parameterType="Res">
+        insert into res_entity
+            (resId, teaId, schoolId, shareToSchool)
+        values
+            (#{resId}, #{teaId}, #{schoolId}, #{shareToSchool})
+    </insert>
+
+    <update id="updateResourceInfo" parameterType="Res">
+        update
+            res
+        set
+            resName = #{resName},
+            resType = #{resType},
+            fromType = #{fromType},
+            creatorId = #{creatorId},
+            createTime = #{createTime},
+            updatorId = #{updatorId},
+            updateTime = #{updateTime},
+            resTag = #{resTag},
+            isDeleted = #{isDeleted},
+            openTimes = #{openTimes},
+            subjectId = #{subjectId},
+            bookId = #{bookId},
+            chapterId = #{chapterId},
+            sectionId = #{sectionId},
+            resOrder = #{resOrder}
+        where
+            resId = #{resId}
+    </update>
+
+    <!-- 资源文件 -->
+    <select id="getResourceFile" parameterType="int" resultType="ResFile">
+        select
+            *   
+        from
+            res_file
+        where
+            res_file.fileId = #{fileId}
+    </select>
+
+    <insert id="insertResourceFile" parameterType="ResFile">
+        insert into res_file
+            (fileId, resId, filePath, fileSuffix, fileSize, fileMd5, isDeleted)
+        values
+            (#{fileId}, #{resId}, #{filePath}, #{fileSuffix}, #{fileSize}, #{fileMd5}, #{isDeleted} )
+    </insert>
+
+    <update id="updateResourceFile" parameterType="ResFile">
+        update
+            res_file
+        set
+            resId = #{resId},
+            filePath = #{filePath},
+            fileSuffix = #{fileSuffix},
+            fileSize = #{fileSize},
+            fileMd5 = #{fileMd5},
+            isDeleted = #{isDeleted}
+        where
+            fileId = #{fileId}
+    </update>
+
+    <select id="getResourceFileByResourceId" parameterType="int" resultType="ResFile">
+        select
+            *
+        from
+            res_file
+        where
+            res_file.isDeleted = 0
+            and res_file.resId = #{resId}
+    </select>
+
+	<!-- edit cjia 2015.1.7  不能直接从resourceInfo中查询，改成从resourceEntity中查询 -->
+	<!-- edit cjia 2015.1.9 添加老师收藏课本过滤条件，不在当前收藏课本中的过滤掉  -->
+    <select id="getResourceCountOfTeacher" parameterType="int" resultType="int">
+		select
+			count(*)
+		from 
+			res_entity join res using (resId)
+		where 
+			res_entity.teaId = #{teaId}
+			and res.isDeleted = 0
+			and res.bookId in (
+                select bookId
+                from tea_book
+                where teaId = #{teaId}
+            )			
+			<if test="subjectId != 0">
+                and res.subjectId = #{subjectId }
+            </if>
+    </select>
+
+	<!-- add cjia 2015.1.7 校长端查看老师资源列表 -->
+	<!-- edit cjia 2015.1.9 添加老师收藏课本过滤条件，不在当前收藏课本中的过滤掉  -->
+	<select id="getTeacherResourceListByPage" parameterType="int" resultType="Res">
+		select 
+			res.* ,res_entity.*, user.userName as creatorName
+		from
+			res, user, res_entity
+		where 
+			res_entity.teaId = user.userId
+			and res_entity.resId = res.resId
+			and res_entity.teaId = #{teaId}
+			and res.isDeleted = 0
+			and res.bookId in (
+                select bookId
+                from tea_book
+                where teaId = #{teaId}
+            )	
+			<if test="subjectId != 0">
+			and res.subjectId = #{subjectId}
+			</if>
+		order by
+				res.createTime DESC
+			limit
+            	#{limitBegin}, #{pageSize}
+	</select>
+
+	<!-- add cjia 2015.3.2 系统编辑查看系统资源数 -->
+	<select id="getSystemResourceCount" parameterType="int" resultType="int">
+		 select
+            count(*)
+        from 
+            res join book using (bookId)
+        where 
+                res.isDeleted = 0
+            and res.fromType = 3
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+            <if test ="updateTime != 0">
+                and res.updateTime &lt;= #{updateTime}
+            </if>
+	</select>
+	
+	<!-- add cjia 2015.3.2 系统编辑查看系统资源 -->
+	<select id="getSystemResource" parameterType="int" resultType="Res">
+		select
+            *
+        from 
+            res join book using (bookId)
+        where 
+                res.isDeleted = 0
+            and res.fromType = 3
+            <if test ="resTag != 0">
+                and res.resTag = #{resTag}
+            </if>
+            <if test ="subjectId != 0">
+                and res.subjectId = #{subjectId}
+            </if>
+            <if test ="bookId != 0">
+                and res.bookId = #{bookId}
+            </if>
+            <if test ="chapterId != 0">
+                and res.chapterId = #{chapterId}
+            </if>
+            <if test ="sectionId != 0">
+                and res.sectionId = #{sectionId}
+            </if>
+            <if test ="updateTime != 0">
+                and res.updateTime &lt;= #{updateTime}
+            </if>
+        order by 
+            res.resOrder desc
+        limit
+            #{limitBegin}, #{pageSize}
+	</select>
+	
+	<select id="getYjResUseCount" parameterType="int" resultType="int" >
+		select 
+			count(asmId)
+		from
+			asm_res
+		where 
+			resId = #{resId}
+	</select>
+</mapper>

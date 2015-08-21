@@ -1,0 +1,10 @@
+#schema_catalogue {width: 100%; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#51FFFFFF, endColorstr=#51FFFFFF); }
+#schema_catalogue select {width: 90%; margin: 6px 5%; padding: 3px; border: 1px solid #bcbcbc; font-size: 14px; color: #333; }
+#schema_catalogue { margin-top: 10px; margin-bottom: 10px;} 
+#chapter_section { position: relative; }
+#textbook_current { margin: 0px 5px; }
+
+.textbook_whole { cursor: pointer; }
+.textbook_cover { width: 72px; height: 100px; }
+.textbook_info { margin-left: 10px; position: relative; height: 106px; }
+.textbook_publisher { position: absolute; bottom: 10px; font-style: italic; }

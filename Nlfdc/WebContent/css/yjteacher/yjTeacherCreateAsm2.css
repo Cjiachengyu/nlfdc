@@ -1,0 +1,15 @@
+.create_step_btn { width: 80px; height: 111px; background-repeat: no-repeat; background-position: 30px 44px;}
+.create_step_btn_prev { background-image: url('../../image/yj/prevStep.gif');}
+.create_step_btn_next { background-image: url('../../image/yj/nextStep.gif');}
+.create_step_btn_prev_disable { background-image: url('../../image/yj/prevStepDisable.gif');}
+.create_step_btn_next_disable { background-image: url('../../image/yj/nextStepDisable.gif');}
+
+.create_step { height: 111px; width:100%; background-repeat: no-repeat; background-position: center; }
+.create_step_2 { background-image: url('../../image/yj/k_web_icon_chose2.png'); }
+
+.content { min-height: 600px; margin-top: 5px; }
+.res_list_box { width: 80%; margin-left: 10%;  min-height: 400px;}
+.msg_title { margin: 10px 20px; text-align: center; }
+.asm_res_list { width: 90%; margin-left: 5%; }
+.operation_div { width: 80%; margin: 20px 0; margin-left: 10%; position: relative; }
+.marR20 { margin-left: 20px; }

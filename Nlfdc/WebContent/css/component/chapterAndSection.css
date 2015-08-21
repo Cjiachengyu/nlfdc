@@ -1,0 +1,8 @@
+.accordion ul { list-style: none }
+.accordion ul.nav { line-height: 20px; font-size: 14px; } 
+.accordion ul.nav li a { display: block; padding: 8px 8px 8px 5%; }
+.accordion ul li a:hover { background-color: #F8F8F8; }
+.accordion ul.nav ul { display: none; } 
+.accordion ul.nav ul li { clear: both; } 
+.accordion ul.nav ul li a { padding-left: 10%; font-size: 12px; padding-top: 5px; padding-bottom: 5px; }
+.accordion .expander { position: absolute; right: 10px; color: #888; }

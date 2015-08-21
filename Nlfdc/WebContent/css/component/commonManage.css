@@ -1,0 +1,10 @@
+.add { width: 120px; height: 18px; margin: 0 20px; background: #3598db; border-radius: 5px; padding: 4px; }
+.operation_div { margin: 15px 0 10px 0; display: block ;}
+#email { width:200px; height:30px; font-size: 18px; }
+#tip { color: red; font-size: 18px; display: block; margin: 20px 0px;}
+.margin-left30 { margin-left: 30px; }
+.userInfo { width: 100%; display: none; height: 70px;  margin-top: 20px; }
+.userInfo_table { width: 100%; border-collapse: collapse; }
+.body_tr { height:40px; border: solid 1px #e5e5e5; }
+#user_password { height: 30px; margin: 0; }
+#reset_password { display: inline-block; margin-left: 10%; width: 80%; height: 25px; border-radius: 5px; background-color: #ccc; color: #FF4400; text-align: center; }

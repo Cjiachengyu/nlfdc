@@ -1,0 +1,30 @@
+.main_content { width: 100%; height: 96%; height: 800px; }
+.local_button { width: 120px; margin: 0 20px; }
+.operation_div { margin: 15px 0 10px 0; display: block; border-bottom: solid 2px #999999; padding-bottom: 13px; }
+.schemaTextbook {  float:left;  width: 48%;height: 96%;}
+.textbookOutSchema { float: right; width: 48%;height: 96%;}
+.schemaSelecter { display: inline-block; width: 100%; height: 5%; margin: 2%; margin-left:0;}
+
+.schema { width: 200px; font-size: 17px; padding: 3px; }
+.category { width: 120px; font-size: 17px; padding: 3px; }
+.subject { width: 120px; font-size: 17px; padding: 3px; }
+
+.category_subject_selecter{ display: inline-block; width: 100%; height: 5%; margin: 2%; margin-left:0;}
+.textbooks_in_schema{  width: 100%; }
+.textbooks_out_schema { width: 100%;}
+.clear{ clear: both; }
+h3 { margin:0;  }
+
+.book_list{ height: 700px; background: #f0f0f0; overflow-y: auto; border: solid 1px lightgray;}
+
+.tb_list { overflow-y: scroll; height: 88%;}
+.thead { width: 100%; height:40px; }
+.textbook {  width: 100%; border: 0px; border-collapse: collapse; }
+.tbody { width:100%; overflow-y: scroll; height: 100%; }
+.textbook tr th { padding: 5px 5px 5px 5px; text-align: left; color: white; font-size: 14px;   }
+.textbook tr td { padding: 5px 5px 5px 5px; text-align: left; font-size: 12px; }
+.headTr {background: #3598db; height: 30px; border: solid 1px #3598db;  }
+.tbodyTr { height: 30px; }
+.hide .a{ display: none; }
+.show .a{ display: block; background: #3598db; color:#ffffff; text-align: center;border-radius: 5px; height:18px;  padding-top: 5px; text-decoration: none;}
+.show { background: #CCCCCC; }

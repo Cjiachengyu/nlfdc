@@ -1,0 +1,22 @@
+.notify_target { width: 100%; }
+.check_type { width: 93%; margin: auto; margin-top: 10px; }
+.check_type:hover { width: 93%; margin: auto; margin-top: 10px; background-color: #eaeaea; }
+.check_type_choosed { width: 93%; margin: auto; margin-top: 10px;  background-color: #eaeaea; }
+.check_label { display: inline-block; width: 98%; padding-bottom: 2px; }
+.class_list { width: 93%; margin: auto; background-color: #eaeaea; display: none; }
+.tea_class_list { width: 93%; margin: auto; background-color: #eaeaea; }
+.check_class { display: inline-block; min-width: 210px; } 
+.notification { width: 100%; margin-top: 20px; }
+.notification_title_box { width: 93%; margin: 10px; margin: auto; }
+.notification_tip1 { width: 93%; display: block; margin: auto; margin-bottom: 5px; font-size: 12px; color: red; }
+.notification_tip { display: block; margin-bottom: 5px; font-size: 12px; color: red; }
+.notification_title { width: 97%; height: 40px; padding: 2px 10px; font-size: 18px; }
+.notification_content_box { width: 93%; margin: 10px; margin: auto; }
+.content_box { width: 100%;}
+.operation_div {width: 93%; margin: auto; margin-top: 20px; margin-bottom: 20px; } 
+.operation_div a { width: 200px; }
+.simple_shine {padding: 1px 10px; font-size: 13px; background: white; border: 1px solid rgb(190, 190, 190);	cursor: pointer; text-align: center; transition: box-shadow 0.5s ease-out;}
+.simple_shine:hover {box-shadow: 0px 0px 15px #0099ff; }
+.insert_file { float: right; margin: 4px; }
+.insert_audio {	margin-right: 24px; }
+.input_file { position: absolute; top: 0; left: 0; width: 158px; height: 32px; filter: alpha(opacity:0); opacity: 0;  }

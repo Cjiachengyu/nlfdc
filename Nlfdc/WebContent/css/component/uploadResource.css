@@ -1,0 +1,37 @@
+.margin_top10 { margin-top: 10px; }
+.margin_top20 { margin-top: 20px; }
+
+#main_content { width: 700px; position: relative; padding: 20px 0px 0px 0px; }
+.file_selector { padding: 0px 40px; border-bottom: solid 1px lightgray; margin-bottom: 15px; }
+.res_setter { padding: 0px 40px; border-bottom: solid 1px lightgray; margin-bottom: 15px; height: 250px; }
+
+.col_1 { width: 295px; display: inline-block; }
+.col_11 { display: inline-block; width: 110px; vertical-align: top; }
+.col_2 { width: 180px; display: inline-block; }
+#add_file { height: 30px; float: right; margin-top: 2px; }
+#file_info { width: 450px; min-height: 50px; }
+.hide { display: none; }
+#file_name_value { color: red; }
+#file_size_value { color: red; }
+#resource_set_choice { width: 100%; }
+#upload_file { margin-top: 27px; padding: 0px 40px; }
+#set_resource_info { width: 320px; float: left; padding: 10px 0; }
+#resource_tag_box { width: 100%; height: 40px; }
+.resource_tag_choice { display: inline-block; width: 31%; margin: 0; height: 30px; }
+.resource_tag_choice input { width: 17px; height: 17px; }
+.resource_tag_choice label { font-size: 17px; position: relative; top: -1px; }
+#share_to_school_and_class { height: 180px; width: 299px; margin-top: 5px; float: left;}
+#add_file_btn { width: 120px; background-color: #2b8ccd; border-radius: 5px; }
+#add_file_btn:hover { background-color: #3399FF; }
+#upload_file_btn { border-radius: 5px; width: 120px; float: right; }
+
+#schema_classify_wrapper { width: 100%; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#51FFFFFF, endColorstr=#51FFFFFF); }
+#schema_classify_wrapper select {width: 90%; margin: 6px 5%; padding: 3px; border: 1px solid #999; font-size: 16px; margin-left: 0; }
+.share_resource_to_school { margin: 0; }
+.share_resource_to_class { margin: 0; position: relative; height: 150px; }
+
+#file_upload_progress { position: relative; padding: 130px 50px 100px 50px;}
+#progress_holder { position: relative; width: 598px; border: solid 1px #2b8ccd; height: 25px; }
+#progress_bar { position: absolute; height: 25px; background-color: #2b8ccd; }
+#progress_tip { font-size: 20px; position: absolute; margin: auto; left: 288px; color: orange; }
+#cancle_upload_file_btn { border-radius: 5px; width: 180px; float: right; margin-top: 80px; }
