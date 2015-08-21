@@ -344,7 +344,17 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     {
         return makeSureUserRole(Constants.UserRole.YJ_ADMIN);
     }
+    
+    public boolean makeSureSuperAdmin()
+    {
+        return makeSureUserRole(Constants.UserRole.SUPER_ADMIN);
+    }
 
+    public boolean makeSureCommonAdmin()
+    {
+        return makeSureUserRole(Constants.UserRole.COMMON_ADMIN);
+    }
+    
     @HandlesEvent("gotousermainpage")
     public Resolution gotoUserMainPage()
     {
@@ -610,29 +620,21 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
     protected Resolution getUserMainPage(User user, boolean checkSimplePwd)
     {
-        if (checkSimplePwd)
-        {
-            if (user.getPassword().length() < 6)
-            {
-                log("should change pwd");
-                return new RedirectResolution(UserChangePwd.class);
-            }
-        }
+//        if (checkSimplePwd)
+//        {
+//            if (user.getPassword().length() < 6)
+//            {
+//                log("should change pwd");
+//                return new RedirectResolution(UserChangePwd.class);
+//            }
+//        }
 
         Resolution ret = getYjLogoutResolution();
         switch (user.getUserRole())
         {
-        case Constants.UserRole.YJ_TEACHER:
+        case Constants.UserRole.SUPER_ADMIN:
+        case Constants.UserRole.COMMON_ADMIN:
             ret = new RedirectResolution(YjTeaAsm.class);
-            break;
-        case Constants.UserRole.YJ_EDITOR:
-            ret = new RedirectResolution(YjEditorResManage.class);
-            break;
-        case Constants.UserRole.YJ_ADMIN:
-            ret = new RedirectResolution(YjAdminCommonProblem.class);
-            break;
-        case Constants.UserRole.YJ_MASTER:
-            ret = new RedirectResolution(YjMasterClsList.class);
             break;
         }
         return ret;

@@ -12,7 +12,7 @@
 	</div>
 </div>
 
-<div id="wrap" style="min-height: 500px; margin-top: 140px; padding: 0 70px; " >
+<div id="wrap" style="min-height: 500px; margin-top: 140px; padding: 0 70px;" >
 
 	<div class="login_box">
 		<div>
@@ -50,7 +50,9 @@
     
 </div>
 
-<img id="bg_img" style="position: fixed; top:0; left:0; z-index:-100; " src="image/yj/k_login_bg.png" />
+<!-- 
+<img id="bg_img" style="position: fixed; top:0; left:0; z-index:-100; " src="image/common/main_background_new.jpg" />
+ -->
 
 <div id="footer">
     <div style=" top: 0px; width: 100%; text-align: center; font-size: 15px; font-family: Arial; color: gray; line-height: 4em; position: relative; " >

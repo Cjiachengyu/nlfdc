@@ -89,6 +89,9 @@ public class Constants
 
     public interface UserRole
     {
+        public static final int SUPER_ADMIN = 0;
+        public static final int COMMON_ADMIN = 1;
+        
         public static final int YJ_PARENT = 8;
         public static final int YJ_TEACHER = 9;
         public static final int YJ_MASTER = 10;
