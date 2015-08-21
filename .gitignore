@@ -1,0 +1,10 @@
+#ignore thumbnails created by windows
+Thumbs.db
+
+Nlfdc/build/
+
+.idea/
+Nlfdc/Nlfdc.iml
+Nlfdc/out/
+Nlfdc/target/
+
