@@ -17,6 +17,7 @@ public class SecondMenu implements Serializable
     private String secondMenuName;
     private int firstMenuId;
     
+    private boolean isSelected;
     
     public int getSecondMenuId()
     {
@@ -41,6 +42,14 @@ public class SecondMenu implements Serializable
     public void setFirstMenuId(int firstMenuId)
     {
         this.firstMenuId = firstMenuId;
+    }
+    public boolean getIsSelected()
+    {
+        return isSelected;
+    }
+    public void setIsSelected(boolean isSelected)
+    {
+        this.isSelected = isSelected;
     }
     
 }

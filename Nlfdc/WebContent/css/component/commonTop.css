@@ -9,6 +9,6 @@
 .top_font { font-size: 14px; }
 .current_main_menu { width:30px; height: 8px; margin: 0 auto; background-image: url('../../image/commonTop/currentMenu.png'); }
 .inactive_main_menu { width:30px; height: 8px; margin: 0 auto; }
-.top_main_menu { position: relative; top: -5px; font-size: 17px; color: white; /*color: #d84700;*/ }
-.top_bg { background-image: url('../../image/yj/k_web_home_bar.png'); }
+.top_main_menu { position: relative; top: -5px; font-size: 17px; color: white;  }
+.top_bg { background-color: #339966; }
 .school_header_color { color: white; }

@@ -31,6 +31,8 @@ import com.gexin.rp.sdk.template.TransmissionTemplate;
 import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.action.Utils;
 import com.kdl.nlfdc.action.component.TextbookSelectorClassify;
+import com.kdl.nlfdc.domain.Admin;
+import com.kdl.nlfdc.domain.AdminMenu;
 import com.kdl.nlfdc.domain.Asm;
 import com.kdl.nlfdc.domain.AsmQue;
 import com.kdl.nlfdc.domain.AsmRes;
@@ -40,6 +42,7 @@ import com.kdl.nlfdc.domain.City;
 import com.kdl.nlfdc.domain.Cls;
 import com.kdl.nlfdc.domain.ClsAsm;
 import com.kdl.nlfdc.domain.FirstMenu;
+import com.kdl.nlfdc.domain.FirstMenuWithSecondMenu;
 import com.kdl.nlfdc.domain.Grade;
 import com.kdl.nlfdc.domain.Login;
 import com.kdl.nlfdc.domain.MachineLicense;
@@ -118,6 +121,11 @@ public class CmService implements Serializable
         return basicMapper.getAllFirstMenu();
     }
     
+    public List<FirstMenuWithSecondMenu> getAllFirstMenuWithSecondMenu()
+    {
+        return basicMapper.getAllFirstMenuWithSecondMenu();
+    }
+    
     public SecondMenu getSecondMenu(int secondMenuId)
     {
         return basicMapper.getSecondMenu(secondMenuId);
@@ -127,6 +135,14 @@ public class CmService implements Serializable
     {
         return basicMapper.getSecondMenuByFirstMenuId(firstMenuId);
     }
+    
+    public List<AdminMenu> getAdminMenus(int adminId)
+    {
+        return basicMapper.getAdminMenus(adminId);
+    }
+    
+    
+    
     
     
     // log
@@ -363,7 +379,20 @@ public class CmService implements Serializable
 
     // 用户
     // --------------------------------------------------------------------------------
-
+    
+    public Admin getAdminByAdminId(int adminId)
+    {
+        return basicMapper.getAdminByAdminId(adminId);
+    }
+    
+    public Admin getAdminByLoginName(String loginName)
+    {
+        return basicMapper.getAdminByLoginName(loginName);
+    }
+    
+    
+    
+    
     public User getUser(int userId)
     {
         return basicMapper.getUser(userId);

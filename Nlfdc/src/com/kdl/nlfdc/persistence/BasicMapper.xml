@@ -52,6 +52,13 @@
 			first_menu
 	</select>
 	
+	<select id="getAllFirstMenuWithSecondMenu" resultType="FirstMenuWithSecondMenu">
+		select
+			*
+		from
+			first_menu
+	</select>
+	
 	<select id="getSecondMenu" parameterType="int" resultType="SecondMenu">
 		select
 			*
@@ -70,7 +77,35 @@
 			firstMenuId = #{firstMenuId}
 	</select>
 	
+	<select id="getAdminMenus" parameterType="int" resultType="AdminMenu" >
+		select
+			*
+		from
+			admin_menu
+		where
+			adminId = #{adminId}
+	</select>
+
+	<select id="getAdminByAdminId" parameterType="int" resultType="Admin">
+		select
+			*
+		from 
+			admin
+		where
+			adminId = #{adminId }
+	</select>	
 	
+	<select id="getAdminByLoginName" parameterType="String" resultType="Admin">
+		select
+			*
+		from
+			admin
+		where
+			loginName = #{loginName }
+	</select>
+	
+	
+	<!-- old  -->
     <select id="getTeacherListForAStudent" parameterType="int" resultType="User">
         select
             user.*

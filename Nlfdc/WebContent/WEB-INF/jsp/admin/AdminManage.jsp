@@ -25,13 +25,8 @@ $(function(){
 
 <div class="wrap" >
 	<div id="content" class="clearfix">
-		<div class="tab_page" id="tab1" >
-	        <%@ include file="../component/ManageUser.jsp" %>
-		</div>
 		
-		<div class="tab_page" id="tab2" style="display:none;">
-	        <%@ include file="YjAddEditor.jsp" %>
-		</div>
+		
 	</div>
 </div>
 

@@ -14,13 +14,12 @@ import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.domain.User;
 
 /**
- * 幼教管理员-》常见问题管理
+ * 超级管理员和普通管理员都用这个类
  * 
- * @author cjia
- *
- * @version 创建时间：2015年4月23日
+ * @author Administrator
+ * 
+ * @date：2015年8月21日
  */
-
 @SessionScope
 @UrlBinding("/adminmanageaction")
 public class AdminManage extends AbstractActionBean
@@ -36,14 +35,16 @@ public class AdminManage extends AbstractActionBean
     public Resolution commonManage()
     {
         logRequest();
-        validateSession();
         
         if (!sessionIsValid())
         {
             return getYjLogoutResolution();
         }
 
-        getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.YJ_ADMIN_COMMON_MANAGE);
+        getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.NOTIFICATION_MANAGE);
+        
+        menuSelector = initMenuSelector();
+        
         return new ForwardResolution(MANAGE);
     }
     
@@ -143,7 +144,7 @@ public class AdminManage extends AbstractActionBean
     @Override
     protected boolean sessionIsValid()
     {
-        return commonSessionIsValid() && makeSureYjAdmin();
+        return makeSureSuperAdmin() || makeSureCommonAdmin();
     }
     
 }

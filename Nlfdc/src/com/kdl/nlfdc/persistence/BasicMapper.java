@@ -19,12 +19,23 @@ public interface BasicMapper
     FirstMenu getFirstMenu(int firstMenuId);
     
     List<FirstMenu> getAllFirstMenu();
+
+    List<FirstMenuWithSecondMenu> getAllFirstMenuWithSecondMenu();
     
     SecondMenu getSecondMenu(int secondMenuId);
     
     List<SecondMenu> getSecondMenuByFirstMenuId(int firstMenuId);
     
+    List<AdminMenu> getAdminMenus(int adminId);
     
+    Admin getAdminByAdminId(int adminId);
+    
+    Admin getAdminByLoginName(String loginName);
+    
+    
+    
+    // old
+    // ------------------------------------------------------
     List<User> getTeacherListForAStudent(int userId);
 
     List<User> getAllStudentsOfAClass(int clsId);

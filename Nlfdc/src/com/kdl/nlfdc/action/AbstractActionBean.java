@@ -31,10 +31,12 @@ import net.sourceforge.stripes.integration.spring.SpringBean;
 import org.apache.tomcat.util.json.JSONException;
 import org.apache.tomcat.util.json.JSONObject;
 
+import com.kdl.nlfdc.action.component.MenuSelector;
 import com.kdl.nlfdc.action.component.PageModule;
 import com.kdl.nlfdc.action.component.TextbookSelectorBase;
 import com.kdl.nlfdc.action.component.TextbookSelectorCatalogue;
 import com.kdl.nlfdc.action.component.TextbookSelectorClassify;
+import com.kdl.nlfdc.action.web.AdminManage;
 import com.kdl.nlfdc.action.web.Index;
 import com.kdl.nlfdc.action.web.Login;
 import com.kdl.nlfdc.action.web.UserChangePwd;
@@ -42,6 +44,7 @@ import com.kdl.nlfdc.action.web.YjAdminCommonProblem;
 import com.kdl.nlfdc.action.web.YjEditorResManage;
 import com.kdl.nlfdc.action.web.YjMasterClsList;
 import com.kdl.nlfdc.action.web.YjTeaAsm;
+import com.kdl.nlfdc.domain.Admin;
 import com.kdl.nlfdc.domain.User;
 import com.kdl.nlfdc.exception.AccountInvalidException;
 import com.kdl.nlfdc.exception.SqlAffectedCountException;
@@ -53,6 +56,9 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     protected static final String ERROR = "/WEB-INF/jsp/common/Error.jsp";
     protected static final String CLASSIFY_SCHEMA_VIEW = "/WEB-INF/jsp/component/SchemaClassify.jsp";
     protected static String REDIRECT_PAGE = "/WEB-INF/jsp/component/Redirect.jsp";
+
+    
+    protected MenuSelector menuSelector;
 
     // member
     // --------------------------------------------------------------------------------
@@ -129,57 +135,7 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
     protected boolean commonSessionIsValid()
     {
-        String tokenId = getParam("tokenId", null);
 
-        if (getCurrentUser() == null)
-        {
-            if (tokenId == null)
-            {
-                log("SESSION_NOT_VALID");
-            }
-            else
-            {
-                log("client visit 1");
-                com.kdl.nlfdc.domain.Login l = cmService.getLoginByTokenId(tokenId);
-                if (l != null)
-                {
-                    User tokenUser = cmService.getUser(l.getUserId());
-                    try
-                    {
-                        loginSuccessInitSession(tokenUser);
-                        log("-----------------set new session for client 1");
-                        sessionValid = true;
-                    }
-                    catch (AccountInvalidException e)
-                    {
-                    }
-                }
-            }
-        }
-        else if (getCurrentUser() != null && tokenId != null)
-        {
-            com.kdl.nlfdc.domain.Login l = cmService.getLoginByTokenId(tokenId);
-            if (l != null)
-            {
-                User tokenUser = cmService.getUser(l.getUserId());
-                if (tokenUser != null && tokenUser.getUserId() != getCurrentUserId())
-                {
-                    try
-                    {
-                        loginSuccessInitSession(tokenUser);
-                        log("-----------------set new session for client 2");
-                        sessionValid = true;
-                    }
-                    catch (AccountInvalidException e)
-                    {
-                    }
-                }
-                else if (tokenUser != null && tokenUser.getUserId() == getCurrentUserId())
-                {
-                    log("client visit 2 session exist");
-                }
-            }
-        }
 
         // return sessionValid && getCurrentUser() != null;
         // stripes在session判断的时候有问题，导致sessionValid不准确，暂时先不用这种方式
@@ -241,6 +197,11 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         return (User) getCurrentSession().getAttribute("user");
     }
 
+    public Admin getCurrentAdmin()
+    {
+        return (Admin) getCurrentSession().getAttribute("admin");
+    }
+
     public int getCurrentUserId()
     {
         if (getCurrentUser() != null)
@@ -272,64 +233,22 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         }
     }
 
-    public User goBackOneUser()
-    {
-        ArrayDeque<User> userStack = getUserStack();
-        if (userStack.size() == 0)
-        {
-            return null;
-        }
 
-        User user = userStack.pop();
-        if (user == null)
-        {
-            return null;
-        }
-
-        try
-        {
-            setGoBackUser(userStack);
-            setRealUserSession(user);
-        }
-        catch (AccountInvalidException e)
-        {
-            return null;
-        }
-
-        return user;
-    }
-
-    public void setRealUserSession(User user) throws AccountInvalidException
-    {
-        setSessionAttr("realUser", user);
-        setSessionAttr("user", user);
-        setSessionAttr("school", cmService.getSchool(user.getSchoolId()));
-    }
-
-    public void loginSuccessInitSession(User user)
+    public void loginSuccessInitSession(Admin admin)
             throws AccountInvalidException
     {
-        if (notYjWebLoginAbleUser(user))
-        {
-            throw new AccountInvalidException();
-        }
 
         getCurrentSession().invalidate();
         getCurrentSession().setAttribute("lang", "zh"); // 暂时全部设为中文
 
-        ArrayDeque<User> userStack = new ArrayDeque<User>();
-        setSessionAttr("loginUser", user);
-        setSessionAttr("userStack", userStack);
-
-        setGoBackUser(userStack);
-        setRealUserSession(user);
+        setSessionAttr("admin", admin);
     }
 
     public boolean makeSureYjTea()
     {
         return makeSureUserRole(Constants.UserRole.YJ_TEACHER);
     }
-
+ 
     public boolean makeSureYjEditor()
     {
         return makeSureUserRole(Constants.UserRole.YJ_EDITOR);
@@ -367,7 +286,19 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
         return getUserMainPage(getCurrentRealUser(), true);
     }
+    
+    @HandlesEvent("gotoadminmainpage")
+    public Resolution gotoAdminMainPage()
+    {
+        logRequest();
 
+        if (getCurrentAdmin() == null)
+        {
+            return getYjLogoutResolution();
+        }
+
+        return new RedirectResolution(AdminManage.class);
+    }
 
     // 获取参数
     // --------------------------------------------------------------------------------
@@ -639,7 +570,7 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         }
         return ret;
     }
-
+    
     // download file
     protected Resolution getFileResolution(final String filePath, final String downloadFileName)
     {
@@ -776,7 +707,15 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
         return tsCatalogue;
     }
-
+    
+    public MenuSelector initMenuSelector()
+    {
+        Admin admin = getCurrentAdmin();
+        MenuSelector menuSelector = new MenuSelector(cmService, admin);
+        
+        return menuSelector;
+    }
+    
     public void updateUserTsCache(TextbookSelectorBase textbookSelector) throws SqlAffectedCountException
     {
         User user = getCurrentUser();
@@ -924,24 +863,22 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
     private static final SimpleDateFormat logDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
-    private boolean makeSureUserRole(int userRole)
+    private boolean makeSureUserRole(int adminRole)
     {
-        if (getCurrentUser() == null)
+        if (getCurrentAdmin() == null)
         {
             log("current user is null");
             return false;
         }
 
-        while (getCurrentUser().getUserRole() != userRole)
+        if (getCurrentAdmin().getAdminRole() != adminRole)
         {
-            if (goBackOneUser() == null)
-            {
-                log("go back user is null");
-                return false;
-            }
+            return false;
         }
-
-        return true;
+        else
+        {
+            return true;
+        }
     }
 
     private String doGetParam(String key)
@@ -990,7 +927,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
                 || userRole == Constants.UserRole.YJ_ADMIN
                 || userRole == Constants.UserRole.YJ_MASTER);
     }
-
     public boolean isYjAdmin(User user)
     {
         if (user == null)

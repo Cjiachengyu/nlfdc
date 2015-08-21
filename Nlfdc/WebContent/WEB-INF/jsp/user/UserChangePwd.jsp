@@ -41,7 +41,7 @@
 <script type="text/javascript">
     var htmlVal = { 
 		htmlUrl: "userchangepwdaction" , 
-        changePwdSuccessUrl : "userchangepwdaction?gotousermainpage", 
+        changePwdSuccessUrl : "userchangepwdaction?gotoadminmainpage", 
     };
 </script>
 <script src='js/jquery-1.7.1.min.js' type='text/javascript' ></script>

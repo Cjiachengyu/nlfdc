@@ -104,6 +104,10 @@ public class Constants
 
     public interface MainMenuOperation
     {
+        public static final String NOTIFICATION_MANAGE = "01";
+        public static final String ADMIN_MANAGE = "02";
+        
+
         public static final String YJ_PARENT = "81";
 
         public static final String YJ_TEA_ASSIGNMENT = "91";

@@ -60,7 +60,7 @@ $(function() {
 			},
 			success : function(result) {
 				if (result == "ok") {
-					window.location.href = "loginaction?gotousermainpage";
+					window.location.href = "loginaction?gotoadminmainpage";
 				}
 				else {
 					tipEmail.html("用户名或密码错误").show();
