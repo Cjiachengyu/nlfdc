@@ -1,5 +1,7 @@
 package com.kdl.nlfdc.action.web;
 
+import java.util.List;
+
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.HandlesEvent;
@@ -11,6 +13,9 @@ import org.springframework.dao.DuplicateKeyException;
 
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.Constants;
+import com.kdl.nlfdc.action.component.MenuSelector;
+import com.kdl.nlfdc.action.component.PageModule;
+import com.kdl.nlfdc.domain.Notification;
 import com.kdl.nlfdc.domain.User;
 
 /**
@@ -28,6 +33,15 @@ public class AdminManage extends AbstractActionBean
 
     private static final String MANAGE = "/WEB-INF/jsp/admin/AdminManage.jsp";
 
+    
+    private List<Notification> notificationList;
+    
+    
+    public List<Notification> getNotificationList()
+    {
+        return notificationList;
+    }
+
     // resolution
     // --------------------------------------------------------------------------------
     @DefaultHandler
@@ -43,11 +57,67 @@ public class AdminManage extends AbstractActionBean
 
         getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.NOTIFICATION_MANAGE);
         
+        pageModule = new PageModule(15);
+        
         menuSelector = initMenuSelector();
+        if (menuSelector.getCurrentFirstMenuId() == MenuSelector.MENU_ITEM_ALL)
+        {
+            menuSelector.selectDefaultFirstMenu();
+        }
         
         return new ForwardResolution(MANAGE);
     }
+   
+    public Resolution selectFirstMenu()
+    {
+        logRequest();
+        
+        if (!sessionIsValid())
+        {
+            return getYjLogoutResolution();
+        }
+        
+        int firstMenuId = getParamInt("firstMenuId", 0);
+        
+        if (firstMenuId == menuSelector.getCurrentFirstMenuId())
+        {
+            return getStringResolution("not_change");
+        }
+        else
+        {
+            menuSelector.selectFirstMenu(firstMenuId);
+            
+            refreshNotificationList();
+            return null;
+        }
+    }
     
+    public Resolution selectSecondMenu()
+    {
+        logRequest();
+        
+        if (!sessionIsValid())
+        {
+            return getYjLogoutResolution();
+        }
+        
+        int secondMenuId = getParamInt("secondMenuId", 0);
+        
+        if (secondMenuId == menuSelector.getCurrentSecondMenuId())
+        {
+            return getStringResolution("not_change");
+        }
+        else
+        {
+            menuSelector.selectSecondMenu(secondMenuId);
+            
+            refreshNotificationList();
+            return null;
+        }
+    }
+    
+    
+
     /**
      * 添加系统题库编辑
      * 
@@ -138,9 +208,34 @@ public class AdminManage extends AbstractActionBean
             return getStringResolution("exist");
         }
     }
+   
+    
+    // private 
+    // ------------------------------------------------------------------------
+    private void refreshNotificationList()
+    {
+        int adminId = getCurrentAdminId();
+        int pageSize = pageModule.getPageSize();
+        int limitBegin = pageModule.getLimitBegin();
+        int firstMenuId = menuSelector.getCurrentFirstMenuId();
+        int secondMenuId = menuSelector.getCurrentSecondMenuId();
+        
+        log("admin refresh notification adminId: " + adminId + ", firstMenuId: "+ firstMenuId + ", secondMenuId: " + secondMenuId
+                +" limitBegin: " + limitBegin + ", pageSize: " + pageSize);
+
+        int notificationCount = cmService.getAdminNotificationCount(firstMenuId, secondMenuId);
+
+        notificationList = cmService.getAdminNotificationList(firstMenuId, secondMenuId, limitBegin, pageSize);
+
+        pageModule.changeItemsCount(notificationCount);
+
+        log("admin refresh notification result, notificationCount: " + notificationCount + ", listSize: " +
+                notificationList.size());
+    }
+    
     
     // override
-    // --------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
     @Override
     protected boolean sessionIsValid()
     {

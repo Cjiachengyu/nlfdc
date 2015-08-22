@@ -59,6 +59,12 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
     
     protected MenuSelector menuSelector;
+    
+    
+    public MenuSelector getMenuSelector()
+    {
+        return menuSelector;
+    }
 
     // member
     // --------------------------------------------------------------------------------
@@ -201,7 +207,19 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     {
         return (Admin) getCurrentSession().getAttribute("admin");
     }
-
+    
+    public int getCurrentAdminId()
+    {
+        if (getCurrentAdmin() != null)
+        {
+            return getCurrentAdmin().getAdminId();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
     public int getCurrentUserId()
     {
         if (getCurrentUser() != null)

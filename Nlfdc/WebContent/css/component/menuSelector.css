@@ -1,0 +1,15 @@
+*{margin:0px auto;pading:0 auto;font-size:12px;}
+.all{width: 236px;height:700px;background:#c0c0c0;border-radius: 15px;}
+.all .content{ float: left; border-right: 1px solid #ccc; display: inline-block; width: 100%; margin-bottom: 15px; }
+.all .content .menu{ padding: 0; width: 100%; list-style: none; height: auto; }
+.all .content .menu .item{ line-height: 50px; text-align: left; border-bottom: 1px solid #e8e8e8; background: #f0f3f8; padding-left: 10px;}
+.all .content .menu .item li{ text-align: left; margin-left: 50px; padding-left: 20px; }
+.all .content .menu .item:hover{ color: #13bbdf; background: #f5f6fa; }
+.all .content .menu .cover{ color: red !important; background: #f5f6fa; }
+.all .content .menu .cover ul { color: #808185; }
+.all .content .menu .fb{ font-weight: lighter; font-size: 16px; color: #808185; cursor: pointer; }
+.all .content .menu .selected_citem { color: red; font-weight: bolder; text-align: center; }
+.all .content .menu .citem { line-height: 35px; background: #f5f6fa; border-radius: 35px; }
+.all .content .menu .citem:hover { background: #6ec3ea; color: #fff; }
+.all .content .menu .hide{ display:none; }
+.bod1{ display: inline-block; top:-50px; display: inline-block; width: 5px; height: 50px; background: #13bbdf; float: right; }

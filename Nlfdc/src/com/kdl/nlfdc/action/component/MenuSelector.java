@@ -12,7 +12,7 @@ import com.kdl.nlfdc.service.CmService;
 
 public class MenuSelector
 {
-    protected static final int MENU_ITEM_ALL = 0;
+    public static final int MENU_ITEM_ALL = 0;
     
     private List<FirstMenuWithSecondMenu>     firstMenuList;
     private List<SecondMenu>                  secondMenuList; 
@@ -38,6 +38,14 @@ public class MenuSelector
     public SecondMenu getCurrentSecondMenu()
     {
         return currentSecondMenu;
+    }
+    public int getCurrentFirstMenuId()
+    {
+        return currentFirstMenu.getFirstMenuId();
+    }
+    public int getCurrentSecondMenuId()
+    {
+        return currentSecondMenu.getSecondMenuId();
     }
     
     
@@ -85,6 +93,7 @@ public class MenuSelector
                 if (fmws.getFirstMenuId() == firstMenuId)
                 {
                     currentFirstMenu = fmws;
+                    currentSecondMenu = secondMenuAll;
                     setSelect();
                     return;
                 }
@@ -112,6 +121,14 @@ public class MenuSelector
             }
         }
     }
+   
+    public void selectDefaultFirstMenu()
+    {
+        currentFirstMenu = firstMenuList.get(0);
+        
+        setSelect();
+    }
+    
     
     // private 
     // ---------------------------------------------

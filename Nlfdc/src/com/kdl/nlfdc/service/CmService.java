@@ -141,6 +141,21 @@ public class CmService implements Serializable
         return basicMapper.getAdminMenus(adminId);
     }
     
+    public int getAdminNotificationCount(int firstMenuId, int secondMenuId)
+    {
+        return basicMapper.getAdminNotificationCount(firstMenuId, secondMenuId);
+    }
+    
+    public List<Notification> getAdminNotificationList(int firstMenuId, int secondMenuId, int limitBegin, int pageSize)
+    {
+        return basicMapper.getAdminNotificationList(firstMenuId, secondMenuId, limitBegin, pageSize);
+    }
+    
+    
+    
+    
+    
+    
     
     
     

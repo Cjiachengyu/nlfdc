@@ -103,6 +103,49 @@
 		where
 			loginName = #{loginName }
 	</select>
+
+	<select id="getAdminNotificationCount" parameterType="int" resultType="int">
+		select
+			count(*)
+		from
+			notification
+		where
+			true
+			<if test="firstMenuId != 0">
+			and firstMenuId = #{firstMenuId}
+			</if>
+			<if test="secondMenuId != 0">
+			and secondMenuId = #{secondMenuId}
+			</if>
+			order by createTime desc
+	</select>
+
+	<select id="getAdminNotificationList" parameterType="int" resultType="Notification">
+		select
+			notification.*, second_menu.secondMenuName
+		from
+			notification join second_menu using(secondMenuId)
+		where
+			true
+			<if test="firstMenuId != 0">
+			firstMenuId = #{firstMenuId}
+			</if>
+			<if test="secondMenuId != 0">
+			secondMenuId = #{secondMenuId}
+			</if>
+			order by createTime desc
+			limit 
+			#{limitBegin}, #{pageSize}
+	</select>
+
+
+
+
+
+
+
+
+
 	
 	
 	<!-- old  -->

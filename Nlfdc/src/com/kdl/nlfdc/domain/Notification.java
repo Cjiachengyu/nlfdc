@@ -9,15 +9,14 @@ public class Notification implements Serializable
     private static final long serialVersionUID = -1367884943706910323L;
     
     private int notificationId;
+    private int firstMenuId;
+    private int secondMenuId;
     private int creatorId;
     private int createTime;
     private String title;
     private String content;
-    private String notifyTarget;            // 表示发送范围，可能是“全园”“全体老师”“全体家长”或者班级id拼接的字符串
     private int isDeleted;
     
-    private int isReaded;
-   
     public String getCreateTimeString()
     {
         return Utils.getSimpleTimeString(createTime);
@@ -63,14 +62,6 @@ public class Notification implements Serializable
     {
         this.content = content;
     }
-    public String getNotifyTarget()
-    {
-        return notifyTarget;
-    }
-    public void setNotifyTarget(String notifyTarget)
-    {
-        this.notifyTarget = notifyTarget;
-    }
     public int getIsDeleted()
     {
         return isDeleted;
@@ -79,15 +70,21 @@ public class Notification implements Serializable
     {
         this.isDeleted = isDeleted;
     }
-
-    public int getIsReaded()
+    public int getFirstMenuId()
     {
-        return isReaded;
+        return firstMenuId;
     }
-
-    public void setIsReaded(int isReaded)
+    public void setFirstMenuId(int firstMenuId)
     {
-        this.isReaded = isReaded;
+        this.firstMenuId = firstMenuId;
+    }
+    public int getSecondMenuId()
+    {
+        return secondMenuId;
+    }
+    public void setSecondMenuId(int secondMenuId)
+    {
+        this.secondMenuId = secondMenuId;
     }
     
 }

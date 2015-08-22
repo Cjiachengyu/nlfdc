@@ -31,7 +31,17 @@ public interface BasicMapper
     Admin getAdminByAdminId(int adminId);
     
     Admin getAdminByLoginName(String loginName);
+   
+    int getAdminNotificationCount(
+            @Param("firstMenuId") int firstMenuId,
+            @Param("secondMenuId") int secondMenuId);
     
+    List<Notification> getAdminNotificationList(
+            @Param("firstMenuId") int firstMenuId,
+            @Param("seconfMenuId") int secondMenuId,
+            @Param("limitBegin") int limitBegin,
+            @Param("pageSize") int pageSize
+            );
     
     
     // old

@@ -3,7 +3,9 @@
 <%@ include file="../component/CommonAdminTop.jsp" %>
 
 <title>通知管理</title>
-
+<style>
+.main_content {float: left; width: 710px; margin-top: 15px; padding: 10px 20px 0px 30px; min-height: 750px; }
+</style>
 <script type="text/javascript">
 var htmlVal = {
     htmlUrl: "adminmanageaction"
@@ -25,9 +27,16 @@ $(function(){
 
 <div class="wrap" >
 	<div id="content" class="clearfix">
+		<div class="left_bar">
+			<%@ include file="../component/MenuSelector.jsp"%>
+		</div>	
 		
-		
+		<div class="main_content">
+			<a class="blue_button right mar10">发布通知</a>
+			<div class="clear"></div>
+			<%@ include file="../component/AdminNotificationListView.jsp" %>
+		</div>
 	</div>
 </div>
 
-<%@ include file="../component/CommonBottom.jsp"%>
+<%@ include file="../component/CommonAdminBottom.jsp"%>
