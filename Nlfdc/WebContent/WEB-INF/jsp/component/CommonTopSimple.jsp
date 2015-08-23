@@ -7,7 +7,6 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<link href="image/common/fenghuang.ico" type="image/x-icon" rel="shortcut icon" />
   
 <link href="css/common/global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 <!--[if lt IE 9]><style>.shadow { border: solid 1px lightgray; }</style><![endif]-->

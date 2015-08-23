@@ -1,7 +1,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../jsp/component/CommonTopSimple.jsp"%>
 
-<title>幼儿100</title>
+<title>宁陵县房地产发展保障管理中心</title>
 
 <link href="css/index/admin_login.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 

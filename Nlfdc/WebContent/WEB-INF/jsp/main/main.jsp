@@ -40,6 +40,8 @@ span, li, a { font-size: 12px; }
 .image_selector { width: 300px; height: 30px; margin: -4px 5px 5px 5px; background: black; text-align: center; position: relative;  }
 .dot { display: inline-block; width: 10px; height: 10px; margin: 10px 5px; border-radius: 50%; background-color: white; float: right;}
 .choosed {display: inline-block; width: 15px; height: 15px; margin: 8px 5px; border-radius: 50%; background-color: green; float: right; }
+.notification_link {color: blue; text-decoration: none; }
+.notification_link:hover {color: red; text-decoration: none; }
 </style>
 
 <div class="main_content">
@@ -70,16 +72,9 @@ span, li, a { font-size: 12px; }
 	 		
 	 			<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
-						<li>第一次会议检查</li>
-						<li>第一次会议</li>
-						<li>第一次会议通知讨论</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议通知交流</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[1] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 				</div>	
 	 			
@@ -96,11 +91,9 @@ span, li, a { font-size: 12px; }
 	 		
 	 		<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[2] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    </div>	
 	 	</div>
@@ -116,11 +109,9 @@ span, li, a { font-size: 12px; }
 			</div>
 			<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[3] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    </div>
 	 	</div>
@@ -134,11 +125,9 @@ span, li, a { font-size: 12px; }
 				
 				<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[4] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    </div>
 	 	</div>
@@ -152,16 +141,14 @@ span, li, a { font-size: 12px; }
 	 		<div class="row3_col1">
 	 			<!-- 第三行第一个 物业管理 -->
 					<div class="box_header">
-						<span>${actionBean.allFirstMenu[6].firstMenuName }</span>
+						<span>${actionBean.allFirstMenu[5].firstMenuName }</span>
 						<a href="javascript:void(0)"></a>
 					</div>
 					<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[5] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    		</div>
 	 		</div>
@@ -174,11 +161,9 @@ span, li, a { font-size: 12px; }
 				</div>
 				<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[7] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    	</div>
 	 		</div>
@@ -190,11 +175,9 @@ span, li, a { font-size: 12px; }
 				</div>
 				<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[8] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    	</div>
 	 		</div>
@@ -232,11 +215,9 @@ span, li, a { font-size: 12px; }
 				</div>
 	 			<div class="box_content">
 					<ul>
-						<li>第一次会议</li>
-						<li>第一次会议通知</li>
-						<li>第一次会议</li>
-						<li>第一次会议报告</li>
-						<li>第一次会议</li>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[1] }">
+							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+						</c:forEach>
 					</ul>
 		    	</div>
 	 	</div>

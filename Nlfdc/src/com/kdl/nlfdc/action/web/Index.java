@@ -1,5 +1,6 @@
 package com.kdl.nlfdc.action.web;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.domain.FirstMenu;
+import com.kdl.nlfdc.domain.Notification;
 import com.kdl.nlfdc.domain.VisitCount;
 
 @SessionScope
@@ -25,6 +27,7 @@ public class Index extends AbstractActionBean
     private int totalCount;
     private int thisDayCount;
     private List<FirstMenu> allFirstMenu;
+    private List<Notification>[] firstMenuNotificationList; 
     
     public int getTotalCount()
     {
@@ -38,7 +41,10 @@ public class Index extends AbstractActionBean
     {
         return allFirstMenu;
     }
-    
+    public List<Notification>[] getFirstMenuNotificationList()
+    {
+        return firstMenuNotificationList;
+    }
     // resolution
     // --------------------------------------------------------------------------------
     @DefaultHandler
@@ -74,10 +80,13 @@ public class Index extends AbstractActionBean
         
         // 查询主模块
         allFirstMenu = cmService.getAllFirstMenu();
-        
-        for(FirstMenu firstMenu: allFirstMenu)
+        firstMenuNotificationList = new ArrayList[allFirstMenu.size()];
+//        for(FirstMenu firstMenu: allFirstMenu)
+        for(int i = 1; i < allFirstMenu.size(); i++)
         {
-            System.out.println("firstMenuId: " + firstMenu.getFirstMenuId() +" , firstMenuName: " + firstMenu.getFirstMenuName());
+            FirstMenu firstMenu = allFirstMenu.get(i);
+            List<Notification> notificationList = cmService.getAdminNotificationList(firstMenu.getFirstMenuId(), 0, 0, 9);
+            firstMenuNotificationList[i] = notificationList; 
         }
         
         

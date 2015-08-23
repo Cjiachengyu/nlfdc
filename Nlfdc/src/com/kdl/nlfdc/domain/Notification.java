@@ -19,17 +19,27 @@ public class Notification implements Serializable
    
     private String secondMenuName;
     
+   
+    public String getShortTitle()
+    {
+        if (title.length() > 18)
+        {
+            return title.substring(0, 18) +"...";
+        }
+        else
+        {
+            return title;
+        }
+    }
     
     public String getSecondMenuName()
     {
         return secondMenuName;
     }
-
     public void setSecondMenuName(String secondMenuName)
     {
         this.secondMenuName = secondMenuName;
     }
-
     public String getCreateTimeString()
     {
         return Utils.getSimpleTimeString(createTime);
