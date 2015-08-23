@@ -81,14 +81,12 @@ public class Index extends AbstractActionBean
         // 查询主模块
         allFirstMenu = cmService.getAllFirstMenu();
         firstMenuNotificationList = new ArrayList[allFirstMenu.size()];
-//        for(FirstMenu firstMenu: allFirstMenu)
         for(int i = 1; i < allFirstMenu.size(); i++)
         {
             FirstMenu firstMenu = allFirstMenu.get(i);
-            List<Notification> notificationList = cmService.getAdminNotificationList(firstMenu.getFirstMenuId(), 0, 0, 9);
+            List<Notification> notificationList = cmService.getCommonNotificationList(firstMenu.getFirstMenuId(), 0, 0, 9);
             firstMenuNotificationList[i] = notificationList; 
         }
-        
         
         return new ForwardResolution(MAIN_PAGE);
     }

@@ -43,6 +43,18 @@ public interface BasicMapper
             @Param("pageSize") int pageSize
             );
     
+    int getCommonNotificationCount(
+            @Param("firstMenuId") int firstMenuId,
+            @Param("secondMenuId") int secondMenuId);
+    
+    List<Notification> getCommonNotificationList(
+            @Param("firstMenuId") int firstMenuId,
+            @Param("secondMenuId") int secondMenuId,
+            @Param("limitBegin") int limitBegin,
+            @Param("pageSize") int pageSize
+            );
+    
+    
     void deleteNotification(int notificationId);
 
     void unDeleteNotification(int notificationId);

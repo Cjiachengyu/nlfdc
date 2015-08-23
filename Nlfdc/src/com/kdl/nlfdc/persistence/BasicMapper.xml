@@ -138,6 +138,40 @@
 			#{limitBegin}, #{pageSize}
 	</select>
 
+<select id="getCommonNotificationCount" parameterType="int" resultType="int">
+		select
+			count(*)
+		from
+			notification
+		where
+			isDeleted = 0
+			<if test="firstMenuId != 0">
+			and firstMenuId = #{firstMenuId}
+			</if>
+			<if test="secondMenuId != 0">
+			and secondMenuId = #{secondMenuId}
+			</if>
+			order by createTime desc
+	</select>
+
+	<select id="getCommonNotificationList" parameterType="int" resultType="Notification">
+		select
+			notification.*, second_menu.secondMenuName
+		from
+			notification join second_menu using(secondMenuId)
+		where
+			notification.isDeleted = 0
+			<if test="firstMenuId != 0">
+			and notification.firstMenuId = #{firstMenuId}
+			</if>
+			<if test="secondMenuId != 0">
+			and notification.secondMenuId = #{secondMenuId}
+			</if>
+			order by createTime desc
+			limit 
+			#{limitBegin}, #{pageSize}
+	</select>
+	
 	<insert id="insertNotification" useGeneratedKeys="true" keyProperty="notificationId" parameterType="Notification">
 		insert into notification 
 			(firstMenuId, secondMenuId, creatorId, createTime, title, content) 
