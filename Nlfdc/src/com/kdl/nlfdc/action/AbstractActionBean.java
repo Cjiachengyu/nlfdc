@@ -25,6 +25,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.HandlesEvent;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.StreamingResolution;
 import net.sourceforge.stripes.integration.spring.SpringBean;
 
@@ -39,10 +40,6 @@ import com.kdl.nlfdc.action.component.TextbookSelectorClassify;
 import com.kdl.nlfdc.action.web.AdminManage;
 import com.kdl.nlfdc.action.web.Index;
 import com.kdl.nlfdc.action.web.Login;
-import com.kdl.nlfdc.action.web.UserChangePwd;
-import com.kdl.nlfdc.action.web.YjAdminCommonProblem;
-import com.kdl.nlfdc.action.web.YjEditorResManage;
-import com.kdl.nlfdc.action.web.YjMasterClsList;
 import com.kdl.nlfdc.action.web.YjTeaAsm;
 import com.kdl.nlfdc.domain.Admin;
 import com.kdl.nlfdc.domain.User;
@@ -50,6 +47,7 @@ import com.kdl.nlfdc.exception.AccountInvalidException;
 import com.kdl.nlfdc.exception.SqlAffectedCountException;
 import com.kdl.nlfdc.service.CmService;
 
+@SessionScope
 public abstract class AbstractActionBean implements ActionBean, Serializable
 {
     private static final long serialVersionUID = -1767714708233127983L;

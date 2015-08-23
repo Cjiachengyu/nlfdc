@@ -16,29 +16,17 @@
 
 <div class="notification_items">
     <c:forEach var="noti" items="${actionBean.notificationList}">
+		<div class="notification">
+			<span class="col_1">[${noti.secondMenuName }]&nbsp;<a class="notification_link">${noti.title }</a></span>
+			<span class="col_2">
+				<a class="operation_link">
+					<c:if test="${noti.isDeleted == 0}">删除</c:if>
+					<c:if test="${noti.isDeleted == 1}">还原</c:if>
+				</a>
+			</span>
+			<span class="col_3">${noti.createTimeString }</span>
+		</div>
     </c:forEach>
-		<div class="notification">
-			<span class="col_1">[政务公开]&nbsp;<a class="notification_link">关于第三次会议的讨论于第三次会议的讨论 于第三次会议的讨论 于第三次会议</a></span>
-			<span class="col_2"><a class="operation_link">删除</a></span>
-			<span class="col_3">09-10 10:20</span>
-		</div>
-		<div class="notification">
-			<span class="col_1">[政务公开]&nbsp;<a class="notification_link">关于第三次会议的讨论于第三次会议的讨论 于第三次会议的讨论 于第三次会议</a></span>
-			<span class="col_2">删除</span>
-			<span class="col_3">09-10 10:20</span>
-		</div><div class="notification">
-			<span class="col_1">[政务公开]&nbsp;<a class="notification_link">关于第三次会议的讨论于第三次会议的讨论 于第三次会议的讨论 于第三次会议</a></span>
-			<span class="col_2">删除</span>
-			<span class="col_3">09-10 10:20</span>
-		</div><div class="notification">
-			<span class="col_1">[政务公开]&nbsp;<a class="notification_link">关于第三次会议的讨论于第三次会议的讨论 于第三次会议的讨论 于第三次会议</a></span>
-			<span class="col_2">删除</span>
-			<span class="col_3">09-10 10:20</span>
-		</div><div class="notification">
-			<span class="col_1">[政务公开]&nbsp;<a class="notification_link">关于第三次会议的讨论于第三次会议的讨论 于第三次会议的讨论 于第三次会议</a></span>
-			<span class="col_2">删除</span>
-			<span class="col_3">09-10 10:20</span>
-		</div>
 		
 </div>
 <script src="js/component/notificationListView.js?jscssimgversion=${actionBean.jsCssImgVersion}"></script>

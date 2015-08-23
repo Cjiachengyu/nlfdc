@@ -15,7 +15,12 @@ $(function(){
 	}
 	else
 	{
-		$("#current_first_menuid").val(clickedFristMenuId);
+		if (!isFirst)
+		{
+			$("#current_first_menuid").val(clickedFristMenuId);
+			$("#current_second_menuid").val(0);
+			$(".citem").removeClass("selected_citem");
+		}
 	}
 	
 	isFirst = false;
@@ -42,7 +47,22 @@ $(function(){
     	$(this).children("span")[0].innerHTML="";
     }
     
-    $(".citem").removeClass("selected_citem");
+    $.ajax({
+		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+		type : "post",
+		url : htmlVal.htmlUrl + "?selectfirstmenu=",
+		data : {
+			firstMenuId: clickedFristMenuId
+		},
+		success : function(result) {
+			isTimeOut(result);
+			
+			if (result != "not_change")
+			{
+				htmlFn.selectFirstMenuCallback(result);
+			}
+		}
+	});
    // alert("firstMenuId: " + $(this).val());
     
   });
@@ -62,6 +82,22 @@ $(function(){
       $(".citem").removeClass("selected_citem");      
       $(this).addClass("selected_citem");
       
+      $.ajax({
+  		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+  		type : "post",
+  		url : htmlVal.htmlUrl + "?selectsecondmenu=",
+  		data : {
+  			secondMenuId: clickedSecondMenuId
+  		},
+  		success : function(result) {
+  			isTimeOut(result);
+  			
+  			if (result != "not_change")
+  			{
+  				htmlFn.selectSecondMenuCallback(result);
+  			}
+  		}
+  	});
      // alert("secondMenuId: " + $(this).val());
       return false;
 

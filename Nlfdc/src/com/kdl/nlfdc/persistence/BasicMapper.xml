@@ -128,18 +128,31 @@
 		where
 			true
 			<if test="firstMenuId != 0">
-			firstMenuId = #{firstMenuId}
+			and notification.firstMenuId = #{firstMenuId}
 			</if>
 			<if test="secondMenuId != 0">
-			secondMenuId = #{secondMenuId}
+			and notification.secondMenuId = #{secondMenuId}
 			</if>
 			order by createTime desc
 			limit 
 			#{limitBegin}, #{pageSize}
 	</select>
 
-
-
+	<insert id="insertNotification" useGeneratedKeys="true" keyProperty="notificationId" parameterType="Notification">
+		insert into notification 
+			(firstMenuId, secondMenuId, creatorId, createTime, title, content) 
+		values 
+			(#{firstMenuId}, #{secondMenuId}, #{creatorId }, #{createTime }, #{title }, #{content })
+	</insert>
+	
+	<update id="deleteNotification" parameterType="int" >
+		update 
+			notification
+		set 
+			isDeleted = 1
+		where
+			notificationId = #{notificationId}
+	</update>
 
 
 
@@ -1410,21 +1423,7 @@
               #{limitBegin}, #{pageSize}
 	</select>
 	
-	<insert id="insertNotification" useGeneratedKeys="true" keyProperty="notificationId" parameterType="Notification">
-		insert into notification 
-			(creatorId, createTime, title, content, notifyTarget) 
-		values 
-			(#{creatorId }, #{createTime }, #{title }, #{content }, #{notifyTarget })
-	</insert>
 	
-	<update id="deleteNotification" parameterType="int" >
-		update 
-			notification
-		set 
-			isDeleted = 1
-		where
-			notificationId = #{notificationId}
-	</update>
 	
 	<insert id="insertUserNotification">
 		insert into user_notification

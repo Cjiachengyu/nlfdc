@@ -1,5 +1,6 @@
 package com.kdl.nlfdc.action.component;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import com.kdl.nlfdc.domain.FirstMenuWithSecondMenu;
 import com.kdl.nlfdc.domain.SecondMenu;
 import com.kdl.nlfdc.service.CmService;
 
-public class MenuSelector
+public class MenuSelector implements Serializable
 {
+    private static final long serialVersionUID = 1479730018464178225L;
+
     public static final int MENU_ITEM_ALL = 0;
     
     private List<FirstMenuWithSecondMenu>     firstMenuList;

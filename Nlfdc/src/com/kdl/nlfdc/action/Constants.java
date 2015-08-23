@@ -60,7 +60,7 @@ public class Constants
 
         public static final int RES_NAME = 80;
         
-        public static final int NOTIFICATION_TITLE = 128;
+        public static final int NOTIFICATION_TITLE = 50;
     }
 
     public interface Category

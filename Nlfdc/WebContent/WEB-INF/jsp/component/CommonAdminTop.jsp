@@ -67,7 +67,7 @@
 				
 				<!-- 幼教家长 -->
 				<div class="top_main_menu_div">
-					<a class="top_main_menu" href="##" >通知管理</a>
+					<a class="top_main_menu" href="adminnotificationmanageaction" >通知管理</a>
 					<c:if test="${sessionScope.currentMemuOperation == '01'}"> <div class="current_main_menu" ></div> </c:if>
 					<c:if test="${sessionScope.currentMemuOperation != '01'}"> <div class="inactive_main_menu" ></div> </c:if>
 				</div>

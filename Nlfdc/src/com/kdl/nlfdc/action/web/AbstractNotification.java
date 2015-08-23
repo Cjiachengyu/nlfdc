@@ -104,42 +104,6 @@ public abstract class AbstractNotification extends AbstractActionBean
         }
     }
 
-    @HandlesEvent("viewnotification")
-    public Resolution viewNotification()
-    {
-        logRequest();
-        
-        if (!sessionIsValid())
-        {
-            return getStringTimeoutResolution();
-        }
-        
-        int notificationId = getParamInt("notificationId", -1);
-        int isGet = getParamInt("isGet", 0);
-        
-        if (notificationId == -1)
-        {
-            return getNotificationMainPage();
-        }
-        else
-        {
-            if (isGet == 1)
-            {
-                cmService.setUserNotificationReaded(getCurrentUserId(), notificationId);
-            }
-            viewIngNotification = cmService.getNotification(notificationId);
-            
-            viewIngNotificationInfo = new NotificationInfo();
-            
-            viewIngNotificationInfo.setNotifyTargetString(getNotifyTargetString(viewIngNotification));
-            viewIngNotificationInfo.setReadedCount(cmService.getOneNotificationReadedCount(viewIngNotification.getNotificationId()));
-            viewIngNotificationInfo.setReceiveCount(cmService.getOneNotificationReceiveCount(viewIngNotification.getNotificationId()));
-            viewIngNotificationInfo.setCreatorName(cmService.getUser(viewIngNotification.getCreatorId()).getUserName()); 
-            
-            return new ForwardResolution(VIEW_NOTIFICATION);
-        }
-    }
-  
     @HandlesEvent("selectdate")
     public Resolution selectDate()
     {
@@ -203,69 +167,7 @@ public abstract class AbstractNotification extends AbstractActionBean
             return getStringResolution("upload_image_exception");
         }
     }
-    
-    @HandlesEvent("dopublishnotification")
-    public Resolution doPublishNotification()
-    {
-        logRequest();
-        if (!sessionIsValid())
-        {
-            return getYjLogoutResolution();
-        }
-
-        String notifyTargetType = getParam("notifyTargetType");
-
-        String title = getParam("title");
-        String content = getParam("content");
-        String classIdsStr = getParam("classIdsStr");
-
-        if (paramIsValid(title, content, notifyTargetType, classIdsStr))
-        {
-            try
-            {
-                Notification notification = new Notification();
-                notification.setCreatorId(getCurrentUserId());
-                notification.setCreateTime(Utils.currentSeconds());
-                notification.setTitle(title);
-                notification.setContent(content);
-
-                if (notifyTargetType.equals(Constants.NotificationTargetType.SOME_CLASS))
-                {
-                    if (classIdsStr.endsWith(","))
-                    {
-                        classIdsStr = classIdsStr.substring(0, classIdsStr.length() - 1);
-                        notification.setNotifyTarget(classIdsStr);
-                    }
-                }
-                else
-                {
-                    notification.setNotifyTarget(notifyTargetType);
-                }
-
-                cmService.insertNotification(notification);
-
-                List<Integer> allTargetUserIdList = getTargetUserIdList(getCurrentUser(), notifyTargetType, classIdsStr);
-                
-                List<UserNotification> allUserNotificationList = getTargetUserNotificationList(notification.getNotificationId(), 
-                        allTargetUserIdList);
-                
-                cmService.insertUserNotification(allUserNotificationList);
-
-                pushMessage(notifyTargetType, title, allTargetUserIdList);
-
-                return getStringResolution("ok");
-            }
-            catch (Exception e)
-            {
-                return getStringResolution("exception");
-            }
-        }
-        else
-        {
-            return getStringResolution("paramInValid");
-        }
-    }
-
+   
     protected abstract void refreshNotificationList();
     
     protected abstract Resolution getNotificationMainPage();
@@ -372,37 +274,6 @@ public abstract class AbstractNotification extends AbstractActionBean
     
     // private
     // --------------------------------------------------------------------------------
-    private String getNotifyTargetString(Notification viewIngNotification)
-    {
-        if (viewIngNotification.getNotifyTarget().equals(Constants.NotificationTargetType.ALL_USER))
-        {
-            return Constants.NotificationTargetType.ALL_USER_STRING;
-        }
-        else if (viewIngNotification.getNotifyTarget().equals(Constants.NotificationTargetType.ALL_TEACHER))
-        {
-            return Constants.NotificationTargetType.ALL_TEACHER_STRING;
-        }
-        else if(viewIngNotification.getNotifyTarget().equals(Constants.NotificationTargetType.ALL_PARENT))
-        {
-            return Constants.NotificationTargetType.ALL_PARENT_STRING;
-        }
-        else
-        {
-            String[] clsIds = viewIngNotification.getNotifyTarget().split(",");
-            
-            StringBuilder classNameBuilder = new StringBuilder();
-            for(String clsId : clsIds)
-            {
-                Cls cls = cmService.getClassInfo(Integer.parseInt(clsId));
-                classNameBuilder.append(cls.getClsName()+", ");
-            }
-            String classNamesStr = classNameBuilder.toString();
-            classNamesStr = classNamesStr.substring(0, classNamesStr.length() - 2);
-            
-            return classNamesStr; 
-        }
-    }
-    
     private List<Integer> getUserIdList(List<User> targetUserList)
     {
         List<Integer> targetUserIdList = new ArrayList<Integer>();

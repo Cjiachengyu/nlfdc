@@ -16,7 +16,20 @@ public class Notification implements Serializable
     private String title;
     private String content;
     private int isDeleted;
+   
+    private String secondMenuName;
     
+    
+    public String getSecondMenuName()
+    {
+        return secondMenuName;
+    }
+
+    public void setSecondMenuName(String secondMenuName)
+    {
+        this.secondMenuName = secondMenuName;
+    }
+
     public String getCreateTimeString()
     {
         return Utils.getSimpleTimeString(createTime);

@@ -38,7 +38,7 @@ public interface BasicMapper
     
     List<Notification> getAdminNotificationList(
             @Param("firstMenuId") int firstMenuId,
-            @Param("seconfMenuId") int secondMenuId,
+            @Param("secondMenuId") int secondMenuId,
             @Param("limitBegin") int limitBegin,
             @Param("pageSize") int pageSize
             );
