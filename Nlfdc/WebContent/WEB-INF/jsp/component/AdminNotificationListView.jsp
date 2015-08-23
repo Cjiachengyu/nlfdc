@@ -19,17 +19,19 @@
 		<div class="notification">
 			<span class="col_1">[${noti.secondMenuName }]&nbsp;<a class="notification_link">${noti.title }</a></span>
 			<span class="col_2">
-				<a class="operation_link">
-					<c:if test="${noti.isDeleted == 0}">删除</c:if>
-					<c:if test="${noti.isDeleted == 1}">还原</c:if>
-				</a>
+					<c:if test="${noti.isDeleted == 0}">
+						<a class="operation_link" href="javascript:deleteNotification(${noti.notificationId })" >删除</a>
+					</c:if>
+					<c:if test="${noti.isDeleted == 1}">
+						<a class="operation_link" href="javascript:unDeleteNotification(${noti.notificationId })" >还原</a>
+					</c:if>
 			</span>
 			<span class="col_3">${noti.createTimeString }</span>
 		</div>
     </c:forEach>
 		
 </div>
-<script src="js/component/notificationListView.js?jscssimgversion=${actionBean.jsCssImgVersion}"></script>
+<script src="js/component/adminNotificationListView.js?jscssimgversion=${actionBean.jsCssImgVersion}"></script>
 
 <div>
     <%@ include file="../component/PagingBar.jsp"%>

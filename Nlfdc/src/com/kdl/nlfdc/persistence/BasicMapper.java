@@ -43,6 +43,10 @@ public interface BasicMapper
             @Param("pageSize") int pageSize
             );
     
+    void deleteNotification(int notificationId);
+
+    void unDeleteNotification(int notificationId);
+     
     
     // old
     // ------------------------------------------------------
@@ -379,7 +383,6 @@ public interface BasicMapper
     
     int insertNotification(Notification notification);
     
-    void deleteNotification(int notificationId);
     
     void insertUserNotification(List<UserNotification> userNotificationList);
     
@@ -402,7 +405,7 @@ public interface BasicMapper
     List<User> getAllUsersOfSchoolByUserRole(
             @Param("schoolId") int schoolId,
             @Param("userRole") int userRole);
-    
+
     
 }
 

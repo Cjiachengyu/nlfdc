@@ -223,8 +223,53 @@ public class AdminManage extends AbstractActionBean
     }
 
     
+    @HandlesEvent("deletenotification")
+    public Resolution deleteNotification()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getStringTimeoutResolution();
+        }
+
+        int notificationId = getParamInt("notificationId");
+
+        try
+        {
+            cmService.deleteNotification(notificationId);
+            refreshNotificationList();
+            return new ForwardResolution(NOTIFICATION_LISTVIEW);
+        }
+        catch (Exception e)
+        {
+            return getStringResolution("exeption");
+        }
+    } 
     
-    
+    @HandlesEvent("undeletenotification")
+    public Resolution unDeleteNotification()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getStringTimeoutResolution();
+        }
+
+        int notificationId = getParamInt("notificationId");
+
+        try
+        {
+            cmService.unDeleteNotification(notificationId);
+            refreshNotificationList();
+            return new ForwardResolution(NOTIFICATION_LISTVIEW);
+        }
+        catch (Exception e)
+        {
+            return getStringResolution("exeption");
+        }
+    } 
     
     
     

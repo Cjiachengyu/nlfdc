@@ -151,7 +151,16 @@ public class CmService implements Serializable
         return basicMapper.getAdminNotificationList(firstMenuId, secondMenuId, limitBegin, pageSize);
     }
     
+    public void deleteNotification(int notificationId)
+    {
+        basicMapper.deleteNotification(notificationId);
+    }
     
+    public void unDeleteNotification(int notificationId)
+    {
+        basicMapper.unDeleteNotification(notificationId);
+    }
+
     
     
     
@@ -1059,11 +1068,6 @@ public class CmService implements Serializable
     public void insertNotification(Notification notification)
     {
         basicMapper.insertNotification(notification);
-    }
-
-    public void deleteNotification(int notificationId)
-    {
-        basicMapper.deleteNotification(notificationId);
     }
 
     public void insertUserNotification(List<UserNotification> userNotificationList)

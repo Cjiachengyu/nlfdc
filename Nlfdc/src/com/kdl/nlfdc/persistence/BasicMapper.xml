@@ -154,7 +154,14 @@
 			notificationId = #{notificationId}
 	</update>
 
-
+	<update id="unDeleteNotification" parameterType="int" >
+		update 
+			notification
+		set 
+			isDeleted = 0
+		where
+			notificationId = #{notificationId}
+	</update>
 
 
 
