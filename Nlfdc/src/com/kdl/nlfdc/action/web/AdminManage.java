@@ -76,11 +76,8 @@ public class AdminManage extends AbstractActionBean
         {
             menuSelector = initMenuSelector();
             menuSelector.selectDefaultFirstMenu();
-            System.out.println("select default firstMenu");
         }
        
-        System.out.println("currentFirstMenuId: " + menuSelector.getCurrentFirstMenuId());
-        System.out.println("currentSecondMenuId: " + menuSelector.getCurrentSecondMenuId());
         refreshNotificationList();
         return new ForwardResolution(MANAGE);
     }

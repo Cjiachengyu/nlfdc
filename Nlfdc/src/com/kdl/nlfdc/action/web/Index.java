@@ -26,7 +26,7 @@ public class Index extends AbstractActionBean
     
     private int totalCount;
     private int thisDayCount;
-    private List<FirstMenu> allFirstMenu;
+//    private List<FirstMenu> allFirstMenu;
     private List<Notification>[] firstMenuNotificationList; 
     
     public int getTotalCount()
@@ -37,10 +37,10 @@ public class Index extends AbstractActionBean
     {
         return thisDayCount;
     }
-    public List<FirstMenu> getAllFirstMenu()
-    {
-        return allFirstMenu;
-    }
+//    public List<FirstMenu> getAllFirstMenu()
+//    {
+//        return allFirstMenu;
+//    }
     public List<Notification>[] getFirstMenuNotificationList()
     {
         return firstMenuNotificationList;
@@ -79,11 +79,13 @@ public class Index extends AbstractActionBean
         }
         
         // 查询主模块
-        allFirstMenu = cmService.getAllFirstMenu();
-        firstMenuNotificationList = new ArrayList[allFirstMenu.size()];
-        for(int i = 1; i < allFirstMenu.size(); i++)
+//        allFirstMenu = cmService.getAllFirstMenu();
+//        firstMenuNotificationList = new ArrayList[allFirstMenu.size()];
+        menuSelector = initMenuSelector();
+        firstMenuNotificationList = new ArrayList[menuSelector.getFirstMenuList().size()];
+        for(int i = 1; i < menuSelector.getFirstMenuList().size(); i++)
         {
-            FirstMenu firstMenu = allFirstMenu.get(i);
+            FirstMenu firstMenu = menuSelector.getFirstMenuList().get(i);
             List<Notification> notificationList = cmService.getCommonNotificationList(firstMenu.getFirstMenuId(), 0, 0, 9);
             firstMenuNotificationList[i] = notificationList; 
         }

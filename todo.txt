@@ -16,3 +16,5 @@
 
 9.普通用户查看通知二级页面，新建CommonUserNotifictionAction，首页“更多”链接到该action，传递firstMenuId，
 通过该id查询notification然后显示，jsp左侧还是选择栏，右侧是notificationList
+
+10.宽度改为1280

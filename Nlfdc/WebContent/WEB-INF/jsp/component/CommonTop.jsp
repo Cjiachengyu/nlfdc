@@ -50,37 +50,37 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 
 <div class="wrap2">
 	<div class="lead_links">
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[0].firstMenuId }">
-			${actionBean.allFirstMenu[0].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[0].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[0].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[1].firstMenuId }">
-			${actionBean.allFirstMenu[1].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[1].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[1].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[2].firstMenuId }">
-			${actionBean.allFirstMenu[2].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[2].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[2].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[3].firstMenuId }">
-			${actionBean.allFirstMenu[3].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[3].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[3].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[4].firstMenuId }">
-			${actionBean.allFirstMenu[4].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[4].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[4].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[5].firstMenuId }">
-			<!-- 网上备案不需要二级页面，直接链接到外部系统，此处待修改 -->
-			${actionBean.allFirstMenu[5].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[5].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[5].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[6].firstMenuId }">
-			${actionBean.allFirstMenu[6].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[6].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[6].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[7].firstMenuId }">
-			${actionBean.allFirstMenu[7].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[7].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[7].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[8].firstMenuId }">
-			${actionBean.allFirstMenu[8].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[8].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[8].firstMenuName }
 		</a>
-		<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[9].firstMenuId }">
-			${actionBean.allFirstMenu[9].firstMenuName }
+		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[9].firstMenuId }">
+			${actionBean.menuSelector.firstMenuList[9].firstMenuName }
 		</a>
+		
 	</div>
 	
 	<div class="tip_box">
@@ -89,3 +89,9 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 	</div>
 </div>
 
+<script src='js/jquery-1.7.1.min.js' type='text/javascript' ></script>
+<link rel="stylesheet" href="jqueryplugin/zebra_dialog/zebra_dialog.css" type="text/css" />
+<script src="jqueryplugin/zebra_dialog/jquery.zebra_dialog.js" type="text/javascript"></script>
+
+<script src='js/common/global.js?jscssimgversion=${actionBean.jsCssImgVersion}' type='text/javascript' ></script>
+<script src="js/common/js.message.js?jscssimgversion=${actionBean.jsCssImgVersion}"></script>

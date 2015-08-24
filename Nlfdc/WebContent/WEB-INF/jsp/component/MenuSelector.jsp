@@ -7,6 +7,7 @@
     <div class="content">
         <ul class="menu">
           <c:forEach var="firstMenu" items="${actionBean.menuSelector.firstMenuList }">
+          	  <c:if test="${firstMenu.firstMenuId != 1}">
 	          <li <c:if test="${firstMenu.firstMenuId  == actionBean.menuSelector.currentFirstMenuId }">
 	          		class="item fb cover"
 	          	  </c:if>
@@ -28,6 +29,7 @@
 	              </c:forEach>
 	            </ul>
 	          </li>
+          	  </c:if>
           </c:forEach>
         </ul>
     </div>

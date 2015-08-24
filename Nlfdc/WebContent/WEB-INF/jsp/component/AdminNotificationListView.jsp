@@ -18,6 +18,7 @@
     <c:forEach var="noti" items="${actionBean.notificationList}">
 		<div class="notification">
 			<span class="col_1">[${noti.secondMenuName }]&nbsp;<a class="notification_link">${noti.title }</a></span>
+			<c:if test="${sessionScope.admin != null }">
 			<span class="col_2">
 					<c:if test="${noti.isDeleted == 0}">
 						<a class="operation_link" href="javascript:deleteNotification(${noti.notificationId })" >删除</a>
@@ -26,6 +27,7 @@
 						<a class="operation_link" href="javascript:unDeleteNotification(${noti.notificationId })" >还原</a>
 					</c:if>
 			</span>
+			</c:if>
 			<span class="col_3">${noti.createTimeString }</span>
 		</div>
     </c:forEach>

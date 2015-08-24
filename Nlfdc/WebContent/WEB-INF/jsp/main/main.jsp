@@ -45,7 +45,6 @@ span, li, a { font-size: 12px; }
 </style>
 
 <div class="main_content">
-	
 		
 	<div class="row1_box">
 	 	<div class="row1_left_big">
@@ -66,8 +65,8 @@ span, li, a { font-size: 12px; }
 	 		<div class="row1_left_big_right">
 	 			<!-- 第1行第2个  政务公开-->
 	 			<div class="box_header">
-	 				<span>${actionBean.allFirstMenu[1].firstMenuName }</span>
-	 				<a href="handlemenuaction?handlefirstmenu=&firstmenuid=${actionBean.allFirstMenu[1].firstMenuId }"></a>
+	 				<span>${actionBean.menuSelector.firstMenuList[1].firstMenuName }</span>
+	 				<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[1].firstMenuId }"></a>
 				</div>
 	 		
 	 			<div class="box_content">
@@ -85,8 +84,8 @@ span, li, a { font-size: 12px; }
 	 	<div class="row1_right_small">
 	 		<!-- 第1行第3个  住房保障 -->
 			<div class="box_header">
-					<span>${actionBean.allFirstMenu[2].firstMenuName }</span>
-					<a href="javascript:void(0)"></a>
+					<span>${actionBean.menuSelector.firstMenuList[2].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[2].firstMenuId }"></a>
 			</div>
 	 		
 	 		<div class="box_content">
@@ -104,8 +103,8 @@ span, li, a { font-size: 12px; }
 	 	<div class="row2_col1">
 	 		<!-- 第二行第一个 房屋登记 -->
 			<div class="box_header">
-					<span>${actionBean.allFirstMenu[3].firstMenuName }</span>
-					<a href="javascript:void(0)"></a>
+					<span>${actionBean.menuSelector.firstMenuList[3].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[3].firstMenuId }"></a>
 			</div>
 			<div class="box_content">
 					<ul>
@@ -119,8 +118,8 @@ span, li, a { font-size: 12px; }
 	 	<div class="row2_col2">
 	 		<!-- 第二行第二个 维修资金-->
 				<div class="box_header">
-					<span>${actionBean.allFirstMenu[4].firstMenuName }</span>
-					<a href="javascript:void(0)"></a>
+					<span>${actionBean.menuSelector.firstMenuList[4].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[4].firstMenuId }"></a>
 				</div>
 				
 				<div class="box_content">
@@ -141,8 +140,8 @@ span, li, a { font-size: 12px; }
 	 		<div class="row3_col1">
 	 			<!-- 第三行第一个 物业管理 -->
 					<div class="box_header">
-						<span>${actionBean.allFirstMenu[5].firstMenuName }</span>
-						<a href="javascript:void(0)"></a>
+						<span>${actionBean.menuSelector.firstMenuList[5].firstMenuName }</span>
+						<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[5].firstMenuId }"></a>
 					</div>
 					<div class="box_content">
 					<ul>
@@ -156,8 +155,8 @@ span, li, a { font-size: 12px; }
 	 		<div class="row3_col2">
 	 				<!-- 第三行第二个 网上备案 -->
 				<div class="box_header">
-					<span>${actionBean.allFirstMenu[7].firstMenuName }</span>
-					<a href="##"></a>
+					<span>${actionBean.menuSelector.firstMenuList[7].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[7].firstMenuId }"></a>
 				</div>
 				<div class="box_content">
 					<ul>
@@ -170,8 +169,8 @@ span, li, a { font-size: 12px; }
 	 	
 	 		<div class="row3_col3">
 	 			<div class="box_header">
-					<span>${actionBean.allFirstMenu[8].firstMenuName }</span>
-					<a href="##"></a>
+					<span>${actionBean.menuSelector.firstMenuList[8].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[8].firstMenuId }"></a>
 				</div>
 				<div class="box_content">
 					<ul>
@@ -210,12 +209,12 @@ span, li, a { font-size: 12px; }
 	 	<div class="row4_col1">
 	 		<!-- 第五行 第一个 信息中心 -->
 				<div class="box_header">
-					<span>${actionBean.allFirstMenu[9].firstMenuName }</span>
-					<a href="javascript:void(0)"></a>
+					<span>${actionBean.menuSelector.firstMenuList[9].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[9].firstMenuId }"></a>
 				</div>
 	 			<div class="box_content">
 					<ul>
-						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[1] }">
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[9] }">
 							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
 						</c:forEach>
 					</ul>
