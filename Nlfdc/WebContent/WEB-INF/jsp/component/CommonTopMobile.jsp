@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0" user-scalable=no/>
     -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="image/common/fenghuang.ico" type="image/x-icon" rel="shortcut icon" /> 
     <link href="css/common/mobile_global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet"/>
 
 

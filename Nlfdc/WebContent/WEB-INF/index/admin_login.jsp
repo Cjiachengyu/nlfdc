@@ -91,5 +91,3 @@ $(function(){
 });
 
 </script>
-
-<%@ include file="../jsp/component/CommonBottomSimple.jsp"%>

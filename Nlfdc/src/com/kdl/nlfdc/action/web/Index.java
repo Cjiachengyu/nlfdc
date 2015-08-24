@@ -81,7 +81,7 @@ public class Index extends AbstractActionBean
         // 查询主模块
 //        allFirstMenu = cmService.getAllFirstMenu();
 //        firstMenuNotificationList = new ArrayList[allFirstMenu.size()];
-        menuSelector = initMenuSelector();
+        menuSelector = initCommomMenuSelector();
         firstMenuNotificationList = new ArrayList[menuSelector.getFirstMenuList().size()];
         for(int i = 1; i < menuSelector.getFirstMenuList().size(); i++)
         {

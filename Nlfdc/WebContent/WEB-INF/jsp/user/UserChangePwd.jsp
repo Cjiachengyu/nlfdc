@@ -10,7 +10,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 
 <title>重置密码</title>
-<link href="image/common/fenghuang.ico" type="image/x-icon" rel="shortcut icon" /> 
 <link href="css/common/global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
 <style type="text/css">

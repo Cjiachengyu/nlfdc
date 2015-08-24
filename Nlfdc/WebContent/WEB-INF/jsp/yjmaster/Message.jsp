@@ -7,7 +7,6 @@
 
 <html>
 <head>
-<link href="image/common/fenghuang.ico" type="image/x-icon" rel="shortcut icon" /> 
  
 <title>错误提示</title>
 <meta http-equiv="refresh" content="3;url=yjmastersettingaction" >

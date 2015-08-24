@@ -55,7 +55,7 @@ public class CommonUser extends AbstractActionBean
         
         if (menuSelector == null || menuSelector.getCurrentFirstMenuId() != firstMenuId)
         {
-            menuSelector = initMenuSelector();
+            menuSelector = initCommomMenuSelector();
             menuSelector.selectFirstMenu(firstMenuId);
         }
        

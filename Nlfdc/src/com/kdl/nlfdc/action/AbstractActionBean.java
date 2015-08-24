@@ -732,6 +732,13 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         return menuSelector;
     }
     
+    public MenuSelector initCommomMenuSelector()
+    {
+        MenuSelector menuSelector = new MenuSelector(cmService, null);
+        return menuSelector;
+    }
+    
+    
     public void updateUserTsCache(TextbookSelectorBase textbookSelector) throws SqlAffectedCountException
     {
         User user = getCurrentUser();

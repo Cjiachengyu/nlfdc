@@ -13,14 +13,6 @@
 </head>
 <body>
 
-<fmt:setLocale value="${sessionScope.lang}" />
-<fmt:bundle basename="messages">
-
-<div>
-</div>
-
-</fmt:bundle>
-
 <script src='js/jquery-1.7.1.min.js' type='text/javascript' ></script>
 
 <link rel="stylesheet" href="jqueryplugin/zebra_dialog/zebra_dialog.css" type="text/css" />
