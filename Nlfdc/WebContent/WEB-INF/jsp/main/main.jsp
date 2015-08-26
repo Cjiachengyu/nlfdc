@@ -40,12 +40,12 @@ span, li, a { font-size: 12px; }
 .box_content ul li { width: 96%; line-height: 20px; border-bottom: dashed 1px gray; border-bottom-style: dotted; position: relative; }
 .show_img {width: 300px; height: 260px; margin: 4px 5px 0px 5px; }
 .image_selector { width: 300px; height: 30px; margin: -4px 5px 5px 5px; background: black; text-align: center; position: relative;  }
-.dot { display: inline-block; width: 10px; height: 10px; margin: 10px 5px; border-radius: 50%; background-color: white; float: right;}
+.dot { display: inline-block; width: 10px; height: 10px; margin: 10px 10px; border-radius: 50%; background-color: white; float: right;}
 .choosed {display: inline-block; width: 15px; height: 15px; margin: 8px 5px; border-radius: 50%; background-color: green; float: right; }
 .notification_link {color: blue; text-decoration: none; }
 .notification_link:hover {color: red; text-decoration: none; }
 
-.rolling_img_box {display: inline-block; width: 772px; height: 146px; margin: 8px 115px; position: relative; overflow: hidden; border: solid 1px black; }
+.rolling_img_box {display: inline-block; width: 925px; height: 146px; margin: 6px 40px; position: relative; overflow: hidden; border: solid 1px black; }
 .roll_img { width: 148px; height: 146px; position: absolute; }
 </style>
 
@@ -214,6 +214,7 @@ span, li, a { font-size: 12px; }
 				<img id="sample4" src="image/common/sample4.png" class="roll_img" index="466" style="left: 466px;">
 				<img id="sample5" src="image/common/sample1.png" class="roll_img" index="617" style="left: 617px;">
 				<img id="sample6" src="image/common/sample2.png" class="roll_img" index="772" style="left: 772px;">
+				<img id="sample7" src="image/common/sample3.png" class="roll_img" index="925" style="left: 925px;">
 				</div>
 	</div>
 
@@ -269,6 +270,7 @@ span, li, a { font-size: 12px; }
 <script src='js/jquery-1.11.2.min.js' type='text/javascript' ></script>
 
 <script type="text/javascript">
+	var rollingImageLength = $("#rolling_img_box img").length;
 	
 	$(function(){
 		var date = new Date();
@@ -291,73 +293,25 @@ span, li, a { font-size: 12px; }
 	
 	function move()
 	{
-		var val1 = $("#sample1").attr("index");
-		var val2 = $("#sample2").attr("index");
-		var val3 = $("#sample3").attr("index");
-		var val4 = $("#sample4").attr("index");
-		var val5 = $("#sample5").attr("index");
-		var val6 = $("#sample6").attr("index");
+		for( var i = 1; i <= rollingImageLength; i++)
+		{
+			var val = $("#sample"+i).attr("index");
+			val--;
+			if (val < -153)
+			{
+				val+=1070;
+			}
+			$("#sample"+i).attr("index", val);
+			$("#sample"+i).css("left", val + "px");
 
-		
-		val1 = val1 - 1;
-		val2 = val2 - 1;
-		val3 = val3 - 1;
-		val4 = val4 - 1;
-		val5 = val5 - 1;
-		val6 = val6 - 1;
-
-		if (val1 < -153)
-		{
-			val1+=925;
 		}
-		if (val2 < -153)
-		{
-			val2+=925;
-		}
-		if (val3 < -153)
-		{
-			val3+=925;
-		}
-		if (val4 < -153)
-		{
-			val4+=925;
-		}
-		if (val5 < -153)
-		{
-			val5+=925;
-		}
-		if (val6 < -153)
-		{
-			val6+=925;
-		}
-
-		$("#sample1").attr("index", val1);
-		$("#sample2").attr("index", val2);
-		$("#sample3").attr("index", val3);
-		$("#sample4").attr("index", val4);
-		$("#sample5").attr("index", val5);
-		$("#sample6").attr("index", val6);
-
-		$("#sample1").css("left", val1 + "px");
-		$("#sample2").css("left", val2 + "px");
-		$("#sample3").css("left", val3 + "px");
-		$("#sample4").css("left", val4 + "px");
-		$("#sample5").css("left", val5 + "px");
-		$("#sample6").css("left", val6 + "px");
 	}
 	
 	function chooseDot(index)
 	{
-		$("#dot_image_1").attr("class", "show_img hide");		
-		$("#dot_image_2").attr("class", "show_img hide");		
-		$("#dot_image_3").attr("class", "show_img hide");		
-		$("#dot_image_4").attr("class", "show_img hide");	
+		$(".show_img").addClass("hide");
 		$("#dot_image_"+index).attr("class", "show_img");
-		
-		$("#dot1").attr("class", "dot");
-		$("#dot2").attr("class", "dot");
-		$("#dot3").attr("class", "dot");
-		$("#dot4").attr("class", "dot");
+		$(".choosed").attr("class", "dot");
 		$("#dot"+index).attr("class", "choosed");
 	}
 </script>
