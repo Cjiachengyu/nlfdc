@@ -50,37 +50,11 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 
 <div class="wrap2">
 	<div class="lead_links">
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[0].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[0].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[1].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[1].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[2].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[2].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[3].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[3].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[4].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[4].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[5].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[5].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[6].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[6].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[7].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[7].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[8].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[8].firstMenuName }
-		</a>
-		<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[9].firstMenuId }">
-			${actionBean.menuSelector.firstMenuList[9].firstMenuName }
-		</a>
-		
+		<c:forEach var="firstMenu" items="${actionBean.menuSelector.firstMenuList }">
+			<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${firstMenu.firstMenuId }">
+				${firstMenu.firstMenuName }
+			</a>
+		</c:forEach>
 	</div>
 	
 	<div class="tip_box">
