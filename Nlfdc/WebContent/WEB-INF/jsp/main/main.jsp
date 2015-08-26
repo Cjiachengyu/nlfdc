@@ -54,15 +54,15 @@ span, li, a { font-size: 12px; }
 	<div class="row1_box">
 	 	<div class="row1_left_big">
 	 		<div class="row1_left_big_left">
-	 			<img id="image_1" src="image/common/sample1.png" class="show_img ">	
-	 			<img id="image_2" src="image/common/sample2.png" class="show_img hide">	
-	 			<img id="image_3" src="image/common/sample3.png" class="show_img hide">	
-	 			<img id="image_4" src="image/common/sample4.png" class="show_img hide">	
+	 			<img id="dot_image_1" src="image/common/sample1.png" class="show_img ">	
+	 			<img id="dot_image_2" src="image/common/sample2.png" class="show_img hide">	
+	 			<img id="dot_image_3" src="image/common/sample3.png" class="show_img hide">	
+	 			<img id="dot_image_4" src="image/common/sample4.png" class="show_img hide">	
 	 			<div class="image_selector">
-	 				<a class="dot"></a>
-	 				<a class="dot"></a>
-	 				<a class="dot"></a>
-	 				<a class="choosed"></a>
+	 				<a id="dot1" class="dot" href="javascript:chooseDot(1)"></a>
+	 				<a id="dot2" class="dot" href="javascript:chooseDot(2)"></a>
+	 				<a id="dot3" class="dot" href="javascript:chooseDot(3)"></a>
+	 				<a id="dot4" class="choosed" href="javascript:chooseDot(4)"></a>
 	 			</div>	
 	 		</div>
 	 		
@@ -345,8 +345,21 @@ span, li, a { font-size: 12px; }
 		$("#sample5").css("left", val5 + "px");
 		$("#sample6").css("left", val6 + "px");
 	}
-</script>
-
 	
+	function chooseDot(index)
+	{
+		$("#dot_image_1").attr("class", "show_img hide");		
+		$("#dot_image_2").attr("class", "show_img hide");		
+		$("#dot_image_3").attr("class", "show_img hide");		
+		$("#dot_image_4").attr("class", "show_img hide");	
+		$("#dot_image_"+index).attr("class", "show_img");
+		
+		$("#dot1").attr("class", "dot");
+		$("#dot2").attr("class", "dot");
+		$("#dot3").attr("class", "dot");
+		$("#dot4").attr("class", "dot");
+		$("#dot"+index).attr("class", "choosed");
+	}
+</script>
 
 <%@ include file="../component/CommonBottom.jsp"%>
