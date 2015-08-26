@@ -22,11 +22,12 @@ public class Index extends AbstractActionBean
     private static final long serialVersionUID = -6965961964257758466L;
     private static final String MAIN_PAGE = "/WEB-INF/jsp/main/main.jsp";
 
+    private static final int[] max_notification_num = {0, 11, 11, 9, 9, 9, 9, 9, 8, 8};
+    
     private String remoteAddr = "";
     
     private int totalCount;
     private int thisDayCount;
-//    private List<FirstMenu> allFirstMenu;
     private List<Notification>[] firstMenuNotificationList; 
     
     public int getTotalCount()
@@ -37,10 +38,6 @@ public class Index extends AbstractActionBean
     {
         return thisDayCount;
     }
-//    public List<FirstMenu> getAllFirstMenu()
-//    {
-//        return allFirstMenu;
-//    }
     public List<Notification>[] getFirstMenuNotificationList()
     {
         return firstMenuNotificationList;
@@ -79,14 +76,13 @@ public class Index extends AbstractActionBean
         }
         
         // 查询主模块
-//        allFirstMenu = cmService.getAllFirstMenu();
-//        firstMenuNotificationList = new ArrayList[allFirstMenu.size()];
         menuSelector = initCommomMenuSelector();
         firstMenuNotificationList = new ArrayList[menuSelector.getFirstMenuList().size()];
         for(int i = 1; i < menuSelector.getFirstMenuList().size(); i++)
         {
             FirstMenu firstMenu = menuSelector.getFirstMenuList().get(i);
-            List<Notification> notificationList = cmService.getCommonNotificationList(firstMenu.getFirstMenuId(), 0, 0, 9);
+            List<Notification> notificationList = cmService.getCommonNotificationList(firstMenu.getFirstMenuId(), 0, 0,
+                    max_notification_num[i]);
             firstMenuNotificationList[i] = notificationList; 
         }
         

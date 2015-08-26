@@ -27,9 +27,9 @@ span, li, a { font-size: 12px; }
 .row3_col1 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 566px; left: 5px; }
 .row3_col2 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 566px; left: 363px;  }
 .row3_col3 { width: 351px; height: 250px;  display: inline-block; border: solid 1px #0099CC; position: absolute; top: 566px; right: 5px;}
-.row4_col1 { width: 530px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; left: 5px;}
-.row4_col2 { width: 530px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; right: 5px;}
-.row4_col3 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; right: 5px;}
+.row4_col1 { width: 530px; height: 225px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; left: 5px;}
+.row4_col2 { width: 530px; height: 225px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; right: 5px;}
+.row4_col3 { width: 351px; height: 225px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; right: 5px;}
 
 .box_header { width: 98%; height: 30px; border-bottom: solid 1px #0099CC; position: relative; }
 .box_header span { display: inline-block; color: white; text-align: center; padding: 4px 0; font-size: 14px; font-weight: bolder; 
@@ -263,8 +263,12 @@ span, li, a { font-size: 12px; }
 		    	</div>
 	 	</div>
 	 	
+	
+	<div style="width: 100%; height: 20px; text-align: center; font-size: 12px; position: absolute; top: 1225px; ">
+		今天访问次数： ${actionBean.thisDayCount }， 总访问次数： ${actionBean.totalCount }
 	</div>
 	
+	</div>
 </div>
 
 <script src='js/jquery-1.11.2.min.js' type='text/javascript' ></script>
