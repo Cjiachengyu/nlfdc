@@ -273,18 +273,6 @@ span, li, a { font-size: 12px; }
 	var rollingImageLength = $("#rolling_img_box img").length;
 	
 	$(function(){
-		var date = new Date();
-		var year = date.getFullYear();
-		var month = date.getMonth();
-		var day = date.getDate();
-		var weekDay = date.getDay();
-		
-		var weekDayStr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
-		
-		var result = "今天是:"+year+"年"+month+"月"+day+"日 "+weekDayStr[weekDay];
-		
-		$("#date_info").html(result);	
-		
 		var speed=50//速度数值越大速度越慢
 		var MyMar3=setInterval(move,speed)
 		rolling_img_box.onmouseover = function() {clearInterval(MyMar3)}

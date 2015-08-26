@@ -71,3 +71,18 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 
 <script src='js/common/global.js?jscssimgversion=${actionBean.jsCssImgVersion}' type='text/javascript' ></script>
 <script src="js/common/js.message.js?jscssimgversion=${actionBean.jsCssImgVersion}"></script>
+
+<script type="text/javascript">
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth();
+var day = date.getDate();
+var weekDay = date.getDay();
+
+var weekDayStr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+
+var result = "今天是:"+year+"年"+month+"月"+day+"日 "+weekDayStr[weekDay];
+
+$("#date_info").html(result);
+
+</script>
