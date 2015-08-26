@@ -44,6 +44,9 @@ span, li, a { font-size: 12px; }
 .choosed {display: inline-block; width: 15px; height: 15px; margin: 8px 5px; border-radius: 50%; background-color: green; float: right; }
 .notification_link {color: blue; text-decoration: none; }
 .notification_link:hover {color: red; text-decoration: none; }
+
+.rolling_img_box {display: inline-block; width: 772px; height: 146px; margin: 8px 115px; position: relative; overflow: hidden; border: solid 1px black; }
+.roll_img { width: 148px; height: 146px; position: absolute; }
 </style>
 
 <div class="main_content">
@@ -203,22 +206,14 @@ span, li, a { font-size: 12px; }
 	<div class="row3_plus_box">
 		<!-- 第四行 滚动图 -->
 	 			<img src="image/common/act_pic_03.png" style="margin: 12px 5px; display: inline-block;">
-
-	 			<div id="butong_net_left" style="overflow:hidden;width: 1000px; margin-top:5px; display: inline-block;">
-				<table cellpadding="0" cellspacing="0" border="0">
-				<tr><td id="butong_net_left1" valign="top" align="center">
-				<table cellpadding="2" cellspacing="0" border="0">
-				<tr align="center">
-				<td><img src="image/common/sample1.png"  style="width: 148px; height: 146px;"></td>
-				<td><img src="image/common/sample2.png"  style="width: 148px; height: 146px;"></td>
-				<td><img src="image/common/sample3.png"  style="width: 146px; height: 146px;"></td>
-				<td><img src="image/common/sample4.png"  style="width: 146px; height: 146px;"></td>
-				</tr>
-				</table>
-				</td>
-				<td id="butong_net_left2" valign="top" ></td>
-				</tr>
-				</table>
+				
+				<div id="rolling_img_box" class="rolling_img_box">
+				<img id="sample1" src="image/common/sample1.png" class="roll_img" index="7" style="left: 7px;">
+				<img id="sample2" src="image/common/sample2.png" class="roll_img" index="160" style="left: 160px;">
+				<img id="sample3" src="image/common/sample3.png" class="roll_img" index="313" style="left: 313px;">
+				<img id="sample4" src="image/common/sample4.png" class="roll_img" index="466" style="left: 466px;">
+				<img id="sample5" src="image/common/sample1.png" class="roll_img" index="617" style="left: 617px;">
+				<img id="sample6" src="image/common/sample2.png" class="roll_img" index="772" style="left: 772px;">
 				</div>
 	</div>
 
@@ -274,23 +269,7 @@ span, li, a { font-size: 12px; }
 <script src='js/jquery-1.11.2.min.js' type='text/javascript' ></script>
 
 <script type="text/javascript">
-	var speed=30//速度数值越大速度越慢
-	butong_net_left2.innerHTML=butong_net_left1.innerHTML;
-
-	function Marquee3(){
-		if(butong_net_left2.offsetWidth-butong_net_left.scrollLeft<=0)
-		{
-			butong_net_left.scrollLeft-=butong_net_left1.offsetWidth
-		}
-		else
-		{
-			butong_net_left.scrollLeft++
-		}
-	}
-	var MyMar3=setInterval(Marquee3,speed)
-	butong_net_left.onmouseover = function() {clearInterval(MyMar3)}
-	butong_net_left.onmouseout = function() {MyMar3=setInterval(Marquee3,speed)}
-
+	
 	$(function(){
 		var date = new Date();
 		var year = date.getFullYear();
@@ -303,7 +282,69 @@ span, li, a { font-size: 12px; }
 		var result = "今天是:"+year+"年"+month+"月"+day+"日 "+weekDayStr[weekDay];
 		
 		$("#date_info").html(result);	
+		
+		var speed=50//速度数值越大速度越慢
+		var MyMar3=setInterval(move,speed)
+		rolling_img_box.onmouseover = function() {clearInterval(MyMar3)}
+		rolling_img_box.onmouseout = function() {MyMar3=setInterval(move,speed)}
 	});
+	
+	function move()
+	{
+		var val1 = $("#sample1").attr("index");
+		var val2 = $("#sample2").attr("index");
+		var val3 = $("#sample3").attr("index");
+		var val4 = $("#sample4").attr("index");
+		var val5 = $("#sample5").attr("index");
+		var val6 = $("#sample6").attr("index");
+
+		
+		val1 = val1 - 1;
+		val2 = val2 - 1;
+		val3 = val3 - 1;
+		val4 = val4 - 1;
+		val5 = val5 - 1;
+		val6 = val6 - 1;
+
+		if (val1 < -153)
+		{
+			val1+=925;
+		}
+		if (val2 < -153)
+		{
+			val2+=925;
+		}
+		if (val3 < -153)
+		{
+			val3+=925;
+		}
+		if (val4 < -153)
+		{
+			val4+=925;
+		}
+		if (val5 < -153)
+		{
+			val5+=925;
+		}
+		if (val6 < -153)
+		{
+			val6+=925;
+		}
+
+		$("#sample1").attr("index", val1);
+		$("#sample2").attr("index", val2);
+		$("#sample3").attr("index", val3);
+		$("#sample4").attr("index", val4);
+		$("#sample5").attr("index", val5);
+		$("#sample6").attr("index", val6);
+
+		$("#sample1").css("left", val1 + "px");
+		$("#sample2").css("left", val2 + "px");
+		$("#sample3").css("left", val3 + "px");
+		$("#sample4").css("left", val4 + "px");
+		$("#sample5").css("left", val5 + "px");
+		$("#sample6").css("left", val6 + "px");
+	}
 </script>
 
 	
