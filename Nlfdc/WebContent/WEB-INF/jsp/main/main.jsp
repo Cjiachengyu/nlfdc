@@ -9,6 +9,8 @@ span, li, a { font-size: 12px; }
 .line_box {display: inline-block; }
 .clear { clear: both; }
 .hide {display: none; }
+.right { float: right; }
+.gray { color: grey; }
 .main_content { width: 1080px; height: 1245px; margin: auto; margin-top: 5px; background-color: white; position: relative;  }
 .row1_box { width: 1070px; margin: 5px; height: 300px; border: solid 1px white; }
 .row2_box { width: 1070px; margin: 5px; height: 250px; border: solid 1px white; }
@@ -21,12 +23,12 @@ span, li, a { font-size: 12px; }
 .row1_right_small { width: 351px; height: 298px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 5px; right: 5px; }
 .row2_col1 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 310px; left: 5px; }
 .row2_col2 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 310px; left: 363px;  }
-.row2_col3 { width: 351px; height: 250px;  display: inline-block; border: solid 1px #0099CC; position: absolute; top: 310px; right: 5px;}
+.row2_col3 { width: 351px; height: 505px;  display: inline-block; border: solid 1px #0099CC; position: absolute; top: 310px; right: 5px;}
 .row3_col1 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 566px; left: 5px; }
 .row3_col2 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 566px; left: 363px;  }
 .row3_col3 { width: 351px; height: 250px;  display: inline-block; border: solid 1px #0099CC; position: absolute; top: 566px; right: 5px;}
-.row4_col1 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; left: 5px;}
-.row4_col2 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; left: 363px;}
+.row4_col1 { width: 530px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; left: 5px;}
+.row4_col2 { width: 530px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; right: 5px;}
 .row4_col3 { width: 351px; height: 250px; display: inline-block; border: solid 1px #0099CC; position: absolute; top: 990px; right: 5px;}
 
 .box_header { width: 98%; height: 30px; border-bottom: solid 1px #0099CC; position: relative; }
@@ -35,7 +37,7 @@ span, li, a { font-size: 12px; }
 .box_header a { float: right; display: inline-block; width: 46px; height: 16px; margin: 7px; background-image: url(image/common/more_03.png); }
 .box_content { width: 99%; position: relative; } 
 .box_content ul {width: 96%; padding-left: 22px; }
-.box_content ul li { width: 92%; line-height: 20px; border-bottom: dashed 1px gray; border-bottom-style: dotted; }
+.box_content ul li { width: 96%; line-height: 20px; border-bottom: dashed 1px gray; border-bottom-style: dotted; position: relative; }
 .show_img {width: 300px; height: 260px; margin: 4px 5px 0px 5px; }
 .image_selector { width: 300px; height: 30px; margin: -4px 5px 5px 5px; background: black; text-align: center; position: relative;  }
 .dot { display: inline-block; width: 10px; height: 10px; margin: 10px 5px; border-radius: 50%; background-color: white; float: right;}
@@ -49,7 +51,6 @@ span, li, a { font-size: 12px; }
 	<div class="row1_box">
 	 	<div class="row1_left_big">
 	 		<div class="row1_left_big_left">
-	 			<!-- 第1行第1个 放动态图 -->
 	 			<img id="image_1" src="image/common/sample1.png" class="show_img ">	
 	 			<img id="image_2" src="image/common/sample2.png" class="show_img hide">	
 	 			<img id="image_3" src="image/common/sample3.png" class="show_img hide">	
@@ -63,7 +64,6 @@ span, li, a { font-size: 12px; }
 	 		</div>
 	 		
 	 		<div class="row1_left_big_right">
-	 			<!-- 第1行第2个  政务公开-->
 	 			<div class="box_header">
 	 				<span>${actionBean.menuSelector.firstMenuList[1].firstMenuName }</span>
 	 				<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[1].firstMenuId }"></a>
@@ -72,7 +72,13 @@ span, li, a { font-size: 12px; }
 	 			<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[1] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 				</div>	
@@ -82,7 +88,6 @@ span, li, a { font-size: 12px; }
 	 	</div>
 	 	
 	 	<div class="row1_right_small">
-	 		<!-- 第1行第3个  住房保障 -->
 			<div class="box_header">
 					<span>${actionBean.menuSelector.firstMenuList[2].firstMenuName }</span>
 					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[2].firstMenuId }"></a>
@@ -91,7 +96,13 @@ span, li, a { font-size: 12px; }
 	 		<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[2] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 		    </div>	
@@ -101,7 +112,6 @@ span, li, a { font-size: 12px; }
 	
 	<div class="row2_box">
 	 	<div class="row2_col1">
-	 		<!-- 第二行第一个 房屋登记 -->
 			<div class="box_header">
 					<span>${actionBean.menuSelector.firstMenuList[3].firstMenuName }</span>
 					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[3].firstMenuId }"></a>
@@ -109,14 +119,19 @@ span, li, a { font-size: 12px; }
 			<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[3] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 		    </div>
 	 	</div>
 	 	
 	 	<div class="row2_col2">
-	 		<!-- 第二行第二个 维修资金-->
 				<div class="box_header">
 					<span>${actionBean.menuSelector.firstMenuList[4].firstMenuName }</span>
 					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[4].firstMenuId }"></a>
@@ -125,7 +140,13 @@ span, li, a { font-size: 12px; }
 				<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[4] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 		    </div>
@@ -138,7 +159,6 @@ span, li, a { font-size: 12px; }
 	
 	<div class="row3_box">
 	 		<div class="row3_col1">
-	 			<!-- 第三行第一个 物业管理 -->
 					<div class="box_header">
 						<span>${actionBean.menuSelector.firstMenuList[5].firstMenuName }</span>
 						<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[5].firstMenuId }"></a>
@@ -146,14 +166,19 @@ span, li, a { font-size: 12px; }
 					<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[5] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 		    		</div>
 	 		</div>
 	 		
 	 		<div class="row3_col2">
-	 				<!-- 第三行第二个 网上备案 -->
 				<div class="box_header">
 					<span>${actionBean.menuSelector.firstMenuList[7].firstMenuName }</span>
 					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[7].firstMenuId }"></a>
@@ -161,21 +186,13 @@ span, li, a { font-size: 12px; }
 				<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[7] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
-						</c:forEach>
-					</ul>
-		    	</div>
-	 		</div>
-	 	
-	 		<div class="row3_col3">
-	 			<div class="box_header">
-					<span>${actionBean.menuSelector.firstMenuList[8].firstMenuName }</span>
-					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[8].firstMenuId }"></a>
-				</div>
-				<div class="box_content">
-					<ul>
-						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[8] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 		    	</div>
@@ -207,7 +224,26 @@ span, li, a { font-size: 12px; }
 
 	<div class="row4_box">
 	 	<div class="row4_col1">
-	 		<!-- 第五行 第一个 信息中心 -->
+				<div class="box_header">
+					<span>${actionBean.menuSelector.firstMenuList[8].firstMenuName }</span>
+					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[8].firstMenuId }"></a>
+				</div>
+				<div class="box_content">
+					<ul>
+						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[8] }">
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
+						</c:forEach>
+					</ul>
+		    	</div>
+	 	</div>
+	
+	 	<div class="row4_col2">
 				<div class="box_header">
 					<span>${actionBean.menuSelector.firstMenuList[9].firstMenuName }</span>
 					<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${actionBean.menuSelector.firstMenuList[9].firstMenuId }"></a>
@@ -215,28 +251,18 @@ span, li, a { font-size: 12px; }
 	 			<div class="box_content">
 					<ul>
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[9] }">
-							<li>[${notification.secondMenuName }] <a class="notification_link" href="##">${notification.shortTitle }</a></li>
+							<li>
+							[${notification.secondMenuName }] 
+							<a class="notification_link" href="##">
+								${notification.shortTitle }
+							</a>
+							<span class="right gray">${notification.createDateString }</span>
+							</li>
 						</c:forEach>
 					</ul>
 		    	</div>
 	 	</div>
 	 	
-	 	<div class="row4_col2">
-	 	<!-- 第五行 第二个 监督执法 -->
-				<div class="box_header">
-					<span></span>
-					<a href="javascript:void(0)"></a>
-				</div>
-				
-	 	</div>
-	 	
-	 	<div class="row4_col3">
-	 		<div class="box_header">
-					<span></span>
-					<a href="javascript:void(0)"></a>
-			</div>
-			
-	 	</div>
 	</div>
 	
 </div>
@@ -262,7 +288,17 @@ span, li, a { font-size: 12px; }
 	butong_net_left.onmouseout = function() {MyMar3=setInterval(Marquee3,speed)}
 
 	$(function(){
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth();
+		var day = date.getDate();
+		var weekDay = date.getDay();
 		
+		var weekDayStr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+		
+		var result = "今天是:"+year+"年"+month+"月"+day+"日 "+weekDayStr[weekDay];
+		
+		$("#date_info").html(result);	
 	});
 </script>
 

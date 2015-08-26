@@ -22,9 +22,9 @@ public class Notification implements Serializable
    
     public String getShortTitle()
     {
-        if (title.length() > 18)
+        if (title.length() > 14)
         {
-            return title.substring(0, 18) +"...";
+            return title.substring(0, 14) +"...";
         }
         else
         {
@@ -32,6 +32,16 @@ public class Notification implements Serializable
         }
     }
     
+    public String getCreateTimeString()
+    {
+        return Utils.getSimpleTimeString(createTime);
+    }
+   
+    public String getCreateDateString()
+    {
+        return Utils.getSimpleDateString(createTime);
+    }
+   
     public String getSecondMenuName()
     {
         return secondMenuName;
@@ -39,10 +49,6 @@ public class Notification implements Serializable
     public void setSecondMenuName(String secondMenuName)
     {
         this.secondMenuName = secondMenuName;
-    }
-    public String getCreateTimeString()
-    {
-        return Utils.getSimpleTimeString(createTime);
     }
    
     public int getNotificationId()
