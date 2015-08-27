@@ -85,9 +85,7 @@ span, li, a { font-size: 12px; }
 						</c:forEach>
 					</ul>
 				</div>	
-	 			
 	 		</div>
-	 		
 	 	</div>
 	 	
 	 	<div class="row1_right_small">

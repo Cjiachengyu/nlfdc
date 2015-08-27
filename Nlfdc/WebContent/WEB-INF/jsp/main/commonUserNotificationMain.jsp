@@ -104,7 +104,6 @@ var htmlVal = {
 		{
 			$("#admin_nofication_list").html(result);
 		},
-		
 	}
 </script>
 <%@ include file="../component/CommonBottom.jsp"%>
