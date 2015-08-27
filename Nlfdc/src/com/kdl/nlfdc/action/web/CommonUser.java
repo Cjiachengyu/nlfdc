@@ -62,7 +62,37 @@ public class CommonUser extends AbstractActionBean
         refreshNotificationList();
         return new ForwardResolution(COMMON_USER_NOTIFICATION_MAIN);
     }
-   
+  
+    @HandlesEvent("selectfirstandsecondmenu")
+    public Resolution selectFirstAndSecondMenu()
+    {
+        logRequest();
+        
+        pageModule = new PageModule(15);
+        int firstMenuId = getParamInt("firstMenuId", 1);
+        int secondMenuId = getParamInt("secondMenuId", 0);
+        if (firstMenuId == 1)
+        {
+            return getIndexResolution();
+        }
+        
+        if (menuSelector == null || menuSelector.getCurrentFirstMenuId() != firstMenuId)
+        {
+            menuSelector = initCommomMenuSelector();
+            menuSelector.selectFirstMenu(firstMenuId);
+            menuSelector.selectSecondMenu(secondMenuId);
+        }
+        else
+        {
+            menuSelector.selectSecondMenu(secondMenuId);
+        }
+       
+        refreshNotificationList();
+        return new ForwardResolution(COMMON_USER_NOTIFICATION_MAIN);
+    }
+  
+    
+    
     @HandlesEvent("selectfirstmenu")
     public Resolution selectFirstMenu()
     {

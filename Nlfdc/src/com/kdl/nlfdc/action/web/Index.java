@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.HandlesEvent;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.UrlBinding;
@@ -21,6 +22,7 @@ public class Index extends AbstractActionBean
 {
     private static final long serialVersionUID = -6965961964257758466L;
     private static final String MAIN_PAGE = "/WEB-INF/jsp/main/main.jsp";
+    private static final String NAVIGATION_PAGE = "/WEB-INF/jsp/main/navigation.jsp";
 
     private static final int[] max_notification_num = {0, 11, 11, 9, 9, 9, 9, 9, 8, 8};
     
@@ -89,8 +91,11 @@ public class Index extends AbstractActionBean
         return new ForwardResolution(MAIN_PAGE);
     }
 
-    
-    
+    @HandlesEvent("websitenavigation")
+    public Resolution webSiteNavigation()
+    {
+        return new ForwardResolution(NAVIGATION_PAGE);
+    }
    
     //  private
     // -----------------------------------------------------------------

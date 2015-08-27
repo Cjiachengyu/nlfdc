@@ -267,8 +267,6 @@ span, li, a { font-size: 12px; }
 	</div>
 </div>
 
-<script src='js/jquery-1.11.2.min.js' type='text/javascript' ></script>
-
 <script type="text/javascript">
 	var rollingImageLength = $("#rolling_img_box img").length;
 	

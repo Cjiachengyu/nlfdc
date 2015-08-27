@@ -41,7 +41,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 		 	<span></span>
 		 	<a href="javascript:void(0);" onclick="AddFavorite('脚本之家','http://www.baidu.com')">加入收藏</a>
 		 	<span></span>
-		 	<a class="mar_right_20" href="javascript:void(0)">网站导航</a>
+		 	<a class="mar_right_20" href="index?websitenavigation">网站导航</a>
 		</div>
 	</div>
 	<div class="back">
