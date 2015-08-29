@@ -80,8 +80,41 @@ public class AdminManageUser extends AbstractActionBean
         return new ForwardResolution(ADD_ADMIN_PAGE);
     }
 
+    @HandlesEvent("disableadmin")
+    public Resolution disableAdmin()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getYjLogoutResolution();
+        }
+        
+        int adminId = getParamInt("adminId");
+        
+        cmService.disableAdmin(adminId);
+        
+        refreshAdminList();
+        return new ForwardResolution(USER_LISTVIEW);
+    }
     
-    
+    @HandlesEvent("enableadmin")
+    public Resolution enableAdmin()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getYjLogoutResolution();
+        }
+        
+        int adminId = getParamInt("adminId");
+        
+        cmService.enableAdmin(adminId);
+        
+        refreshAdminList();
+        return new ForwardResolution(USER_LISTVIEW);
+    }
     
     
     

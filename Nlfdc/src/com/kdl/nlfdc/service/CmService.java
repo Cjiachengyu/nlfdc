@@ -185,8 +185,16 @@ public class CmService implements Serializable
     {
         return basicMapper.getAllCommonAdmin();
     }
+   
+    public void disableAdmin(int adminId)
+    {
+        basicMapper.disableAdmin(adminId);
+    }
     
-    
+    public void enableAdmin(int adminId)
+    {
+        basicMapper.enableAdmin(adminId);
+    }
     
     
     

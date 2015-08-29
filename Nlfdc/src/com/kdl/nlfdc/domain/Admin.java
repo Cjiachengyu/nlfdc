@@ -19,6 +19,7 @@ public class Admin implements Serializable
     private String  adminName;
     private int     adminRole;
     private String  password;
+    private int isDeleted;
     
     private List<AdminMenu> adminMenuList;
     
@@ -69,6 +70,14 @@ public class Admin implements Serializable
     public void setAdminMenuList(List<AdminMenu> adminMenuList)
     {
         this.adminMenuList = adminMenuList;
+    }
+    public int getIsDeleted()
+    {
+        return isDeleted;
+    }
+    public void setIsDeleted(int isDeleted)
+    {
+        this.isDeleted = isDeleted;
     }
     
 }

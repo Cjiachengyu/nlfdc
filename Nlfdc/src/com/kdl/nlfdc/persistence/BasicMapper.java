@@ -32,6 +32,10 @@ public interface BasicMapper
     
     Admin getAdminByLoginName(String loginName);
     
+    void disableAdmin(int adminId);
+
+    void enableAdmin(int adminId);
+    
     List<Admin> getAllCommonAdmin();
    
     int getAdminNotificationCount(

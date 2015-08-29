@@ -102,6 +102,7 @@
 			admin
 		where
 			loginName = #{loginName }
+			and isDeleted = 0
 	</select>
 	
 	<select id="getAllCommonAdmin" resultType="Admin">
@@ -112,6 +113,18 @@
 		where
 			adminRole = 1
 	</select>
+	
+	<update id="disableAdmin" parameterType="int">
+		update admin
+	    set isDeleted = 1
+	    where adminId = #{adminId}
+	</update>
+	
+	<update id="enableAdmin" parameterType="int">
+		update admin
+	    set isDeleted = 0
+	    where adminId = #{adminId}
+	</update>
 
 	<select id="getAdminNotificationCount" parameterType="int" resultType="int">
 		select

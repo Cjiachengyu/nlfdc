@@ -44,4 +44,41 @@ var htmlFn = {
 	</div>
 </div>
 
+<script>
+	
+function disableAdmin(adminId)
+{
+	$.ajax({
+		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+		type : "post",
+		url :"adminusermanageaction?disableadmin=",
+		data : {
+			adminId: adminId 
+		},
+		success : function(result) {
+			isTimeOut(result);
+
+			$("#admin_list").html(result);
+		}
+	});
+}
+
+function enableAdmin(adminId)
+{
+	$.ajax({
+		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+		type : "post",
+		url :"adminusermanageaction?enableadmin=",
+		data : {
+			adminId: adminId 
+		},
+		success : function(result) {
+			isTimeOut(result);
+
+			$("#admin_list").html(result);
+		}
+	});
+}
+</script>
+
 <%@ include file="../component/CommonAdminBottom.jsp"%>

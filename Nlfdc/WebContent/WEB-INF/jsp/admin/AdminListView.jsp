@@ -34,7 +34,14 @@
                     		<br>
                     	</c:forEach>
                     </td>
-                    <td>操作</td>
+                    <td>
+       					 <c:if test="${admin.isDeleted == 0 }">
+       					 	<a href="javascript:disableAdmin(${admin.adminId })">禁用</a>
+       					 </c:if>            
+                    	 <c:if test="${admin.isDeleted == 1 }">
+                    	 	<a style="color: gray;" href="javascript:enableAdmin(${admin.adminId })">恢复</a>
+                    	 </c:if>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
