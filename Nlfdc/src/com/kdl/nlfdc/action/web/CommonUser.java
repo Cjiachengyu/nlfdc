@@ -27,15 +27,18 @@ public class CommonUser extends AbstractActionBean
     private static final long serialVersionUID = 8414646913625339158L;
 
     private static final String COMMON_USER_NOTIFICATION_MAIN = "/WEB-INF/jsp/main/commonUserNotificationMain.jsp";
-    private static final String NOTIFICATION_LISTVIEW = "/WEB-INF/jsp/component/AdminNotificationListView.jsp";
-    protected static final String PUBLISH_NOTIFICATION_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
+    private static final String COMMON_USER_VIEW_NOTIFICATION  = "/WEB-INF/jsp/main/commonUserNotificationView.jsp";
 
-    
     private List<Notification> notificationList;
+    private Notification viewIngNotification;
     
     public List<Notification> getNotificationList()
     {
         return notificationList;
+    }
+    public Notification getViewIngNotification()
+    {
+        return viewIngNotification;
     }
 
     // resolution
@@ -90,65 +93,33 @@ public class CommonUser extends AbstractActionBean
         refreshNotificationList();
         return new ForwardResolution(COMMON_USER_NOTIFICATION_MAIN);
     }
-  
-    
-    
-    @HandlesEvent("selectfirstmenu")
-    public Resolution selectFirstMenu()
-    {
-        logRequest();
-        
-        int firstMenuId = getParamInt("firstMenuId", 0);
-        
-        if (firstMenuId == menuSelector.getCurrentFirstMenuId())
-        {
-            return getStringResolution("not_change");
-        }
-        else
-        {
-            menuSelector.selectFirstMenu(firstMenuId);
-            
-            refreshNotificationList();
-            return new ForwardResolution(NOTIFICATION_LISTVIEW);
-        }
-    }
    
-    @HandlesEvent("selectsecondmenu")
-    public Resolution selectSecondMenu()
+    
+    @HandlesEvent("viewnotification")
+    public Resolution viewNotification()
     {
         logRequest();
         
-        int secondMenuId = getParamInt("secondMenuId", 0);
+        int notificationId = getParamInt("notificationId", 0);
+        viewIngNotification = cmService.getNotification(notificationId);
         
-        if (secondMenuId == menuSelector.getCurrentSecondMenuId())
+        if (viewIngNotification == null)
         {
-            return getStringResolution("not_change");
+            return getIndexResolution();
         }
         else
         {
-            menuSelector.selectSecondMenu(secondMenuId);
+            if (menuSelector == null)
+            {
+                menuSelector = initCommomMenuSelector();
+            }
+           
+            menuSelector.selectFirstMenu(viewIngNotification.getFirstMenuId());
+            menuSelector.selectSecondMenu(viewIngNotification.getSecondMenuId());
             
-            refreshNotificationList();
-            return new ForwardResolution(NOTIFICATION_LISTVIEW);
+            return new ForwardResolution(COMMON_USER_VIEW_NOTIFICATION);
         }
     }
-    
-    @HandlesEvent("turntopublishpage")
-    public Resolution turnToPublishPage()
-    {
-        logRequest();
-
-        if (!sessionIsValid())
-        {
-            return getYjLogoutResolution();
-        }
-
-        return new ForwardResolution(PUBLISH_NOTIFICATION_PAGE);
-    }
-
-    
-    
-    
     
     
     // private 

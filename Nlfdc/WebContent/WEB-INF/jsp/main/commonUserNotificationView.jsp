@@ -18,6 +18,10 @@
 .location a { color: #2c65a9; }
 .location a:hover { color: red; }
 .location_tip { height: 30px; width: 100%; margin: 0; background-color: #d0e2f9; }
+.small_text { font-size: small; }
+.normal_text { font-size: medium; }
+.big_text { font-size: large; }
+a {color: #2c65a9} 
 </style>
 
 <div class="wrap_main" >
@@ -48,7 +52,7 @@
 						${actionBean.menuSelector.currentFirstMenu.firstMenuName }
 					</a>
 					>
-					<a href="##" id="location_second_menu">
+					<a href="commonusernotificationmain?selectfirstandsecondmenu=&firstmenuid=${actionBean.menuSelector.currentFirstMenu.firstMenuId }&secondMenuId=${actionBean.menuSelector.currentSecondMenu.secondMenuId}" id="location_second_menu">
 						${actionBean.menuSelector.currentSecondMenu.secondMenuName }
 					</a>
 			</div>
@@ -57,11 +61,39 @@
 						${actionBean.menuSelector.currentFirstMenu.firstMenuName }
 					</span>
 			</div>
-			<div id="admin_nofication_list">
-				<%@ include file="../component/CommonNotificationListView.jsp" %>
+			<div>
+				<h2 style="text-align: center;">${actionBean.viewIngNotification.title }</h2 >
+				<span style="display: inline-block; width: 100%; text-align: center; ">发布时间： ${actionBean.viewIngNotification.createTimeString }
+				&nbsp;|&nbsp;
+				字号：【<a href="javascript:setFontSize(3)">大</a>&nbsp;<a href="javascript:setFontSize(2)">中</a>&nbsp;<a href="javascript:setFontSize(1)">小</a>】
+				</span>
+				<hr>
+				<pre id="notification_content" class="normal_text">
+					${actionBean.viewIngNotification.content }
+				</pre>
 			</div>
 		</div>
 	</div>
 </div>
 
+<script type="text/javascript">
+function setFontSize(index)
+{
+	if (index == 1)
+	{
+		$("#notification_content").attr("class", "small_text");
+	}
+	else if (index == 2)
+	{
+		$("#notification_content").attr("class", "normal_text");
+	}
+	else if (index == 3)
+	{
+		$("#notification_content").attr("class", "big_text");
+	}
+	
+}
+
+
+</script>
 <%@ include file="../component/CommonBottom.jsp"%>

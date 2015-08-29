@@ -77,7 +77,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[1] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -99,7 +99,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[2] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -122,7 +122,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[3] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -143,7 +143,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[4] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -169,7 +169,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[5] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -189,7 +189,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[7] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -227,7 +227,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[8] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -247,7 +247,7 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[9] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="##">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
