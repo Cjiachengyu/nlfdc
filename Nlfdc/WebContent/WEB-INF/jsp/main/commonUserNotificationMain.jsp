@@ -29,9 +29,14 @@
 				<c:forEach var="secondMenu" items="${actionBean.menuSelector.currentFirstMenu.secondMenuList }">
 					<div class="link">
 						<img src="image/common/sanjiao_red_03.png" style="width: 6px; height: 6px;">
+						<a class="second_menu_link" href="commonusernotificationmain?selectfirstandsecondmenu=&firstmenuid=${actionBean.menuSelector.currentFirstMenu.firstMenuId }&secondMenuId=${secondMenu.secondMenuId}">
+							${secondMenu.secondMenuName }
+						</a>
+						<!-- 
 						<a class="second_menu_link" href="javascript:selectSecondMenu(${secondMenu.secondMenuId }, '${secondMenu.secondMenuName }')">
 							${secondMenu.secondMenuName }
 						</a>
+						 -->
 					</div>
 				</c:forEach>
 			</div>
@@ -64,46 +69,4 @@
 	</div>
 </div>
 
-<script>
-
-function selectSecondMenu(secondMenuId, secondMenuName)
-{
-	$("#location_second_menu").html(secondMenuName);
-	
-	$.ajax({
-		contentType : "application/x-www-form-urlencoded; charset=utf-8",
-		type : "post",
-		url : htmlVal.htmlUrl + "?selectsecondmenu=",
-		data : {
-			secondMenuId: secondMenuId
-		},
-		success : function(result) {
-			isTimeOut(result);
-			
-			if (result != "not_change")
-			{
-				htmlFn.selectSecondMenuCallback(result);
-			}
-		}
-	});
-
-}
-
-var htmlVal = {
-	    htmlUrl: "commonusernotificationmain"
-	};
-
-	var htmlFn = {
-			
-		selectFirstMenuCallback: function(result)
-		{
-			$("#admin_nofication_list").html(result);
-		},
-		
-		selectSecondMenuCallback: function(result)
-		{
-			$("#admin_nofication_list").html(result);
-		},
-	}
-</script>
 <%@ include file="../component/CommonBottom.jsp"%>
