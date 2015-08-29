@@ -5,13 +5,6 @@
 
 <link href="css/index/admin_login.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
-<div id="update_broswer_tip" style="display: none;">
-    <div style=" width: 100%; height: 50px; text-align: center; color: gray; line-height: 3em; position: relative; " >
-		<h3 style="height: 50px; ">您的浏览器太旧了,请&nbsp<a href="http://browsehappy.com/" target="_blank">升级浏览器</a>&nbsp以便正常使用该网站。</h3>	
-		<a style="position: absolute; right: 10px; bottom: -12px;" onclick="closeTip()"><img style="height: 15px; width: 15px;" src="image/common/closelabel.gif"></a>			
-	</div>
-</div>
-
 <div id="wrap" style="min-height: 500px; margin-top: 140px; padding: 0 70px;" >
 
 	<div class="login_box">
@@ -49,10 +42,6 @@
     <div class="clear"></div>
     
 </div>
-
-<!-- 
-<img id="bg_img" style="position: fixed; top:0; left:0; z-index:-100; " src="image/common/main_background_new.jpg" />
- -->
 
 <div id="footer">
     <div style=" top: 0px; width: 100%; text-align: center; font-size: 15px; font-family: Arial; color: gray; line-height: 4em; position: relative; " >

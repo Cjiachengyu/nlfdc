@@ -10,18 +10,12 @@ $(function() {
 	if (!!window.ActiveXObject || "ActiveXObject" in window) {
 		var version = $.browser.version - 0;
 		
-		if (version < 10) {
-			$("#update_broswer_tip").show();
-			
 			if (version < 8)
 			{
 				lowVersion = true;
 			}
-		}
 	}
 	
-	judgeBrowserVersion();
-
 	var inputEmail = $("#input_email");
 	var inputPwd = $("#input_password");
 	var tipEmail = $("#tip_email");

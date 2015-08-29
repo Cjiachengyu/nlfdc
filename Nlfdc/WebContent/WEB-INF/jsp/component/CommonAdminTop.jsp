@@ -15,13 +15,6 @@
 </head>
 <body>
 
-<div id="update_broswer_tip" style="display: none;">
-    <div style=" width: 100%; height: 50px; text-align: center; color: gray; line-height: 3em; position: relative; " >
-		<h3 style="height: 50px; ">您的浏览器太旧了,请&nbsp<a href="http://browsehappy.com/" target="_blank">升级浏览器</a>&nbsp以便正常使用该网站。</h3>	
-		<a style="position: absolute; right: 10px; bottom: -12px;" onclick="closeTip()"><img style="height: 15px; width: 15px;" src="image/common/closelabel.gif"></a>			
-	</div>
-</div>
-
 <div class="top_root" >
 	<!-- 用户信息设置，语言 -->
 	<div style="height: 40px; background-color: #323436; ">
