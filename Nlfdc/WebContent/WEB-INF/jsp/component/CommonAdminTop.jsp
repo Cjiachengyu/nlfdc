@@ -57,18 +57,29 @@
 			<!-- 主菜单 -->
 			<div class="absolute" style="right: 10px; bottom: -8px;">
 				
-				<!-- 幼教家长 -->
-				<div class="top_main_menu_div">
+				<!-- 超级管理员-->
+				<c:if test="${sessionScope.admin.adminRole == 0}">
+					<div class="top_main_menu_div">
 					<a class="top_main_menu" href="adminnotificationmanageaction" >通知管理</a>
 					<c:if test="${sessionScope.currentMemuOperation == '01'}"> <div class="current_main_menu" ></div> </c:if>
 					<c:if test="${sessionScope.currentMemuOperation != '01'}"> <div class="inactive_main_menu" ></div> </c:if>
-				</div>
-				<c:if test="${sessionScope.admin.adminRole == 0}">
-					<a class="top_main_menu" href="##" >人员管理</a>
-					<c:if test="${sessionScope.currentMemuOperation == '02'}"> <div class="current_main_menu" ></div> </c:if>
-					<c:if test="${sessionScope.currentMemuOperation != '02'}"> <div class="inactive_main_menu" ></div> </c:if>
+					</div>
+					
+					<div class="top_main_menu_div">
+						<a class="top_main_menu" href="adminusermanageaction" >人员管理</a>
+						<c:if test="${sessionScope.currentMemuOperation == '02'}"> <div class="current_main_menu" ></div> </c:if>
+						<c:if test="${sessionScope.currentMemuOperation != '02'}"> <div class="inactive_main_menu" ></div> </c:if>
+					</div>
 				</c:if>
 				
+				<!-- 超级管理员-->
+				<c:if test="${sessionScope.admin.adminRole == 1}">
+					<div class="top_main_menu_div">
+					<a class="top_main_menu" href="adminnotificationmanageaction" >通知管理</a>
+					<c:if test="${sessionScope.currentMemuOperation == '01'}"> <div class="current_main_menu" ></div> </c:if>
+					<c:if test="${sessionScope.currentMemuOperation != '01'}"> <div class="inactive_main_menu" ></div> </c:if>
+					</div>
+				</c:if>
 			
 			</div>
 		</div>

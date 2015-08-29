@@ -31,6 +31,8 @@ public interface BasicMapper
     Admin getAdminByAdminId(int adminId);
     
     Admin getAdminByLoginName(String loginName);
+    
+    List<Admin> getAllCommonAdmin();
    
     int getAdminNotificationCount(
             @Param("firstMenuId") int firstMenuId,

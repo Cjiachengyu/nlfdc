@@ -7,8 +7,8 @@
 .top_user_book_icon { display: inline-block; height: 17px; width: 17px; position: relative; top: 2px; left: 5px; background: url('../../image/commonTop/book_icon.png') no-repeat bottom; }
 .top_sep { margin: 0 8px; display: inline-block; border-right: solid 1px #535353; height: 14px; position: relative; bottom: -2px;}
 .top_font { font-size: 14px; }
-.current_main_menu { width:30px; height: 8px; margin: 0 auto; background-image: url('../../image/commonTop/currentMenu.png'); }
-.inactive_main_menu { width:30px; height: 8px; margin: 0 auto; }
+.current_main_menu { width:30px; height: 20px; margin: 0 auto; background-image: url('../../image/commonTop/currentMenu.png'); }
+.inactive_main_menu { width:30px; height: 20px; margin: 0 auto; }
 .top_main_menu { position: relative; top: -5px; font-size: 17px; color: white;  }
 .top_bg { background-color: #339966; }
 .school_header_color { color: white; }

@@ -171,9 +171,20 @@ public class CmService implements Serializable
         basicMapper.unDeleteNotification(notificationId);
     }
 
+    public Admin getAdminByAdminId(int adminId)
+    {
+        return basicMapper.getAdminByAdminId(adminId);
+    }
     
+    public Admin getAdminByLoginName(String loginName)
+    {
+        return basicMapper.getAdminByLoginName(loginName);
+    }
     
-    
+    public List<Admin> getAllCommonAdmin()
+    {
+        return basicMapper.getAllCommonAdmin();
+    }
     
     
     
@@ -414,16 +425,7 @@ public class CmService implements Serializable
     // 用户
     // --------------------------------------------------------------------------------
     
-    public Admin getAdminByAdminId(int adminId)
-    {
-        return basicMapper.getAdminByAdminId(adminId);
-    }
-    
-    public Admin getAdminByLoginName(String loginName)
-    {
-        return basicMapper.getAdminByLoginName(loginName);
-    }
-    
+   
     
     
     

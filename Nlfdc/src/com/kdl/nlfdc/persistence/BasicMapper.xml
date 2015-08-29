@@ -79,9 +79,9 @@
 	
 	<select id="getAdminMenus" parameterType="int" resultType="AdminMenu" >
 		select
-			*
+			admin_menu.*, first_menu.firstMenuName
 		from
-			admin_menu
+			admin_menu join first_menu using (firstMenuId)
 		where
 			adminId = #{adminId}
 	</select>
@@ -102,6 +102,15 @@
 			admin
 		where
 			loginName = #{loginName }
+	</select>
+	
+	<select id="getAllCommonAdmin" resultType="Admin">
+		select
+			*
+		from
+			admin
+		where
+			adminRole = 1
 	</select>
 
 	<select id="getAdminNotificationCount" parameterType="int" resultType="int">

@@ -15,6 +15,7 @@ public class AdminMenu implements Serializable
     
     private int adminId;
     private int firstMenuId;
+    private String firstMenuName;
     
     public int getAdminId()
     {
@@ -32,6 +33,13 @@ public class AdminMenu implements Serializable
     {
         this.firstMenuId = firstMenuId;
     }
-    
+    public String getFirstMenuName()
+    {
+        return firstMenuName;
+    }
+    public void setFirstMenuName(String firstMenuName)
+    {
+        this.firstMenuName = firstMenuName;
+    }
     
 }

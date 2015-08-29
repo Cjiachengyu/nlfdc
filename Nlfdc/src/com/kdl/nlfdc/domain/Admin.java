@@ -1,6 +1,7 @@
 package com.kdl.nlfdc.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 管理员
@@ -19,6 +20,7 @@ public class Admin implements Serializable
     private int     adminRole;
     private String  password;
     
+    private List<AdminMenu> adminMenuList;
     
     public int getAdminId()
     {
@@ -60,7 +62,13 @@ public class Admin implements Serializable
     {
         this.password = password;
     }
-    
-    
+    public List<AdminMenu> getAdminMenuList()
+    {
+        return adminMenuList;
+    }
+    public void setAdminMenuList(List<AdminMenu> adminMenuList)
+    {
+        this.adminMenuList = adminMenuList;
+    }
     
 }
