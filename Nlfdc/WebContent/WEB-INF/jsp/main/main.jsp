@@ -40,8 +40,8 @@ span, li, a { font-size: 12px; }
 .box_content ul li { width: 96%; line-height: 20px; border-bottom: dashed 1px gray; border-bottom-style: dotted; position: relative; }
 .show_img {width: 300px; height: 260px; margin: 4px 5px 0px 5px; }
 .image_selector { width: 300px; height: 30px; margin: -4px 5px 5px 5px; background: black; text-align: center; position: relative;  }
-.dot { display: inline-block; width: 10px; height: 10px; margin: 10px 10px; border-radius: 50%; background-color: white; float: right;}
-.choosed {display: inline-block; width: 15px; height: 15px; margin: 8px 5px; border-radius: 50%; background-color: green; float: right; }
+.dot { display: inline-block; width: 10px; height: 10px; margin: 10px; border-radius: 50%; background-color: white; float: right;}
+.choosed {display: inline-block; width: 10px; height: 10px; margin: 10px; border-radius: 50%; background-color: green; float: right; }
 .notification_link {color: blue; text-decoration: none; }
 .notification_link:hover {color: red; text-decoration: none; }
 
@@ -59,10 +59,10 @@ span, li, a { font-size: 12px; }
 	 			<img id="dot_image_3" src="image/common/sample3.png" class="show_img hide">	
 	 			<img id="dot_image_4" src="image/common/sample4.png" class="show_img hide">	
 	 			<div class="image_selector">
-	 				<a id="dot1" class="dot" href="javascript:chooseDot(1)"></a>
-	 				<a id="dot2" class="dot" href="javascript:chooseDot(2)"></a>
-	 				<a id="dot3" class="dot" href="javascript:chooseDot(3)"></a>
-	 				<a id="dot4" class="choosed" href="javascript:chooseDot(4)"></a>
+	 				<a id="dot1" class="dot" href="##" onmouseover="chooseDot(1)"></a>
+	 				<a id="dot2" class="dot" href="##" onmouseover="chooseDot(2)"></a>
+	 				<a id="dot3" class="dot" href="##" onmouseover="chooseDot(3)"></a>
+	 				<a id="dot4" class="choosed" href="##" onmouseover="chooseDot(4)"></a>
 	 			</div>	
 	 		</div>
 	 		
@@ -258,7 +258,7 @@ span, li, a { font-size: 12px; }
 	 	</div>
 	 	
 	
-	<div style="width: 100%; height: 20px; text-align: center; font-size: 12px; position: absolute; top: 1225px; ">
+	<div style="width: 100%; height: 20px; text-align: center; font-size: 12px; position: absolute; top: 1225px;">
 		今天访问次数： ${actionBean.thisDayCount }， 总访问次数： ${actionBean.totalCount }
 	</div>
 	
