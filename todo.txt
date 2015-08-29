@@ -10,11 +10,11 @@
 
 6.分页 --done
 
-7.查看通知页面
+7.查看通知页面 --done
 
 8.管理员编辑图片
 
 9.普通用户查看通知二级页面，新建CommonUserNotifictionAction，首页“更多”链接到该action，传递firstMenuId，
-通过该id查询notification然后显示，jsp左侧还是选择栏，右侧是notificationList
+通过该id查询notification然后显示，jsp左侧还是选择栏，右侧是notificationList    --done
 
 10.宽度改为1280

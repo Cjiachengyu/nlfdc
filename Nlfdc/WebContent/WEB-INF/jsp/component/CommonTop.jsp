@@ -11,7 +11,7 @@
 span, li, a {font-size: 12px;}
 a {text-decoration: none; }
 body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
-.wrap { width: 1280px; margin: auto; background-image: url(image/commonTop/logo_05.png); }
+.wrap1 { width: 1080px; margin: auto; background-image: url(image/commonTop/logo_05.png); }
 .wrap2 { width: 1080px; margin: auto; }
 .box_title {width: 100%; height: 37px; position: relative; }
 .back { width: 100%; height: 214px; }
@@ -34,7 +34,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 
 </head>
 
-<div class="wrap">
+<div class="wrap1">
 	<div class="box_title">
 		<div class="head_links">
 		 	<a class="mar_left_20" href="javascript:void(0);" onclick="SetHome(this,'http://www.baidu.com');" >设为首页</a>

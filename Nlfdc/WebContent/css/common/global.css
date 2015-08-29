@@ -55,7 +55,7 @@ ul { list-style: none; }
 .half_trans_black {background-image: url('../../image/common/halfTransBlack.png'); background-repeat:repeat; }
 
 /* 大小 */
-/*.wrap {width: 1000px; margin: auto;}*/
+.wrap {width: 1000px; margin: auto;}
 
 .mar5{margin: 5px;}
 .mar10{margin: 10px;}
