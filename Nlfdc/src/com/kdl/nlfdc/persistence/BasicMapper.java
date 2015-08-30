@@ -28,6 +28,10 @@ public interface BasicMapper
     
     List<AdminMenu> getAdminMenus(int adminId);
     
+    void deleteAdminMenu(int adminId);
+    
+    void insertAdminMenu(AdminMenu adminMenu);
+    
     Admin getAdminByAdminId(int adminId);
     
     Admin getAdminByLoginName(String loginName);

@@ -86,6 +86,16 @@
 			adminId = #{adminId}
 	</select>
 
+	<delete id="deleteAdminMenu" parameterType="int">
+		delete from admin_menu
+		where adminId = #{adminId}
+	</delete>
+	
+	<insert id="insertAdminMenu" parameterType="AdminMenu">
+		insert into admin_menu (adminId, firstMenuId)
+		values (#{adminId}, #{firstMenuId})
+	</insert>
+	
 	<select id="getAdminByAdminId" parameterType="int" resultType="Admin">
 		select
 			*

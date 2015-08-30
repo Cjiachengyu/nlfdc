@@ -19,8 +19,12 @@ import com.kdl.nlfdc.action.Utils;
 import com.kdl.nlfdc.action.component.MenuSelector;
 import com.kdl.nlfdc.action.component.PageModule;
 import com.kdl.nlfdc.domain.Admin;
+import com.kdl.nlfdc.domain.AdminMenu;
+import com.kdl.nlfdc.domain.FirstMenu;
 import com.kdl.nlfdc.domain.Notification;
+import com.kdl.nlfdc.domain.TeaSubject;
 import com.kdl.nlfdc.domain.User;
+import com.kdl.nlfdc.exception.SqlAffectedCountException;
 
 /**
  * 超级管理员和普通管理员都用这个类
@@ -38,14 +42,20 @@ public class AdminManageUser extends AbstractActionBean
     private static final String MANAGE_USER = "/WEB-INF/jsp/admin/AdminUserManage.jsp";
     private static final String USER_LISTVIEW = "/WEB-INF/jsp/admin/AdminListView.jsp";
     protected static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
+    protected static final String ADMIN_MENU_PAGE = "/WEB-INF/jsp/admin/AdminMenuListView.jsp";
 
     
     private List<Admin> adminList;
-    
+    private List<FirstMenu> allFirstMenuList;
     
     public List<Admin> getAdminList()
     {
         return adminList;
+    }
+    
+    public List<FirstMenu> getAllFirstMenuList()
+    {
+        return allFirstMenuList;
     }
 
     // resolution
@@ -62,6 +72,8 @@ public class AdminManageUser extends AbstractActionBean
         }
 
         getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.ADMIN_MANAGE);
+        
+        allFirstMenuList = cmService.getAllFirstMenu(); 
         
         refreshAdminList();
         return new ForwardResolution(MANAGE_USER);
@@ -115,6 +127,72 @@ public class AdminManageUser extends AbstractActionBean
         refreshAdminList();
         return new ForwardResolution(USER_LISTVIEW);
     }
+    
+    @HandlesEvent("getsetadminmenuview")
+    public Resolution getSetAdminMenuView()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getYjLogoutResolution();
+        }
+        
+        int adminId = getParamInt("adminId");
+        
+        List<AdminMenu> adminMenuList = cmService.getAdminMenus(adminId);
+        
+        for(AdminMenu adminMenu: adminMenuList)
+        {
+            for(FirstMenu firstMenu: allFirstMenuList)
+            {
+                if (adminMenu.getFirstMenuId() == firstMenu.getFirstMenuId())
+                {
+                    firstMenu.setIsSelected(true);
+                    break;
+                }
+            }
+        }
+        
+        return new ForwardResolution(ADMIN_MENU_PAGE);
+    }
+    
+    @HandlesEvent("saveadminmenus")
+    public Resolution saveAdminMenus()
+    {
+        logRequest();
+        if (!sessionIsValid())
+        {
+            return getStringTimeoutResolution();
+        }
+
+        int adminId = getParamInt("adminId", -1);
+        String firstMenuIds = getParam("firstMenuIds", "null");
+        if (adminId == -1 || firstMenuIds.equals("null"))
+        {
+            return getStringResolution("dataError"); // 参数不合法
+        }
+
+        try
+        {
+            doSaveAdminMenus(adminId, firstMenuIds);
+
+            refreshAdminList();
+            return getStringResolution("ok");
+        }
+        catch (Exception e)
+        {
+            return getStringResolution("error");
+        }
+    }
+    
+    @HandlesEvent("getuserlistview")
+    public Resolution getUserListView()
+    {
+        return new ForwardResolution(USER_LISTVIEW);
+    }
+    
+    
     
     
     
@@ -225,6 +303,25 @@ public class AdminManageUser extends AbstractActionBean
         }
 
         log("common admin list size: " + adminList.size());
+    }
+    
+    private void doSaveAdminMenus(int adminId, String firstMenuIds) throws SqlAffectedCountException
+    {
+        // 先把该老师的所有userSubject都删除，再把这次选中的subject重新插入
+        cmService.deleteAdminMenu(adminId);
+
+        if (!firstMenuIds.equals("nochecked"))
+        {
+            firstMenuIds = Utils.trimEnd(firstMenuIds, 1);
+            String[] firstMenuIdStr = firstMenuIds.split(",");
+            for (String firstMenuId : firstMenuIdStr)
+            {
+                AdminMenu adminMenu = new AdminMenu();
+                adminMenu.setAdminId(adminId);
+                adminMenu.setFirstMenuId(Integer.parseInt(firstMenuId));
+                cmService.insertAdminMenu(adminMenu);
+            }
+        }
     }
     
     // override

@@ -15,7 +15,8 @@ public class FirstMenu implements Serializable
     
     private int firstMenuId;
     private String firstMenuName;
-   
+  
+    private boolean isSelected;
     
     public int getFirstMenuId()
     {
@@ -32,6 +33,14 @@ public class FirstMenu implements Serializable
     public void setFirstMenuName(String firstMenuName)
     {
         this.firstMenuName = firstMenuName;
+    }
+    public boolean getIsSelected()
+    {
+        return isSelected;
+    }
+    public void setIsSelected(boolean isSelected)
+    {
+        this.isSelected = isSelected;
     }
     
 }
