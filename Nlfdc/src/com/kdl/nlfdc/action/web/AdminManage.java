@@ -18,6 +18,7 @@ import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.action.Utils;
 import com.kdl.nlfdc.action.component.MenuSelector;
 import com.kdl.nlfdc.action.component.PageModule;
+import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Notification;
 import com.kdl.nlfdc.domain.User;
 
@@ -38,24 +39,40 @@ public class AdminManage extends AbstractActionBean
     private static final String NOTIFICATION_LISTVIEW = "/WEB-INF/jsp/component/AdminNotificationListView.jsp";
     private static final String PUBLISH_NOTIFICATION_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
     private static final String MANAGE_ADMIN_VIEW_NOTIFICATION = "/WEB-INF/jsp/admin/AdminNotificationView.jsp";
+    private static final String MANAGE_IMAGES_TO_LINK = "/WEB-INF/jsp/admin/ImagesToLink.jsp";
 
     private List<Notification> notificationList;
-    private FileBean       image;
-    private Notification viewIngNotification; 
-    
-    
+    private FileBean image;
+    private Notification viewIngNotification;
+    private List<Image> newsImageList;
+    private List<Image> rollImageList;
+    private int linkingImageNotificationId;
+
+    public List<Image> getNewsImageList()
+    {
+        return newsImageList;
+    }
+
+    public List<Image> getRollImageList()
+    {
+        return rollImageList;
+    }
+
     public Notification getViewIngNotification()
     {
         return viewIngNotification;
     }
+
     public List<Notification> getNotificationList()
     {
         return notificationList;
     }
+
     public FileBean getImage()
     {
         return image;
     }
+
     public void setImage(FileBean image)
     {
         this.image = image;
@@ -68,38 +85,38 @@ public class AdminManage extends AbstractActionBean
     public Resolution commonManage()
     {
         logRequest();
-        
+
         if (!sessionIsValid())
         {
             return getYjLogoutResolution();
         }
 
         getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.NOTIFICATION_MANAGE);
-        
+
         pageModule = new PageModule(15);
-        
+
         if (menuSelector == null || menuSelector.getCurrentFirstMenuId() == MenuSelector.MENU_ITEM_ALL)
         {
             menuSelector = initMenuSelector();
             menuSelector.selectDefaultFirstMenu();
         }
-       
+
         refreshNotificationList();
         return new ForwardResolution(MANAGE);
     }
-   
+
     @HandlesEvent("selectfirstmenu")
     public Resolution selectFirstMenu()
     {
         logRequest();
-        
+
         if (!sessionIsValid())
         {
             return getStringTimeoutResolution();
         }
-        
+
         int firstMenuId = getParamInt("firstMenuId", 0);
-        
+
         if (firstMenuId == menuSelector.getCurrentFirstMenuId())
         {
             return getStringResolution("not_change");
@@ -107,24 +124,24 @@ public class AdminManage extends AbstractActionBean
         else
         {
             menuSelector.selectFirstMenu(firstMenuId);
-            
+
             refreshNotificationList();
             return new ForwardResolution(NOTIFICATION_LISTVIEW);
         }
     }
-   
+
     @HandlesEvent("selectsecondmenu")
     public Resolution selectSecondMenu()
     {
         logRequest();
-        
+
         if (!sessionIsValid())
         {
             return getStringTimeoutResolution();
         }
-        
+
         int secondMenuId = getParamInt("secondMenuId", 0);
-        
+
         if (secondMenuId == menuSelector.getCurrentSecondMenuId())
         {
             return getStringResolution("not_change");
@@ -133,12 +150,12 @@ public class AdminManage extends AbstractActionBean
         {
             System.out.println("select secondMenu " + secondMenuId);
             menuSelector.selectSecondMenu(secondMenuId);
-            
+
             refreshNotificationList();
             return new ForwardResolution(NOTIFICATION_LISTVIEW);
         }
     }
-    
+
     @HandlesEvent("turntopublishpage")
     public Resolution turnToPublishPage()
     {
@@ -154,6 +171,7 @@ public class AdminManage extends AbstractActionBean
 
     /**
      * 通知中插入图片
+     * 
      * @return
      * @throws IOException
      */
@@ -183,7 +201,7 @@ public class AdminManage extends AbstractActionBean
             System.out.println("upload_image_exception");
             return getStringResolution("upload_image_exception");
         }
-    } 
+    }
 
     @HandlesEvent("dopublishnotification")
     public Resolution doPublishNotification()
@@ -224,7 +242,7 @@ public class AdminManage extends AbstractActionBean
         }
     }
 
-    
+
     @HandlesEvent("deletenotification")
     public Resolution deleteNotification()
     {
@@ -247,8 +265,8 @@ public class AdminManage extends AbstractActionBean
         {
             return getStringResolution("exeption");
         }
-    } 
-    
+    }
+
     @HandlesEvent("undeletenotification")
     public Resolution unDeleteNotification()
     {
@@ -271,22 +289,22 @@ public class AdminManage extends AbstractActionBean
         {
             return getStringResolution("exeption");
         }
-    } 
-    
+    }
+
     @HandlesEvent("viewnotification")
     public Resolution viewNotification()
     {
         logRequest();
-        
+
         if (!sessionIsValid())
         {
             return getYjLogoutResolution();
         }
 
         int notificationId = getParamInt("notificationId");
-        
+
         viewIngNotification = cmService.getNotification(notificationId);
-        
+
         if (viewIngNotification == null)
         {
             return new ForwardResolution(MANAGE);
@@ -296,8 +314,49 @@ public class AdminManage extends AbstractActionBean
             return new ForwardResolution(MANAGE_ADMIN_VIEW_NOTIFICATION);
         }
     }
-    
-    // private 
+
+    @HandlesEvent("getlinkimageview")
+    public Resolution getLinkImageView()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getStringTimeoutResolution();
+        }
+
+        linkingImageNotificationId = getParamInt("linkingImageNotificationId");
+
+        newsImageList = cmService.getImageList(1);
+        rollImageList = cmService.getImageList(2);
+
+        return new ForwardResolution(MANAGE_IMAGES_TO_LINK);
+    }
+
+    @HandlesEvent("dolinkimage")
+    public Resolution doLinkImage()
+    {
+        logRequest();
+
+        if (!sessionIsValid())
+        {
+            return getStringTimeoutResolution();
+        }
+        int imageId = getParamInt("imageId");
+
+        try
+        {
+            cmService.updateImageNotificationId(imageId, linkingImageNotificationId);
+            return getStringResolution("ok");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return getStringResolution("error");
+        }
+    }
+
+    // private
     // ------------------------------------------------------------------------
     private void refreshNotificationList()
     {
@@ -306,9 +365,10 @@ public class AdminManage extends AbstractActionBean
         int limitBegin = pageModule.getLimitBegin();
         int firstMenuId = menuSelector.getCurrentFirstMenuId();
         int secondMenuId = menuSelector.getCurrentSecondMenuId();
-        
-        log("admin refresh notification adminId: " + adminId + ", firstMenuId: "+ firstMenuId + ", secondMenuId: " + secondMenuId
-                +" limitBegin: " + limitBegin + ", pageSize: " + pageSize);
+
+        log("admin refresh notification adminId: " + adminId + ", firstMenuId: " + firstMenuId + ", secondMenuId: "
+                + secondMenuId
+                + " limitBegin: " + limitBegin + ", pageSize: " + pageSize);
 
         int notificationCount = cmService.getAdminNotificationCount(firstMenuId, secondMenuId);
 
@@ -319,7 +379,7 @@ public class AdminManage extends AbstractActionBean
         log("admin refresh notification result, notificationCount: " + notificationCount + ", listSize: " +
                 notificationList.size());
     }
-    
+
     private boolean paramIsValid(String title, String content)
     {
         if (!title.equals("") && !content.equals("") && title.length() < Constants.MaxLength.NOTIFICATION_TITLE)
@@ -331,6 +391,7 @@ public class AdminManage extends AbstractActionBean
             return false;
         }
     }
+
     // override
     // ------------------------------------------------------------------------
     @Override
@@ -338,5 +399,5 @@ public class AdminManage extends AbstractActionBean
     {
         return makeSureSuperAdmin() || makeSureCommonAdmin();
     }
-    
+
 }

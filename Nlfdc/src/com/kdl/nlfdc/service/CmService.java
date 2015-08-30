@@ -228,6 +228,11 @@ public class CmService implements Serializable
         basicMapper.updateImage(image);
     }
     
+    public void updateImageNotificationId(int imageId, int notificationId)
+    {
+        basicMapper.updateImageNotificationId(imageId, notificationId);
+    }
+    
     // log
     // --------------------------------------------------------------------------------
     private static final SimpleDateFormat logDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");

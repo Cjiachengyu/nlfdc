@@ -263,7 +263,14 @@
 			imageId = #{imageId}
 	</update>
 	
-	
+	<update id="updateImageNotificationId" parameterType="int">
+		update
+			image
+		set
+			notificationId = #{notificationId}
+		where
+			imageId = #{imageId}
+	</update>	
 	
 	
 	

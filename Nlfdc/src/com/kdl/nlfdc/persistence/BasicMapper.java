@@ -76,6 +76,10 @@ public interface BasicMapper
     List<Image> getImageList(int type);
     
     void updateImage(Image image);
+   
+    void updateImageNotificationId(
+            @Param("imageId") int imageId,
+            @Param("notificationId") int notificationId);
     
     // old
     // ------------------------------------------------------
