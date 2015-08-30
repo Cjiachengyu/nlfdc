@@ -37,10 +37,17 @@ public class AdminManage extends AbstractActionBean
     private static final String MANAGE = "/WEB-INF/jsp/admin/AdminNotificationManage.jsp";
     private static final String NOTIFICATION_LISTVIEW = "/WEB-INF/jsp/component/AdminNotificationListView.jsp";
     private static final String PUBLISH_NOTIFICATION_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
+    private static final String MANAGE_ADMIN_VIEW_NOTIFICATION = "/WEB-INF/jsp/admin/AdminNotificationView.jsp";
 
     private List<Notification> notificationList;
     private FileBean       image;
+    private Notification viewIngNotification; 
     
+    
+    public Notification getViewIngNotification()
+    {
+        return viewIngNotification;
+    }
     public List<Notification> getNotificationList()
     {
         return notificationList;
@@ -266,104 +273,29 @@ public class AdminManage extends AbstractActionBean
         }
     } 
     
-    
-    
-    
-    
-    
-    
-    
-    /**
-     * 添加系统题库编辑
-     * 
-     * @return
-     */
-    @HandlesEvent("addnewsystemuser")
-    public Resolution addNewSystemUser()
+    @HandlesEvent("viewnotification")
+    public Resolution viewNotification()
     {
         logRequest();
-
+        
         if (!sessionIsValid())
         {
-            return getStringTimeoutResolution();
+            return getYjLogoutResolution();
         }
 
-        String loginName = getParam("loginName", "");
-        String password = getParam("password", "");
-        String userName = getParam("userName", "");
-        int userRole = getParamInt("userRole", 0);
-
-        if (loginName.equals("") || password.equals("") || userName.equals(""))
+        int notificationId = getParamInt("notificationId");
+        
+        viewIngNotification = cmService.getNotification(notificationId);
+        
+        if (viewIngNotification == null)
         {
-            return getStringResolution("error");
-        }
-        if (loginName.length() > Constants.MaxLength.LOGIN_NAME ||
-            password.length() > Constants.MaxLength.PASSWORD ||
-            userName.length() > Constants.MaxLength.USER_NAME)
-        {
-            return getStringResolution("lengthException");
-        }
-
-        User systemUser = new User();
-        systemUser.setLoginName(loginName);
-        systemUser.setPassword(password);
-        systemUser.setUserName(userName);
-        systemUser.setUserRole(userRole);
-
-        try
-        {
-            cmService.insertUserAndGetUserId(systemUser);
-            // 插入成功
-            int userId = systemUser.getUserId();
-            if (userRole == Constants.UserRole.YJ_EDITOR)
-            {
-                systemUser.setLoginId(userId + "e");
-            }
-
-            cmService.updateUser(systemUser);
-            return getStringResolution("ok");
-        }
-        catch (DuplicateKeyException e)
-        {
-            return getStringResolution("dupkey");
-        }
-        catch (Exception e)
-        {
-            return getStringResolution("error");
-        }
-
-    }
-
-    /**
-     * 添加编辑时ajax检查loginName是否可用
-     * 返回"ok" -> 可以使用
-     * 返回"exist" -> 不可以使用
-     * 
-     * @return
-     */
-    @HandlesEvent("checkloginnameunique")
-    public Resolution checkLoginNameUnique()
-    {
-        logRequest();
-
-        if (!sessionIsValid())
-        {
-            return getStringTimeoutResolution();
-        }
-
-        String loginName = getParam("loginName");
-
-        User user = cmService.getUserByLoginInfo(loginName);
-        if (user == null)
-        {
-            return getStringResolution("ok");
+            return new ForwardResolution(MANAGE);
         }
         else
         {
-            return getStringResolution("exist");
+            return new ForwardResolution(MANAGE_ADMIN_VIEW_NOTIFICATION);
         }
     }
-   
     
     // private 
     // ------------------------------------------------------------------------

@@ -17,7 +17,8 @@
 <div class="notification_items">
     <c:forEach var="noti" items="${actionBean.notificationList}">
 		<div class="notification">
-			<span class="col_1">[${noti.secondMenuName }]&nbsp;<a class="notification_link">${noti.title }</a></span>
+			<span class="col_1">[${noti.secondMenuName }]&nbsp;
+			<a class="notification_link" href="adminnotificationmanageaction?viewnotification=&notificationId=${noti.notificationId}">${noti.title }</a></span>
 			<c:if test="${sessionScope.admin != null }">
 			<span class="col_2">
 					<c:if test="${noti.isDeleted == 0}">
