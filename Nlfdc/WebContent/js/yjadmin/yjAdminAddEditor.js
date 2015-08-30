@@ -82,7 +82,7 @@ function doAddNewSystemUser() {
 
 function check(id, index) {
 	var value = $("#" + id).val();
-	if (value.length > 31) {
+	if (value.length > 15) {
 		$("#msg" + index).show();
 	}
 	else {

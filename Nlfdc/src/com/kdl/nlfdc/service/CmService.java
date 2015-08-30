@@ -191,6 +191,11 @@ public class CmService implements Serializable
         return basicMapper.getAdminByLoginName(loginName);
     }
     
+    public Admin getAdminByLoginNameIgnoreDelete(String loginName)
+    {
+        return basicMapper.getAdminByLoginNameIgnoreDelete(loginName);
+    }
+    
     public List<Admin> getAllCommonAdmin()
     {
         return basicMapper.getAllCommonAdmin();

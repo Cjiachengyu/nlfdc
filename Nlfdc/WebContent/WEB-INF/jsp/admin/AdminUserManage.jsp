@@ -36,7 +36,7 @@ var htmlFn = {
 
 <div class="wrap" >
 	<div id="content" class="clearfix">
-			<a class="blue_button right mar10" href="adminnotificationmanageaction?turntopublishpage=">发布通知</a>
+			<a class="blue_button right mar10" href="adminusermanageaction?turntoaddadminpage=">添加管理员</a>
 			
 			<div id="admin_list">
 				<%@ include file="AdminListView.jsp" %>
@@ -152,6 +152,21 @@ function refreshAdminList()
 		url : htmlVal.htmlUrl + "?getuserlistview=",
 		success : function(result) {
 			$("#admin_list").html(result);
+		}
+	});
+}
+
+function addNewMaster() {
+	
+	createBorderMaskLayer("add_admin_form", "添加管理员", getLoading(), 500, 300);
+	$.ajax({
+		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+		type : "post",
+		url : htmlVal.htmlUrl + "?getaddadminview=",
+		success : function(result) {
+			isTimeOut(result);
+
+			$("#add_admin_form").html(result);
 		}
 	});
 }

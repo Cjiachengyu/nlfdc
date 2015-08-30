@@ -1,10 +1,8 @@
 package com.kdl.nlfdc.action.web;
 
-import java.io.IOException;
 import java.util.List;
 
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.HandlesEvent;
 import net.sourceforge.stripes.action.Resolution;
@@ -16,13 +14,9 @@ import org.springframework.dao.DuplicateKeyException;
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.action.Utils;
-import com.kdl.nlfdc.action.component.MenuSelector;
-import com.kdl.nlfdc.action.component.PageModule;
 import com.kdl.nlfdc.domain.Admin;
 import com.kdl.nlfdc.domain.AdminMenu;
 import com.kdl.nlfdc.domain.FirstMenu;
-import com.kdl.nlfdc.domain.Notification;
-import com.kdl.nlfdc.domain.TeaSubject;
 import com.kdl.nlfdc.domain.User;
 import com.kdl.nlfdc.exception.SqlAffectedCountException;
 
@@ -41,7 +35,7 @@ public class AdminManageUser extends AbstractActionBean
 
     private static final String MANAGE_USER = "/WEB-INF/jsp/admin/AdminUserManage.jsp";
     private static final String USER_LISTVIEW = "/WEB-INF/jsp/admin/AdminListView.jsp";
-    protected static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
+    protected static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/admin/AdminProblemManage.jsp";
     protected static final String ADMIN_MENU_PAGE = "/WEB-INF/jsp/admin/AdminMenuListView.jsp";
 
     
@@ -276,9 +270,9 @@ public class AdminManageUser extends AbstractActionBean
         }
 
         String loginName = getParam("loginName");
-
-        User user = cmService.getUserByLoginInfo(loginName);
-        if (user == null)
+        
+        Admin admin = cmService.getAdminByLoginNameIgnoreDelete(loginName);
+        if (admin == null)
         {
             return getStringResolution("ok");
         }

@@ -36,6 +36,8 @@ public interface BasicMapper
     
     Admin getAdminByLoginName(String loginName);
     
+    Admin getAdminByLoginNameIgnoreDelete(String loginName);
+    
     void disableAdmin(int adminId);
 
     void enableAdmin(int adminId);
