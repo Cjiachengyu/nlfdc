@@ -35,7 +35,7 @@ public class AdminManageUser extends AbstractActionBean
 
     private static final String MANAGE_USER = "/WEB-INF/jsp/admin/AdminUserManage.jsp";
     private static final String USER_LISTVIEW = "/WEB-INF/jsp/admin/AdminListView.jsp";
-    protected static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/admin/AdminProblemManage.jsp";
+    protected static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/admin/AdminUserManageAddAdmin.jsp";
     protected static final String ADMIN_MENU_PAGE = "/WEB-INF/jsp/admin/AdminMenuListView.jsp";
 
     
@@ -196,8 +196,8 @@ public class AdminManageUser extends AbstractActionBean
      * 
      * @return
      */
-    @HandlesEvent("addnewsystemuser")
-    public Resolution addNewSystemUser()
+    @HandlesEvent("addnewadmin")
+    public Resolution addNewAdmin()
     {
         logRequest();
 
@@ -209,9 +209,9 @@ public class AdminManageUser extends AbstractActionBean
         String loginName = getParam("loginName", "");
         String password = getParam("password", "");
         String userName = getParam("userName", "");
-        int userRole = getParamInt("userRole", 0);
-
-        if (loginName.equals("") || password.equals("") || userName.equals(""))
+        String firstMenuIds = getParam("firstMenuIds", "");
+        
+        if (loginName.equals("") || password.equals("") || userName.equals("") || firstMenuIds.equals(""))
         {
             return getStringResolution("error");
         }
@@ -222,23 +222,28 @@ public class AdminManageUser extends AbstractActionBean
             return getStringResolution("lengthException");
         }
 
-        User systemUser = new User();
-        systemUser.setLoginName(loginName);
-        systemUser.setPassword(password);
-        systemUser.setUserName(userName);
-        systemUser.setUserRole(userRole);
+        Admin admin = new Admin();
+        admin.setAdminName(userName);
+        admin.setLoginName(loginName);
+        admin.setPassword(password);
+        admin.setAdminRole(1); //普通管理员
 
         try
         {
-            cmService.insertUserAndGetUserId(systemUser);
+            cmService.insertAdminAndGetAdminId(admin);
             // 插入成功
-            int userId = systemUser.getUserId();
-            if (userRole == Constants.UserRole.YJ_EDITOR)
+            int adminId = admin.getAdminId();
+            
+            firstMenuIds = Utils.trimEnd(firstMenuIds, 1);
+            String[] firstMenuIdStr = firstMenuIds.split(",");
+            for (String firstMenuId : firstMenuIdStr)
             {
-                systemUser.setLoginId(userId + "e");
+                AdminMenu adminMenu = new AdminMenu();
+                adminMenu.setAdminId(adminId);
+                adminMenu.setFirstMenuId(Integer.parseInt(firstMenuId));
+                cmService.insertAdminMenu(adminMenu);
             }
-
-            cmService.updateUser(systemUser);
+            
             return getStringResolution("ok");
         }
         catch (DuplicateKeyException e)

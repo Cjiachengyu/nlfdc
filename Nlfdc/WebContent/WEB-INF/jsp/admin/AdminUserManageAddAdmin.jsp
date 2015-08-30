@@ -21,7 +21,7 @@ var htmlVal = {
 
 <div class="wrap" >
 	<div id="content" class="clearfix">
-	     <%@ include file="YjAddEditor.jsp" %>
+	     <%@ include file="AddAdmin.jsp" %>
 	</div>
 </div>
 

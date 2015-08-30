@@ -111,7 +111,6 @@ function save_menus_changes() {
 			firstMenuIds+= checkFirstMenuIds[i].value + ",";
 		}
 	}
-	;
 	if (firstMenuIds == "") {
 		firstMenuIds = "nochecked";
 	}

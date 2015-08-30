@@ -40,9 +40,9 @@ public class Constants
 
     public interface MaxLength
     {
-        public static final int PASSWORD = 32;
-        public static final int LOGIN_NAME = 32;
-        public static final int USER_NAME = 32;
+        public static final int PASSWORD = 16;
+        public static final int LOGIN_NAME = 16;
+        public static final int USER_NAME = 16;
         public static final int EMAIL = 32;
 
         public static final int CLASS_NAME = 16;

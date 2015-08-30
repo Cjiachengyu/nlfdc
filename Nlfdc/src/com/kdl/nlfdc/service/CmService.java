@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.sourceforge.stripes.action.FileBean;
 
+import org.apache.commons.httpclient.auth.BasicScheme;
 import org.apache.tomcat.util.json.JSONArray;
 import org.apache.tomcat.util.json.JSONException;
 import org.apache.tomcat.util.json.JSONObject;
@@ -181,6 +182,11 @@ public class CmService implements Serializable
         basicMapper.unDeleteNotification(notificationId);
     }
 
+    public void insertAdminAndGetAdminId(Admin admin)
+    {
+        basicMapper.insertAdminAndGetAdminId(admin);
+    }
+    
     public Admin getAdminByAdminId(int adminId)
     {
         return basicMapper.getAdminByAdminId(adminId);

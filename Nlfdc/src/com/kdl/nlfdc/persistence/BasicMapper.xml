@@ -96,6 +96,11 @@
 		values (#{adminId}, #{firstMenuId})
 	</insert>
 	
+	<insert id="insertAdminAndGetAdminId" useGeneratedKeys="true" keyProperty="adminId" parameterType="Admin">
+		insert into admin (loginName, adminName, adminRole, password)
+		values (#{loginName}, #{adminName}, #{adminRole}, #{password})
+	</insert>
+		
 	<select id="getAdminByAdminId" parameterType="int" resultType="Admin">
 		select
 			*
