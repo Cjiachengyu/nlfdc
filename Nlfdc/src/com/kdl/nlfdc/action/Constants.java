@@ -14,12 +14,20 @@ public class Constants
     public static final int IS_DELETED = 1;
     public static final int NOT_DELETED = 0;
 
+    public static final String IMAGE_FOLDER = "newsAndRollingImage/";
     // 每个系统不同的常数
     // --------------------------------------------------------------------------------
     public static String PATH_FILE = "/var/webapp/file.war/nlfdc/";
     public static String URL_DOMAIN_IP = "..";
     public static String URL_DOMAIN_NAME = "..";
+    static
+    {
+        readSystemConfig();
 
+        System.out.println("current file path: " + PATH_FILE);
+        System.out.println("current domain ip: " + URL_DOMAIN_IP);
+        System.out.println("current domain url: " + URL_DOMAIN_NAME);
+    }
     // 其它常数
     // --------------------------------------------------------------------------------
     public static final String URL_FILE = URL_DOMAIN_IP + "/file/nlfdc/";
@@ -106,6 +114,7 @@ public class Constants
     {
         public static final String NOTIFICATION_MANAGE = "01";
         public static final String ADMIN_MANAGE = "02";
+        public static final String ADMIN_IMAGE_MANAGE = "03";
         
 
         public static final String YJ_PARENT = "81";
@@ -361,12 +370,4 @@ public class Constants
         }
     }
 
-    static
-    {
-        readSystemConfig();
-
-        System.out.println("current file path: " + PATH_FILE);
-        System.out.println("current domain ip: " + URL_DOMAIN_IP);
-        System.out.println("current domain url: " + URL_DOMAIN_NAME);
-    }
 }

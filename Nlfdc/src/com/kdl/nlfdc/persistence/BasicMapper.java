@@ -72,7 +72,10 @@ public interface BasicMapper
     void deleteNotification(int notificationId);
 
     void unDeleteNotification(int notificationId);
-     
+    
+    List<Image> getImageList(int type);
+    
+    void updateImage(Image image);
     
     // old
     // ------------------------------------------------------

@@ -31,7 +31,7 @@
 	          <form id="submitBookCover" enctype='multipart/form-data' method='post' class="relative" >
 	                   <input class="pink_button" style="width: 158px; " type='button' value='更换封面' />
 	                   <input class="input_file" type="file" id="bookCover" name="bookCover" onchange="checkBookCover(this.value)"/>
-				</form>
+			  </form>
           </div>
 	</div>
 	

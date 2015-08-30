@@ -36,9 +36,8 @@ public class AdminManage extends AbstractActionBean
 
     private static final String MANAGE = "/WEB-INF/jsp/admin/AdminNotificationManage.jsp";
     private static final String NOTIFICATION_LISTVIEW = "/WEB-INF/jsp/component/AdminNotificationListView.jsp";
-    protected static final String PUBLISH_NOTIFICATION_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
+    private static final String PUBLISH_NOTIFICATION_PAGE = "/WEB-INF/jsp/component/AdminNotificationPublish.jsp";
 
-    
     private List<Notification> notificationList;
     private FileBean       image;
     

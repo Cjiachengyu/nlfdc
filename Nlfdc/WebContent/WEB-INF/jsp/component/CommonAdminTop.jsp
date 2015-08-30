@@ -70,6 +70,12 @@
 						<c:if test="${sessionScope.currentMemuOperation == '02'}"> <div class="current_main_menu" ></div> </c:if>
 						<c:if test="${sessionScope.currentMemuOperation != '02'}"> <div class="inactive_main_menu" ></div> </c:if>
 					</div>
+					
+					<div class="top_main_menu_div">
+						<a class="top_main_menu" href="adminimagemanageaction" >图片管理</a>
+						<c:if test="${sessionScope.currentMemuOperation == '03'}"> <div class="current_main_menu" ></div> </c:if>
+						<c:if test="${sessionScope.currentMemuOperation != '03'}"> <div class="inactive_main_menu" ></div> </c:if>
+					</div>
 				</c:if>
 				
 				<!-- 超级管理员-->

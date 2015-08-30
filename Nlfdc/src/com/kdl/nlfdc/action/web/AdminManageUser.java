@@ -35,9 +35,8 @@ public class AdminManageUser extends AbstractActionBean
 
     private static final String MANAGE_USER = "/WEB-INF/jsp/admin/AdminUserManage.jsp";
     private static final String USER_LISTVIEW = "/WEB-INF/jsp/admin/AdminListView.jsp";
-    protected static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/admin/AdminUserManageAddAdmin.jsp";
-    protected static final String ADMIN_MENU_PAGE = "/WEB-INF/jsp/admin/AdminMenuListView.jsp";
-
+    private static final String ADD_ADMIN_PAGE = "/WEB-INF/jsp/admin/AdminUserManageAddAdmin.jsp";
+    private static final String ADMIN_MENU_PAGE = "/WEB-INF/jsp/admin/AdminMenuListView.jsp";
     
     private List<Admin> adminList;
     private List<FirstMenu> allFirstMenuList;
@@ -185,11 +184,6 @@ public class AdminManageUser extends AbstractActionBean
     {
         return new ForwardResolution(USER_LISTVIEW);
     }
-    
-    
-    
-    
-    
     
     /**
      * 添加系统题库编辑

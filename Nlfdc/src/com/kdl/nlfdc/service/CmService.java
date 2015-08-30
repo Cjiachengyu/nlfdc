@@ -45,6 +45,7 @@ import com.kdl.nlfdc.domain.ClsAsm;
 import com.kdl.nlfdc.domain.FirstMenu;
 import com.kdl.nlfdc.domain.FirstMenuWithSecondMenu;
 import com.kdl.nlfdc.domain.Grade;
+import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Login;
 import com.kdl.nlfdc.domain.MachineLicense;
 import com.kdl.nlfdc.domain.MasterStatisticsAssignment;
@@ -217,7 +218,15 @@ public class CmService implements Serializable
         basicMapper.enableAdmin(adminId);
     }
     
+    public List<Image> getImageList(int type)
+    {
+        return basicMapper.getImageList(type);
+    }
     
+    public void updateImage(Image image)
+    {
+        basicMapper.updateImage(image);
+    }
     
     // log
     // --------------------------------------------------------------------------------

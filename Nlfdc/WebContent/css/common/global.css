@@ -116,7 +116,7 @@ ul { list-style: none; }
 
 /* 常见样式 */
 .left_bar {float: left; width: 238px; min-height: 720px; overflow-x: hidden; margin: 20px 0; }
-.sub_menu_button { width: 120px; padding: 13px 10px 9px 10px; float: left; text-align: center;}
+.sub_menu_button { width: 120px; padding: 13px 10px 9px 10px; float: left; text-align: center; font-size: 16px;}
 .yj_book_bg { background-image: url('../../image/yj/yj_schemaBottom.png'); background-repeat:no-repeat; background-position:bottom;}
 .current_location { display: inline-block; height: 20px; width: 20px; position: relative; top: 3px; left: 5px; background: url('../../image/common/location.gif') no-repeat bottom; }
 

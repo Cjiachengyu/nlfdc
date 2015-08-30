@@ -243,9 +243,30 @@
 			notificationId = #{notificationId}
 	</update>
 
+	<select id="getImageList" parameterType="int" resultType="Image">
+		select 
+			*
+		from 
+			image
+		where
+			type = #{type}
+	</select>
 
-
-
+	<update id="updateImage" parameterType="Image">
+		update
+			image
+		set
+			type = #{type},
+			imageUrl = #{imageUrl},
+			notificationId = #{notificationId}
+		where
+			imageId = #{imageId}
+	</update>
+	
+	
+	
+	
+	
 	
 	
 	<!-- old  -->
