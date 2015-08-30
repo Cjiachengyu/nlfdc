@@ -1,5 +1,5 @@
 <%@ page pageEncoding="utf-8"%>
-<%@ include file="../component/CommonTop.jsp"%>
+<%@ include file="../component/CommonAdminTop.jsp"%>
 <title>设置密码</title>
 <style>
 #content { min-height: 700px; margin: 20px 0; padding: 40px 0; }

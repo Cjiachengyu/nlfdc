@@ -100,7 +100,6 @@ public class AdminManage extends AbstractActionBean
         }
         else
         {
-            System.out.println("select firstMenu " + firstMenuId);
             menuSelector.selectFirstMenu(firstMenuId);
             
             refreshNotificationList();

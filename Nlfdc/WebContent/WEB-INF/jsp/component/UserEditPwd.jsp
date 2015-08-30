@@ -30,7 +30,7 @@
 		<div>
 			<span class="col_1"></span>
 			<div class="col_2">
-				<a class="pink_button" style="padding: 5px 30px; width: 195px;" href="javascript:doChangeUserPassword();">修改密码</a>
+				<a class="blue_button" style="padding: 5px 30px; width: 195px;" href="javascript:doChangeUserPassword();">修改密码</a>
 			</div>
 		</div>
 		<div class="clear"></div>

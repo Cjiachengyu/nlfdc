@@ -47,7 +47,7 @@ public class AdminSetting extends AbstractUserSetting
     @Override
     protected boolean sessionIsValid()
     {
-        return commonSessionIsValid() && (makeSureSuperAdmin() || makeSureCommonAdmin());
+        return (makeSureSuperAdmin() || makeSureCommonAdmin());
     }
     
 }
