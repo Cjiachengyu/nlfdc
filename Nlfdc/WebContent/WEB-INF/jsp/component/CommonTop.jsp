@@ -60,8 +60,8 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 	<div class="tip_box">
 		<span>欢迎访问宁陵县房地产发展保障管理中心！</span>
 		<span id="date_info"></span>
-		<input type="button" id="search_btn" class="search_btn" value="搜索">		
-		<input type="text" id="search_text" class="search_text">
+		<input type="button" id="search_btn" class="search_btn" value="搜索" onclick="search()">		
+		<input type="text" id="search_text" class="search_text" onkeydown="checkEnter(event)">
 	</div>
 </div>
 
@@ -116,5 +116,19 @@ function AddFavorite(title, url) {
 	     alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请进入新网站后使用Ctrl+D进行添加");
 	   }
 	 }
-	}
+}
+
+function checkEnter(e)
+{
+	if (e.which == 13) {
+		search();
+	}	
+}
+
+function search()
+{
+	var searchText = $("#search_text").val();
+	
+	window.location.href = "commonusersearch?searchnotification=&searchText="+searchText;
+}
 </script>

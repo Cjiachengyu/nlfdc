@@ -67,7 +67,13 @@ public interface BasicMapper
             @Param("limitBegin") int limitBegin,
             @Param("pageSize") int pageSize
             );
-    
+   
+    int getSearchNotificationListCount(String searchText);
+
+    List<Notification> getSearchNotificationList(
+            @Param("searchText") String searchText,
+            @Param("limitBegin") int limitBegin,
+            @Param("pageSize") int pageSize);
     
     void deleteNotification(int notificationId);
 

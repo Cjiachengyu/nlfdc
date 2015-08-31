@@ -218,6 +218,21 @@
 			#{limitBegin}, #{pageSize}
 	</select>
 	
+	<select id="getSearchNotificationListCount" resultType="int">
+		select count(*) 
+		from notification
+		where 
+			title like #{searchText}
+	</select>
+	
+	<select id="getSearchNotificationList" resultType="Notification">
+		select notification.*, second_menu.secondMenuName
+		from notification join second_menu using (secondMenuId)
+		where 
+			title like #{searchText}
+		limit #{limitBegin}, #{pageSize}
+	</select>
+		
 	<insert id="insertNotification" useGeneratedKeys="true" keyProperty="notificationId" parameterType="Notification">
 		insert into notification 
 			(firstMenuId, secondMenuId, creatorId, createTime, title, content) 

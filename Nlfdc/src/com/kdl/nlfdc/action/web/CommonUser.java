@@ -11,7 +11,6 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.component.PageModule;
-import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Notification;
 
 /**
