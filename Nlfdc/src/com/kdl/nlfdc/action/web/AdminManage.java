@@ -11,8 +11,6 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.UrlBinding;
 
-import org.springframework.dao.DuplicateKeyException;
-
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.action.Utils;
@@ -20,7 +18,6 @@ import com.kdl.nlfdc.action.component.MenuSelector;
 import com.kdl.nlfdc.action.component.PageModule;
 import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Notification;
-import com.kdl.nlfdc.domain.User;
 
 /**
  * 超级管理员和普通管理员都用这个类
@@ -93,7 +90,7 @@ public class AdminManage extends AbstractActionBean
 
         getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.NOTIFICATION_MANAGE);
 
-        pageModule = new PageModule(15);
+        pageModule = new PageModule(5);
 
         if (menuSelector == null || menuSelector.getCurrentFirstMenuId() == MenuSelector.MENU_ITEM_ALL)
         {
@@ -116,6 +113,7 @@ public class AdminManage extends AbstractActionBean
         }
 
         int firstMenuId = getParamInt("firstMenuId", 0);
+        pageModule.gotoPage(1);
 
         if (firstMenuId == menuSelector.getCurrentFirstMenuId())
         {
@@ -141,7 +139,8 @@ public class AdminManage extends AbstractActionBean
         }
 
         int secondMenuId = getParamInt("secondMenuId", 0);
-
+        pageModule.gotoPage(1);
+        
         if (secondMenuId == menuSelector.getCurrentSecondMenuId())
         {
             return getStringResolution("not_change");
@@ -241,7 +240,6 @@ public class AdminManage extends AbstractActionBean
             return getStringResolution("paramInValid");
         }
     }
-
 
     @HandlesEvent("deletenotification")
     public Resolution deleteNotification()
@@ -356,6 +354,18 @@ public class AdminManage extends AbstractActionBean
         }
     }
 
+    @HandlesEvent("gotopage")
+    public Resolution gotoPage()
+    {
+        logRequest();
+
+        pageModule.gotoPage(getParamInt("pageNum", 1));
+
+        refreshNotificationList();
+
+        return new ForwardResolution(NOTIFICATION_LISTVIEW);
+    }
+    
     // private
     // ------------------------------------------------------------------------
     private void refreshNotificationList()

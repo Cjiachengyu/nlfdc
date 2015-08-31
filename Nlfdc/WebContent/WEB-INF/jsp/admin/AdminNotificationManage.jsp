@@ -22,7 +22,11 @@ var htmlFn = {
 	{
 		$("#admin_nofication_list").html(result);
 	},
-	
+
+	gotoPageCallback: function (result)
+	{
+		$("#admin_nofication_list").html(result);
+	}
 }
 </script>
 
