@@ -49,6 +49,8 @@ public class CommonUserSearch extends AbstractActionBean
         logRequest();
         
         pageModule = new PageModule(15);
+        menuSelector = initCommomMenuSelector();
+        
         searchText = getParam("searchText");
         refreshNotificationList();
         
@@ -65,14 +67,13 @@ public class CommonUserSearch extends AbstractActionBean
         
         log("commonUser search notification, searchText: "+ searchText);
         
-        System.out.println("searchText: " + searchText);
         int notificationCount = cmService.getSearchNotificationListCount("%" + searchText + "%");
 
         notificationList = cmService.getSearchNotificationList("%" + searchText + "%", limitBegin, pageSize);
         
         pageModule.changeItemsCount(notificationCount);
         
-        System.out.println("commonUser search notification, size: " + notificationList.size() );
+        log("commonUser search notification, size: " + notificationList.size() );
     }
     
 }
