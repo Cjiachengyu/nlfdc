@@ -27,6 +27,7 @@ public class CommonUserSearch extends AbstractActionBean
     private static final long serialVersionUID = -4211569791959625408L;
 
     private static final String COMMON_USER_NOTIFICATION_MAIN = "/WEB-INF/jsp/main/commonUserNotificationSearch.jsp";
+    private static final String NOTIFICATION_LIST_VIEW = "/WEB-INF/jsp/component/CommonNotificationListView.jsp";
 
     private List<Notification> notificationList;
     private String searchText;
@@ -57,6 +58,17 @@ public class CommonUserSearch extends AbstractActionBean
         return new ForwardResolution(COMMON_USER_NOTIFICATION_MAIN);
     }
   
+    @HandlesEvent("gotopage")
+    public Resolution gotoPage()
+    {
+        logRequest();
+
+        pageModule.gotoPage(getParamInt("pageNum", 1));
+
+        refreshNotificationList();
+
+        return new ForwardResolution(NOTIFICATION_LIST_VIEW);
+    }
     
     // private 
     // ------------------------------------------------------------------------

@@ -128,7 +128,11 @@ function checkEnter(e)
 function search()
 {
 	var searchText = $("#search_text").val();
-	
+	if (searchText == "")
+	{
+		$("#search_text").focus();
+		return false;
+	}
 	window.location.href = "commonusersearch?searchnotification=&searchText="+searchText;
 }
 </script>
