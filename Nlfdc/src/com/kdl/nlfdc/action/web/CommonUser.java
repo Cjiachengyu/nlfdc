@@ -28,6 +28,7 @@ public class CommonUser extends AbstractActionBean
 
     private static final String COMMON_USER_NOTIFICATION_MAIN = "/WEB-INF/jsp/main/commonUserNotificationMain.jsp";
     private static final String COMMON_USER_VIEW_NOTIFICATION  = "/WEB-INF/jsp/main/commonUserNotificationView.jsp";
+    private static final String NOTIFICATION_LIST_VIEW = "/WEB-INF/jsp/component/CommonNotificationListView.jsp";
 
     private List<Notification> notificationList;
     private Notification viewIngNotification;
@@ -93,7 +94,6 @@ public class CommonUser extends AbstractActionBean
         refreshNotificationList();
         return new ForwardResolution(COMMON_USER_NOTIFICATION_MAIN);
     }
-   
     
     @HandlesEvent("viewnotification")
     public Resolution viewNotification()
@@ -121,6 +121,17 @@ public class CommonUser extends AbstractActionBean
         }
     }
     
+    @HandlesEvent("gotopage")
+    public Resolution gotoPage()
+    {
+        logRequest();
+
+        pageModule.gotoPage(getParamInt("pageNum", 1));
+
+        refreshNotificationList();
+
+        return new ForwardResolution(NOTIFICATION_LIST_VIEW);
+    }
     
     // private 
     // ------------------------------------------------------------------------

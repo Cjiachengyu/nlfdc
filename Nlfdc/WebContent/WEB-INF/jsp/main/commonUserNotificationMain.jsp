@@ -57,11 +57,25 @@
 						${actionBean.menuSelector.currentFirstMenu.firstMenuName }
 					</span>
 			</div>
-			<div id="admin_nofication_list">
+			<div id="common_nofication_list">
 				<%@ include file="../component/CommonNotificationListView.jsp" %>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+var htmlVal = {
+	htmlUrl: "commonusernotificationmain",
+}
+var htmlFn = {
+		
+	gotoPageCallback: function (result)
+	{
+		$("#common_nofication_list").html(result);
+	}
+}
+</script>
 
 <%@ include file="../component/CommonBottom.jsp"%>
