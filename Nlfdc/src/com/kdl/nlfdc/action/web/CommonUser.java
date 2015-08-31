@@ -11,6 +11,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.component.PageModule;
+import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Notification;
 
 /**
@@ -40,7 +41,7 @@ public class CommonUser extends AbstractActionBean
     {
         return viewIngNotification;
     }
-
+  
     // resolution
     // --------------------------------------------------------------------------------
     @DefaultHandler
@@ -61,7 +62,7 @@ public class CommonUser extends AbstractActionBean
             menuSelector = initCommomMenuSelector();
             menuSelector.selectFirstMenu(firstMenuId);
         }
-       
+        
         refreshNotificationList();
         return new ForwardResolution(COMMON_USER_NOTIFICATION_MAIN);
     }

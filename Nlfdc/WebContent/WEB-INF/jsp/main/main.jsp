@@ -54,10 +54,18 @@ span, li, a { font-size: 12px; }
 	<div class="row1_box">
 	 	<div class="row1_left_big">
 	 		<div class="row1_left_big_left">
-	 			<img id="dot_image_1" src="image/common/sample1.png" class="show_img ">	
-	 			<img id="dot_image_2" src="image/common/sample2.png" class="show_img hide">	
-	 			<img id="dot_image_3" src="image/common/sample3.png" class="show_img hide">	
-	 			<img id="dot_image_4" src="image/common/sample4.png" class="show_img hide">	
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[0].notificationId }">
+	 			<img id="dot_image_1" src="${actionBean.newsImageList[0].imageUrl }" class="show_img ">	
+	 			</a>
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[1].notificationId }">
+	 			<img id="dot_image_2" src="${actionBean.newsImageList[1].imageUrl }" class="show_img hide">
+	 			</a>	
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[2].notificationId }">
+	 			<img id="dot_image_3" src="${actionBean.newsImageList[2].imageUrl }" class="show_img hide">
+	 			</a>	
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[3].notificationId }">
+	 			<img id="dot_image_4" src="${actionBean.newsImageList[3].imageUrl }" class="show_img hide">
+	 			</a>
 	 			<div class="image_selector">
 	 				<a id="dot1" class="dot" href="##" onmouseover="chooseDot(1)"></a>
 	 				<a id="dot2" class="dot" href="##" onmouseover="chooseDot(2)"></a>
@@ -206,13 +214,27 @@ span, li, a { font-size: 12px; }
 	 			<img src="image/common/act_pic_03.png" style="margin: 12px 5px; display: inline-block;">
 				
 				<div id="rolling_img_box" class="rolling_img_box">
-				<img id="sample1" src="image/common/sample1.png" class="roll_img" index="7" style="left: 7px;">
-				<img id="sample2" src="image/common/sample2.png" class="roll_img" index="160" style="left: 160px;">
-				<img id="sample3" src="image/common/sample3.png" class="roll_img" index="313" style="left: 313px;">
-				<img id="sample4" src="image/common/sample4.png" class="roll_img" index="466" style="left: 466px;">
-				<img id="sample5" src="image/common/sample1.png" class="roll_img" index="617" style="left: 617px;">
-				<img id="sample6" src="image/common/sample2.png" class="roll_img" index="772" style="left: 772px;">
-				<img id="sample7" src="image/common/sample3.png" class="roll_img" index="925" style="left: 925px;">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }">
+				<img id="sample1" src="${actionBean.rollImageList[0].imageUrl }" class="roll_img" index="7" style="left: 7px;">
+				</a>
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }">
+				<img id="sample2" src="${actionBean.rollImageList[1].imageUrl }" class="roll_img" index="160" style="left: 160px;">
+				</a>
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }">
+				<img id="sample3" src="${actionBean.rollImageList[2].imageUrl }" class="roll_img" index="313" style="left: 313px;">
+				</a>
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[3].notificationId }">
+				<img id="sample4" src="${actionBean.rollImageList[3].imageUrl }" class="roll_img" index="466" style="left: 466px;">
+				</a>
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }">
+				<img id="sample5" src="${actionBean.rollImageList[0].imageUrl }" class="roll_img" index="617" style="left: 617px;">
+				</a>
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }">
+				<img id="sample6" src="${actionBean.rollImageList[1].imageUrl }" class="roll_img" index="772" style="left: 772px;">
+				</a>
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }">
+				<img id="sample7" src="${actionBean.rollImageList[2].imageUrl }" class="roll_img" index="925" style="left: 925px;">
+				</a>
 				</div>
 	</div>
 

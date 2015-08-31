@@ -13,6 +13,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.domain.FirstMenu;
+import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Notification;
 import com.kdl.nlfdc.domain.VisitCount;
 
@@ -31,6 +32,8 @@ public class Index extends AbstractActionBean
     private int totalCount;
     private int thisDayCount;
     private List<Notification>[] firstMenuNotificationList; 
+    private List<Image> newsImageList;
+    private List<Image> rollImageList;
     
     public int getTotalCount()
     {
@@ -44,6 +47,15 @@ public class Index extends AbstractActionBean
     {
         return firstMenuNotificationList;
     }
+    public List<Image> getNewsImageList()
+    {
+        return newsImageList;
+    }
+    public List<Image> getRollImageList()
+    {
+        return rollImageList;
+    }
+    
     // resolution
     // --------------------------------------------------------------------------------
     @DefaultHandler
@@ -87,6 +99,9 @@ public class Index extends AbstractActionBean
                     max_notification_num[i]);
             firstMenuNotificationList[i] = notificationList; 
         }
+        
+        newsImageList = cmService.getImageList(1);
+        rollImageList = cmService.getImageList(2);
         
         return new ForwardResolution(MAIN_PAGE);
     }

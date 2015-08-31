@@ -4,7 +4,7 @@
 
 3.首页图片滚动bug --done
 
-4.图片分类	--
+4.图片分类	--done
 
 5.管理员管理用户 --done
 
@@ -12,7 +12,7 @@
 
 7.查看通知页面 --done
 
-8.管理员编辑图片
+8.管理员编辑图片 --done
 
 9.普通用户查看通知二级页面，新建CommonUserNotifictionAction，首页“更多”链接到该action，传递firstMenuId，
 通过该id查询notification然后显示，jsp左侧还是选择栏，右侧是notificationList    --done
