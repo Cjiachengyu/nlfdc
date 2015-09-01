@@ -27,9 +27,7 @@
 				<div class="image_box">
 					<div class="image">
 						<img id="image_${newsImage.imageId }" class="news_and_roll_image"
-							<c:if test="${newsImage.imageUrl == ''}"> src="image/common/sample1.png"</c:if>
-							<c:if test="${newsImage.imageUrl != ''}"> src="${newsImage.imageUrl }"</c:if>
-						 >
+							 src="${newsImage.imageUrl }">
 					</div>
 					
 					<div class="file_choose_div">
@@ -49,9 +47,7 @@
 				<div class="image_box">
 					<div class="image">
 						<img id="image_${rollImage.imageId }" class="news_and_roll_image"
-							<c:if test="${rollImage.imageUrl == ''}"> src="image/common/sample1.png"</c:if>
-							<c:if test="${rollImage.imageUrl != ''}"> src="${rollImage.imageUrl }"</c:if>
-						 >
+							src="${rollImage.imageUrl }" >
 					</div>
 					
 					<div class="file_choose_div">

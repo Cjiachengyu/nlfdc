@@ -12,7 +12,6 @@ import java.io.StringReader;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpSession;
 
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
-import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.HandlesEvent;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -38,7 +36,6 @@ import com.kdl.nlfdc.action.web.AdminManage;
 import com.kdl.nlfdc.action.web.Index;
 import com.kdl.nlfdc.action.web.Login;
 import com.kdl.nlfdc.domain.Admin;
-import com.kdl.nlfdc.domain.User;
 import com.kdl.nlfdc.exception.AccountInvalidException;
 import com.kdl.nlfdc.service.CmService;
 
@@ -156,12 +153,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     // 重定向操作
     // --------------------------------------------------------------------------------
     private String redirectUrl;
-
-    public Resolution redirectToUrl(String url)
-    {
-        this.redirectUrl = url;
-        return new ForwardResolution(REDIRECT_PAGE);
-    }
 
     // 用户管理
     // --------------------------------------------------------------------------------
