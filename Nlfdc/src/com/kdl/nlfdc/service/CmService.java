@@ -258,7 +258,7 @@ public class CmService implements Serializable
         String savePath = Constants.PATH_FILE + "notificationImage/";
         Utils.makeSureDirExists(savePath);
         String fileName = toSaveFile.getFileName();
-        String saveFileName = "notification_" + Utils.getNextLongId() + "." + Utils.getFileSuffix(fileName);
+        String saveFileName = "notification_" + Utils.currentSeconds() + "." + Utils.getFileSuffix(fileName);
 
         toSaveFile.save(new File(savePath + saveFileName));
         return Constants.URL_FILE + "notificationImage/" + saveFileName;
@@ -284,47 +284,6 @@ public class CmService implements Serializable
     
     // log
     // --------------------------------------------------------------------------------
-    private static final SimpleDateFormat logDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-
-    private synchronized void log(Object logText)
-    {
-        FileWriter filerWriter = null;
-        BufferedWriter bufWriter = null;
-        try
-        {
-            String toLog = String.valueOf(logText).replaceAll("[\r\n]", " ");
-
-            StringBuffer logBuffer = new StringBuffer();
-            logBuffer.append(logDateTimeFormat.format(new Date()));
-            logBuffer.append(" ");
-            logBuffer.append(new DecimalFormat("000000").format(Thread.currentThread().getId()));
-            // logBuffer.append(" ");
-            // logBuffer.append(getCurrentUserIp());
-            logBuffer.append(" -> ");
-            logBuffer.append(toLog);
-            logBuffer.append("\n");
-
-            String logFileName = Utils.getFullDateString(Utils.currentSeconds()) + ".serivce.log";
-            String logFilePath = Constants.PATH_FILE + "log/" + logFileName;
-            Utils.makeSureFileExist(logFilePath);
-
-            File file = new File(logFilePath);
-            filerWriter = new FileWriter(file, true);
-            bufWriter = new BufferedWriter(filerWriter);
-            bufWriter.write(logBuffer.toString());
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            Utils.safeClose(bufWriter);
-            Utils.safeClose(filerWriter);
-        }
-    }
-
-    
     public User getUser(int userId)
     {
         return basicMapper.getUser(userId);
@@ -398,6 +357,5 @@ public class CmService implements Serializable
     {
         basicMapper.updateUser(user);
     }
-
 
 }
