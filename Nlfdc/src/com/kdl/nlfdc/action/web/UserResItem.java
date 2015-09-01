@@ -72,7 +72,7 @@ public class UserResItem extends AbstractActionBean
     {
         logRequest();
 
-        if (getCurrentUser() == null)
+        if (getCurrentAdmin() == null)
         {
             return getStringTimeoutResolution();
         }

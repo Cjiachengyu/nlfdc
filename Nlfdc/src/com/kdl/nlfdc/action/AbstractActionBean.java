@@ -132,15 +132,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     // --------------------------------------------------------------------------------
     private boolean sessionValid = false;
 
-    protected boolean commonSessionIsValid()
-    {
-
-
-        // return sessionValid && getCurrentUser() != null;
-        // stripes在session判断的时候有问题，导致sessionValid不准确，暂时先不用这种方式
-        return getCurrentUser() != null;
-    }
-
     /**
      * call in default handler
      */
@@ -150,13 +141,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         sessionValid = true;
     }
 
-    /**
-     * to be overridden
-     */
-    protected boolean sessionIsValid()
-    {
-        return commonSessionIsValid();
-    }
 
 
     public String getRedirectUrl()
@@ -181,20 +165,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
     // 用户管理
     // --------------------------------------------------------------------------------
-    public User getCurrentLoginUser()
-    {
-        return (User) getCurrentSession().getAttribute("loginUser");
-    }
-
-    public User getCurrentRealUser()
-    {
-        return (User) getCurrentSession().getAttribute("realUser");
-    }
-
-    public User getCurrentUser()
-    {
-        return (User) getCurrentSession().getAttribute("user");
-    }
 
     public Admin getCurrentAdmin()
     {
@@ -206,18 +176,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         if (getCurrentAdmin() != null)
         {
             return getCurrentAdmin().getAdminId();
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    
-    public int getCurrentUserId()
-    {
-        if (getCurrentUser() != null)
-        {
-            return getCurrentUser().getUserId();
         }
         else
         {
@@ -423,7 +381,10 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         getCurrentSession().setAttribute(key, value);
     }
 
-
+    protected boolean sessionIsValid()
+    {
+       return true; 
+    }
     // 记录日志
     // --------------------------------------------------------------------------------
     public void logRequest()
@@ -701,13 +662,13 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     // --------------------------------------------------------------------------------
     private String getUserInfoString()
     {
-        String userInfo = "null user";
-        User user = getCurrentUser();
-        if (user != null)
+        String adminInfo = "null user";
+        Admin admin = getCurrentAdmin();
+        if (admin != null)
         {
-            userInfo = String.valueOf(user.getUserName()) + "-" + user.getUserId();
+            adminInfo = String.valueOf(admin.getAdminName()) + "-" + admin.getAdminId();
         }
-        return userInfo;
+        return adminInfo;
     }
 
 

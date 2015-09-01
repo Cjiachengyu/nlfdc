@@ -261,6 +261,32 @@ public class CmService implements Serializable
     {
         return basicMapper.getUnReadedReceivedNotificationCount(userId);
     }
+   
+    // AbstractQueEditor
+    public String saveUploadFile(FileBean toSaveFile) throws IOException
+    {
+        String savePath = Constants.PATH_FILE + "notificationImage/";
+        Utils.makeSureDirExists(savePath);
+        String fileName = toSaveFile.getFileName();
+        String saveFileName = "notification_" + Utils.getNextLongId() + "." + Utils.getFileSuffix(fileName);
+
+        toSaveFile.save(new File(savePath + saveFileName));
+        return Constants.URL_FILE + "notificationImage/" + saveFileName;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -530,17 +556,6 @@ public class CmService implements Serializable
         basicMapper.updateUser(user);
     }
 
-    // AbstractQueEditor
-    public String saveUploadFile(FileBean toSaveFile) throws IOException
-    {
-        String savePath = Constants.PATH_FILE + "notificationImage/";
-        Utils.makeSureDirExists(savePath);
-        String fileName = toSaveFile.getFileName();
-        String saveFileName = "notification_" + Utils.getNextLongId() + "." + Utils.getFileSuffix(fileName);
-
-        toSaveFile.save(new File(savePath + saveFileName));
-        return Constants.URL_FILE + "notificationImage/" + saveFileName;
-    }
 
     public String saveWebImages(String webImagePathString)
     {

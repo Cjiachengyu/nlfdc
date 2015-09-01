@@ -1,7 +1,5 @@
 package com.kdl.nlfdc.action.web;
 
-import org.springframework.dao.DuplicateKeyException;
-
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.HandlesEvent;
 import net.sourceforge.stripes.action.Resolution;
@@ -10,7 +8,6 @@ import net.sourceforge.stripes.action.SessionScope;
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.domain.Admin;
-import com.kdl.nlfdc.domain.User;
 
 
 /**
@@ -35,7 +32,7 @@ public abstract class AbstractUserSetting extends AbstractActionBean
         logRequest();
         // 这边不需要validateSession, 在子类中完成
 
-        if (!sessionIsValid())
+        if (getCurrentAdmin() == null)
         {
             return getStringTimeoutResolution();
         }
@@ -67,90 +64,5 @@ public abstract class AbstractUserSetting extends AbstractActionBean
             return getStringResolution("error");
         }
     }
-
-    @HandlesEvent("dochangeloginname")
-    public Resolution doChangeLoginName()
-    {
-        logRequest();
-
-        if (!sessionIsValid())
-        {
-            return getStringTimeoutResolution();
-        }
-
-        User realUser = getCurrentRealUser();
-
-        String newLoginName = getParam("newLoginName");
-        // 如果修改失败，要把loginName还原
-        String oldLoginName = realUser.getLoginName();
-
-        if (newLoginName.equals(""))
-        {
-            return getStringResolution("error");
-        }
-
-        if (newLoginName.length() > Constants.MaxLength.LOGIN_NAME)
-        {
-            return getStringResolution("length_exception");
-        }
-
-        realUser.setLoginName(newLoginName);
-        try
-        {
-            cmService.updateUser(realUser);
-            return getStringResolution("ok");
-        }
-        catch (DuplicateKeyException e)
-        {
-            log("dup login name: " + newLoginName);
-            realUser.setLoginName(oldLoginName);
-            return getStringResolution("dupkey");
-        }
-        catch (Exception e)
-        {
-            realUser.setLoginName(oldLoginName);
-            return getStringResolution("error");
-        }
-    }
-
-    @HandlesEvent("dochangeemail")
-    public Resolution doChangeEmail()
-    {
-        logRequest();
-
-        if (!sessionIsValid())
-        {
-            return getStringTimeoutResolution();
-        }
-        User realUser = getCurrentRealUser();
-
-        String newEmail = getParam("newEmail");
-
-        String oldEmail = realUser.getEmail();
-        if (newEmail.equals(""))
-        {
-            return getStringResolution("error");
-        }
-        if (newEmail.length() > Constants.MaxLength.EMAIL)
-        {
-            return getStringResolution("length_exception");
-        }
-        realUser.setEmail(newEmail);
-        try
-        {
-            cmService.updateUser(realUser);
-            return getStringResolution("ok");
-        }
-        catch (DuplicateKeyException e)
-        {
-            log("dup email: " + newEmail);
-            realUser.setEmail(oldEmail);
-            return getStringResolution("dupkey");
-        }
-        catch (Exception e)
-        {
-            realUser.setEmail(oldEmail);
-            return getStringResolution("error");
-        }
-    }
+    
 }

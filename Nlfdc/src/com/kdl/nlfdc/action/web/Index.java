@@ -17,6 +17,13 @@ import com.kdl.nlfdc.domain.Image;
 import com.kdl.nlfdc.domain.Notification;
 import com.kdl.nlfdc.domain.VisitCount;
 
+/**
+ * 普通用户首页
+ * 
+ * @author Administrator
+ * 
+ * @date：2015年9月1日
+ */
 @SessionScope
 @UrlBinding("/index")
 public class Index extends AbstractActionBean

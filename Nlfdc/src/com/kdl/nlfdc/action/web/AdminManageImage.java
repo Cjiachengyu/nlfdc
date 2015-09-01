@@ -11,17 +11,10 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.UrlBinding;
 
-import org.springframework.dao.DuplicateKeyException;
-
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.Constants;
 import com.kdl.nlfdc.action.Utils;
-import com.kdl.nlfdc.domain.Admin;
-import com.kdl.nlfdc.domain.AdminMenu;
-import com.kdl.nlfdc.domain.FirstMenu;
 import com.kdl.nlfdc.domain.Image;
-import com.kdl.nlfdc.domain.User;
-import com.kdl.nlfdc.exception.SqlAffectedCountException;
 
 /**
  * 超级管理员和普通管理员都用这个类
