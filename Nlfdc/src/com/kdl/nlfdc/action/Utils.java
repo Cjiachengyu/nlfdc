@@ -13,19 +13,11 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tomcat.util.json.JSONObject;
@@ -606,46 +598,6 @@ public class Utils
         }
 
         return allFiles;
-    }
-
-    public static void sendMail(String host, String pwd, String sourceAddr, String destAddr,
-            String subject, String text) throws AddressException, MessagingException
-    {
-        String[] lines = text.split("\n");
-        String bodyText = "";
-        for (String l : lines)
-        {
-            if (stringEmpty(l))
-            {
-                bodyText += "<br>";
-            }
-            else
-            {
-                bodyText += "<p>" + l + "</p>";
-            }
-        }
-        String html = "<!DOCTYPE html> <html> <head>"
-                + "<meta charset=\"utf-8\" /> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>"
-                + "<title>" + subject + "</title>"
-                + "</head><body><div style='font-size:20px;'>" + bodyText + "</div></body></html>";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.host", host); // 设置发送邮件的邮件服务器的属性
-        props.put("mail.smtp.auth", "true"); // 需要经过授权验证
-        Session session = Session.getDefaultInstance(props); // 构建一个session
-        // session.setDebug(true); // console处显示过程信息
-
-        MimeMessage message = new MimeMessage(session); // 用session为参数定义消息对象
-        message.setFrom(new InternetAddress(sourceAddr)); // 加载发件人地址
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(destAddr)); // 加载收件人地址
-        message.setSubject(subject); // 加载标题
-        message.setSentDate(new Date());// 设置邮件发送时期
-        message.setContent(html, "text/html;charset=UTF-8"); // 将multipart对象放到message中
-        message.saveChanges(); // 保存邮件
-        Transport transport = session.getTransport("smtp"); // 发送邮件
-        transport.connect(host, sourceAddr, pwd); // 连接服务器的邮箱
-        transport.sendMessage(message, message.getAllRecipients()); // 发送邮件
-        transport.close();
     }
 
     private static int hexToInt(char hexChar)
