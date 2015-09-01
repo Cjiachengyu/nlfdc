@@ -183,25 +183,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         }
     }
 
-    public ArrayDeque<User> getUserStack()
-    {
-        @SuppressWarnings("unchecked")
-        ArrayDeque<User> userStack = (ArrayDeque<User>) getCurrentSession().getAttribute("userStack");
-        return userStack;
-    }
-
-    public void setGoBackUser(ArrayDeque<User> userStack)
-    {
-        if (userStack.size() == 0)
-        {
-            setSessionAttr("goBackUser", null);
-        }
-        else
-        {
-            setSessionAttr("goBackUser", userStack.getFirst());
-        }
-    }
-
 
     public void loginSuccessInitSession(Admin admin)
             throws AccountInvalidException
@@ -213,26 +194,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         setSessionAttr("admin", admin);
     }
 
-    public boolean makeSureYjTea()
-    {
-        return makeSureUserRole(Constants.UserRole.YJ_TEACHER);
-    }
- 
-    public boolean makeSureYjEditor()
-    {
-        return makeSureUserRole(Constants.UserRole.YJ_EDITOR);
-    }
-
-    public boolean makeSureYjMaster()
-    {
-        return makeSureUserRole(Constants.UserRole.YJ_MASTER);
-    }
-
-    public boolean makeSureYjAdmin()
-    {
-        return makeSureUserRole(Constants.UserRole.YJ_ADMIN);
-    }
-    
     public boolean makeSureSuperAdmin()
     {
         return makeSureUserRole(Constants.UserRole.SUPER_ADMIN);
@@ -642,22 +603,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     // 重新分类
     // --------------------------------------------------------------------------------
 
-
-    // 子类需要重写这个方法
-    @HandlesEvent("gettextbookselectorclassifyview")
-    public Resolution getTextbookSelectorClassifyView()
-    {
-        return getStringTimeoutResolution();
-    }
-
-    // 子类需要重写这个方法
-    @HandlesEvent("dotextbookclassify")
-    public Resolution doTextbookClassify()
-    {
-        return getStringTimeoutResolution();
-    }
-
-
     // private
     // --------------------------------------------------------------------------------
     private String getUserInfoString()
@@ -724,37 +669,4 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         return "";
     }
 
-    public boolean notYjWebLoginAbleUser(User user)
-    {
-        if (user == null)
-        {
-            return true;
-        }
-
-        int userRole = user.getUserRole();
-
-        return !(userRole == Constants.UserRole.YJ_TEACHER
-                || userRole == Constants.UserRole.YJ_EDITOR
-                || userRole == Constants.UserRole.YJ_ADMIN
-                || userRole == Constants.UserRole.YJ_MASTER);
-    }
-    public boolean isYjAdmin(User user)
-    {
-        if (user == null)
-        {
-            return false;
-        }
-
-        return user.getUserRole() == Constants.UserRole.YJ_ADMIN;
-    }
-
-    public boolean isYjMaster(User user)
-    {
-        if (user == null)
-        {
-            return false;
-        }
-
-        return user.getUserRole() == Constants.UserRole.YJ_MASTER;
-    }
 }
