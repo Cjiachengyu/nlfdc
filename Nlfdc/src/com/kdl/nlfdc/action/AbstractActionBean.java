@@ -34,17 +34,12 @@ import org.apache.tomcat.util.json.JSONObject;
 
 import com.kdl.nlfdc.action.component.MenuSelector;
 import com.kdl.nlfdc.action.component.PageModule;
-import com.kdl.nlfdc.action.component.TextbookSelectorBase;
-import com.kdl.nlfdc.action.component.TextbookSelectorCatalogue;
-import com.kdl.nlfdc.action.component.TextbookSelectorClassify;
 import com.kdl.nlfdc.action.web.AdminManage;
 import com.kdl.nlfdc.action.web.Index;
 import com.kdl.nlfdc.action.web.Login;
-import com.kdl.nlfdc.action.web.YjTeaAsm;
 import com.kdl.nlfdc.domain.Admin;
 import com.kdl.nlfdc.domain.User;
 import com.kdl.nlfdc.exception.AccountInvalidException;
-import com.kdl.nlfdc.exception.SqlAffectedCountException;
 import com.kdl.nlfdc.service.CmService;
 
 @SessionScope
@@ -288,19 +283,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
     public boolean makeSureCommonAdmin()
     {
         return makeSureUserRole(Constants.UserRole.COMMON_ADMIN);
-    }
-    
-    @HandlesEvent("gotousermainpage")
-    public Resolution gotoUserMainPage()
-    {
-        logRequest();
-
-        if (getCurrentUser() == null)
-        {
-            return getYjLogoutResolution();
-        }
-
-        return getUserMainPage(getCurrentRealUser(), true);
     }
     
     @HandlesEvent("gotoadminmainpage")
@@ -565,28 +547,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         return new RedirectResolution(Login.class, "yjsignout");
     }
 
-    protected Resolution getUserMainPage(User user, boolean checkSimplePwd)
-    {
-//        if (checkSimplePwd)
-//        {
-//            if (user.getPassword().length() < 6)
-//            {
-//                log("should change pwd");
-//                return new RedirectResolution(UserChangePwd.class);
-//            }
-//        }
-
-        Resolution ret = getYjLogoutResolution();
-        switch (user.getUserRole())
-        {
-        case Constants.UserRole.SUPER_ADMIN:
-        case Constants.UserRole.COMMON_ADMIN:
-            ret = new RedirectResolution(YjTeaAsm.class);
-            break;
-        }
-        return ret;
-    }
-    
     // download file
     protected Resolution getFileResolution(final String filePath, final String downloadFileName)
     {
@@ -702,27 +662,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
 
     // 课本选择
     // --------------------------------------------------------------------------------
-    protected TextbookSelectorBase tsCatalogueModule;
-
-    public TextbookSelectorBase getTsCatalogueModule()
-    {
-        return tsCatalogueModule;
-    }
-
-    public TextbookSelectorCatalogue initTsCatalogue()
-    {
-        User user = getCurrentUser();
-        String lang = getCurrentLang();
-
-        TextbookSelectorCatalogue tsCatalogue = new TextbookSelectorCatalogue(cmService, user, lang);
-
-        if (user.getUserRole() != Constants.UserRole.YJ_MASTER && user.getUserRole() != Constants.UserRole.YJ_ADMIN)
-        {
-            initSchemaModuleByCache(user, tsCatalogue);
-        }
-
-        return tsCatalogue;
-    }
     
     public MenuSelector initMenuSelector()
     {
@@ -738,115 +677,10 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         return menuSelector;
     }
     
-    
-    public void updateUserTsCache(TextbookSelectorBase textbookSelector) throws SqlAffectedCountException
-    {
-        User user = getCurrentUser();
-        // TODO 异常处理，不能直接抛出去
-        updateUserTsCache(textbookSelector, user);
-    }
-
-    public void updateUserTsCache(TextbookSelectorBase textbookSelector, User user)
-    {
-        if (user == null)
-        {
-            return;
-        }
-
-        user.setCacheSubjectId(textbookSelector.getCurrentSubject().getSubjectId());
-        user.setCacheBookId(textbookSelector.getCurrentTextbook().getBookId());
-        user.setCacheChapterId(textbookSelector.getCurrentChapter().getChapterId());
-//        user.setCacheSectionId(textbookSelector.getCurrentSection().getSectionId());
-        cmService.updateSchemaCache(user);
-    }
-
 
     // 重新分类
     // --------------------------------------------------------------------------------
-    protected String classifySchemaItemId;
-    protected TextbookSelectorClassify tsClassifyModule;
 
-    public TextbookSelectorClassify getTsClassifyModule()
-    {
-        return tsClassifyModule;
-    }
-
-    public TextbookSelectorClassify initTsClassifyModule()
-    {
-        return new TextbookSelectorClassify(cmService, getCurrentUser(), getCurrentLang());
-    }
-
-    @HandlesEvent("classifyselectsubject")
-    public Resolution classifySelectSubject() throws JSONException
-    {
-        //System.out.println("----------call classifyselectsubject");
-        logRequest();
-
-        if (tsClassifyModule == null)
-        {
-            return getJsonTimeoutResolution();
-        }
-
-        tsClassifyModule.selectSubject(getParamInt("subjectId"));
-//        System.out.println("----------subjectId: " + getParamInt("subjectId"));
-
-        JSONObject ret = new JSONObject();
-        ret.put("textArray", tsClassifyModule.getTextbookJsonArray());
-        ret.put("chapterArray", tsClassifyModule.getChapterJsonArray());
-        //ret.put("sectionArray", tsClassifyModule.getSectionJsonArray());
-        
-        return getJsonStringResolution(ret.toString());
-    }
-
-    @HandlesEvent("classifyselecttextbook")
-    public Resolution classifySelectTextbook() throws JSONException
-    {
-        logRequest();
-
-        if (tsClassifyModule == null)
-        {
-            return getJsonTimeoutResolution();
-        }
-
-        tsClassifyModule.selectTextbook(getParamInt("bookId"));
-
-        JSONObject ret = new JSONObject();
-        ret.put("chapterArray", tsClassifyModule.getChapterJsonArray());
-        //ret.put("sectionArray", tsClassifyModule.getSectionJsonArray());
-        return getJsonStringResolution(ret.toString());
-    }
-
-    @HandlesEvent("classifyselectchapter")
-    public Resolution classifySelectChapter() throws JSONException
-    {
-        logRequest();
-
-        if (tsClassifyModule == null)
-        {
-            return getJsonTimeoutResolution();
-        }
-
-        tsClassifyModule.selectChapter(getParamInt("chapterId"));
-
-        JSONObject ret = new JSONObject();
-        //ret.put("sectionArray", tsClassifyModule.getSectionJsonArray());
-        return getJsonStringResolution(ret.toString());
-    }
-
-    @HandlesEvent("classifyselectsection")
-    public Resolution classifySelectSection() throws JSONException
-    {
-        logRequest();
-
-        if (tsClassifyModule == null)
-        {
-            return getStringTimeoutResolution();
-        }
-
-//        tsClassifyModule.selectSection(getParamInt("sectionId"));
-
-        return getStringResolution("ok");
-    }
 
     // 子类需要重写这个方法
     @HandlesEvent("gettextbookselectorclassifyview")
@@ -876,13 +710,6 @@ public abstract class AbstractActionBean implements ActionBean, Serializable
         return userInfo;
     }
 
-    private void initSchemaModuleByCache(User user, TextbookSelectorBase tbSelector)
-    {
-        tbSelector.selectSubject(user.getCacheSubjectId());
-        tbSelector.selectTextbook(user.getCacheBookId());
-        tbSelector.selectChapter(user.getCacheChapterId());
-//        tbSelector.selectSection(user.getCacheSectionId());
-    }
 
     private static final SimpleDateFormat logDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 

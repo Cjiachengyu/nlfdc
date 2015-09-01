@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.SessionScope;
 
 import com.kdl.nlfdc.action.AbstractActionBean;
 import com.kdl.nlfdc.action.Constants;
+import com.kdl.nlfdc.domain.Admin;
 import com.kdl.nlfdc.domain.User;
 
 
@@ -39,7 +40,7 @@ public abstract class AbstractUserSetting extends AbstractActionBean
             return getStringTimeoutResolution();
         }
 
-        User realUser = getCurrentRealUser();
+        Admin admin = getCurrentAdmin();
         String oldPwd = realUser.getPassword();
         String newPwd = getParam("newPwd");
         if (!oldPwd.equals(getParam("oldPwd")))

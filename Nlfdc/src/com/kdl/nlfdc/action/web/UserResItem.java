@@ -80,8 +80,6 @@ public class UserResItem extends AbstractActionBean
         int resId = getParamInt("resId");
         isMobile = getParamInt("isMobile", 0);
         
-        resource = cmService.getResourceInfo(resId);
-        resourceFileList = cmService.getResourceFileByResourceId(resId);
 
         if (resource.getResType() == Constants.ResourceType.FILE)
         {
@@ -146,58 +144,5 @@ public class UserResItem extends AbstractActionBean
         }
     }
 
-    @HandlesEvent("deletecheckedfile")
-    public Resolution deleteCheckedFile()
-    {
-        logRequest();
 
-        if (getCurrentUser() == null)
-        {
-            return getStringTimeoutResolution();
-        }
-
-        String checkedFileIdList = getParam("checkedFileIdStringArray");
-        String[] fileIdStringArray = checkedFileIdList.trim().split("-");
-        for (int i = 0; i < fileIdStringArray.length; i++)
-        {
-            log("delete file: " + fileIdStringArray[i]);
-            ResFile resourceFile = cmService.getResourceFile(Integer.parseInt(fileIdStringArray[i]));
-            resourceFile.setIsDeleted(1);
-            cmService.updateResourceFile(resourceFile);
-        }
-
-        int resId = getParamInt("resId", 0);
-        resourceFileList = cmService.getResourceFileByResourceId(resId);
-
-        return getStringResolution("ok");
-    }
-
-    @HandlesEvent("handledownloadrequest")
-    public Resolution handleDownloadRequest()
-    {
-        return downloadResourceFile();
-    }
-
-    // private
-    // --------------------------------------------------------------------------------
-    private Resolution downloadResourceFile()
-    {
-        if (getParamInt("isMobile", 0) == 1)
-        {
-            int resId = getParamInt("resId");
-            resource = cmService.getResourceInfo(resId);
-            resourceFileList = cmService.getResourceFileByResourceId(resId);
-        }
-        
-        ResFile resourceFile = resourceFileList.get(0);
-        String resName = resource.getResName();
-        
-        if (resName.contains("."))
-        {
-            resName = resName.substring(0, resName.lastIndexOf("."));
-        }
-        resName = resName + "." + resourceFile.getFileSuffix();
-
-        return getFileResolution(resourceFile.getFilePath(), resName);
-    }
 }

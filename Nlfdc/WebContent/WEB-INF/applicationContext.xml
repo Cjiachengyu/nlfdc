@@ -56,34 +56,4 @@
 		<property name="basePackage" value="com.kdl.nlfdc.persistence" />
 	</bean>
 	
-	<!-- ============================ quartz 定时任务  start ================================================= -->
-    <bean id="springQtzJob" class="com.kdl.nlfdc.service.TimerTaskService"/>
-
-    <!-- 定义目标bean和bean中的方法 -->
-    <bean id="SpringQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject">
-            <ref bean="springQtzJob"/>
-        </property>
-        <property name="targetMethod">  <!-- 要执行的方法名称 -->
-            <value>execute</value>
-        </property>
-    </bean>
-
-    <!-- 调度触发器 -->
-    <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="SpringQtzJobMethod"></property>
-        <property name="cronExpression" value="0 0 0/12 * * ? "></property>
-    </bean>
-
-    <!-- 调度工厂 -->
-    <bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="triggers">
-            <list>
-                <ref bean="CronTriggerBean"/>
-            </list>
-        </property>
-    </bean>
-    <!-- =================================== quartz 定时任务  end =================================== -->
-	
-
 </beans>

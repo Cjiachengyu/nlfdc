@@ -18,19 +18,10 @@ public class Constants
     // 每个系统不同的常数
     // --------------------------------------------------------------------------------
     public static String PATH_FILE = "/var/webapp/file.war/nlfdc/";
-    public static String URL_DOMAIN_IP = "..";
-    public static String URL_DOMAIN_NAME = "..";
-    static
-    {
-        readSystemConfig();
 
-        System.out.println("current file path: " + PATH_FILE);
-        System.out.println("current domain ip: " + URL_DOMAIN_IP);
-        System.out.println("current domain url: " + URL_DOMAIN_NAME);
-    }
     // 其它常数
     // --------------------------------------------------------------------------------
-    public static final String URL_FILE = URL_DOMAIN_IP + "/file/nlfdc/";
+    public static final String URL_FILE = "../file/nlfdc/";
 
     public static SimpleDateFormat SDF_FULL_TIME_WITH_SECOND = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static SimpleDateFormat SDF_FULL_TIME = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -262,43 +253,6 @@ public class Constants
         String OTHER_TYPE = "other";
     }
 
-    public interface ResourceFromType
-    {
-        public static final int FROM_PERSONAL = 1;
-        public static final int FROM_SCHOOL = 2;
-        public static final int FROM_COMPANY = 3;
-    }
-
-    public interface IsFromCode
-    {
-        public static final String IsFrom_WeiXin = "weixin";
-    }
-
-    public interface Book
-    {
-        public static final float MIN_PRICE = 0.0f;
-        public static final float MAX_PRICE = 999.9f;
-
-        public static final String BOOK_COVER_FOLDER = "textbookCover/";
-    }
-
-    public interface Weixin
-    {
-        public static final String RESP_MESSAGE_TYPE_TEXT       = "text";
-        public static final String RESP_MESSAGE_TYPE_MUSIC      = "music";
-        public static final String RESP_MESSAGE_TYPE_NEWS       = "news";
-
-        public static final String REQ_MESSAGE_TYPE_TEXT        = "text";
-        public static final String REQ_MESSAGE_TYPE_IMAGE       = "image";
-        public static final String REQ_MESSAGE_TYPE_LINK        = "link";
-        public static final String REQ_MESSAGE_TYPE_LOCATION    = "location";
-        public static final String REQ_MESSAGE_TYPE_VOICE       = "voice";
-        public static final String REQ_MESSAGE_TYPE_EVENT       = "event";
-
-        public static final String EVENT_TYPE_SUBSCRIBE         = "subscribe";
-        public static final String EVENT_TYPE_UNSUBSCRIBE       = "unsubscribe";
-        public static final String EVENT_TYPE_CLICK             = "click";
-    }
     
     public interface NotificationTargetType
     {
@@ -313,61 +267,6 @@ public class Constants
         public static final String ALL_TEACHER_STRING   = "全体老师";
         public static final String ALL_PARENT_STRING    = "全体家长";
         public static final String SOME_CLASS_STRING    = "部分班级";
-    }
-
-    public interface RongCloudChat
-    {
-        public static final String APP_KEY      = "mgb7ka1nb57sg";
-        public static final String APP_SECRET   = "Z7rXfF5kc3Qu";
-    }
-    
-    private static void readSystemConfig()
-    {
-        try
-        {
-            if (!Utils.fileExist(PATH_FILE))
-            {
-                String[] otherPaths = {
-                        "D:\\Software\\Tomcat\\host_root\\",
-                        "D:\\var\\webapp\\file.war\\nlfdc\\"
-                };
-
-                for (String p : otherPaths)
-                {
-                    if (Utils.fileExist(p))
-                    {
-                        PATH_FILE = p;
-                        break;
-                    }
-                }
-            }
-
-            Properties prop = null;
-            String defaultConfigPath = Constants.PATH_FILE + "systemConfig/system.properties";
-            if (Utils.fileExist(defaultConfigPath))
-            {
-                prop = Utils.readFromProperties(defaultConfigPath);
-            }
-
-            if (prop != null)
-            {
-                String urlDomain = prop.getProperty("website");
-                if (urlDomain != null)
-                {
-                    URL_DOMAIN_IP = urlDomain.trim();
-                }
-
-                String urlDomainName = prop.getProperty("domainurl");
-                if (urlDomainName != null)
-                {
-                    URL_DOMAIN_NAME = urlDomainName.trim();
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.toString());
-        }
     }
 
 }
