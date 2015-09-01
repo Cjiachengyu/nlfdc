@@ -90,7 +90,7 @@ public class AdminManage extends AbstractActionBean
 
         getCurrentSession().setAttribute("currentMemuOperation", Constants.MainMenuOperation.NOTIFICATION_MANAGE);
 
-        pageModule = new PageModule(5);
+        pageModule = new PageModule(15);
 
         if (menuSelector == null || menuSelector.getCurrentFirstMenuId() == MenuSelector.MENU_ITEM_ALL)
         {
