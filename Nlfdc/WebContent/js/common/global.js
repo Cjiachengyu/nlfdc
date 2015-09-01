@@ -590,44 +590,6 @@ function setFullWindowBg(holderId) {
 	};
 }
 
-function viewResource(resId, resName)
-{
-	if ($("#is_in_mobile_browser").val() === "1") {
-		// createFullMaskLayerWithClose("view_resource_box", resName, getLoading(), null, null);
-		window.location.href = "userresourceitemaction?gotoresourceitem&resId=" + resId + "&isMobile=1";
-	}
-	else {
-		createBorderMaskLayer("view_resource_box", resName, getLoading(), null, null);
-
-		$.ajax({
-			contentType : "application/x-www-form-urlencoded; charset=utf-8",
-			type : "post",
-			url : "userresourceitemaction?gotoresourceitem",
-			data : {resId : resId }, 
-			success : function(result) {
-				isTimeOut(result);
-		
-				if (result.indexOf("#_image_#") == 0)
-				{
-					closeAllLayers();
-					var imageUrl = result.substring(9); 
-						
-					var viewSize = getViewportSize();
-					
-					createBorderMaskLayer("yjtea_check_big_image", "<label style='font-size: 14px;'>查看图片</label> <a class='right' href='javascript:addImage()'><img title='放大' src='image/common/add.png' style='width: 30px; margin-left: 20px;'></a> <a class='right' href='javascript:minusImage()'><img title='缩小' src='image/common/minus.png' style='width: 30px;'></a>", getLoading(), viewSize[0], viewSize[1]);
-					
-					$("#yjtea_check_big_image").html("<div style='text-align: center;'><img id='view_big_image' src='" + imageUrl + "' style='max-width: 95%; max-height: "+(viewSize[1]-100)+"px;' ></div>");
-					
-				}
-				else
-				{
-					$("#view_resource_box").html(result);
-				}
-			}
-		});
-	}
-}
-
 function addImage() {
 	var width = $("#view_big_image").width() + 100;
 	var style = "width:"+width+"px;"
