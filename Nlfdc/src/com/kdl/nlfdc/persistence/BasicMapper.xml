@@ -100,6 +100,16 @@
 		insert into admin (loginName, adminName, adminRole, password)
 		values (#{loginName}, #{adminName}, #{adminRole}, #{password})
 	</insert>
+	
+	<update id="updateAdmin" parameterType="Admin">
+		update
+			admin
+		set
+			password = #{password},
+			adminRole = #{adminRole}
+		where
+			adminId = #{adminId}
+	</update>
 		
 	<select id="getAdminByAdminId" parameterType="int" resultType="Admin">
 		select

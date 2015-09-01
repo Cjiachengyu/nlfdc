@@ -154,6 +154,11 @@ public class CmService implements Serializable
         basicMapper.insertAdminAndGetAdminId(admin);
     }
     
+    public void updateAdmin(Admin admin)
+    {
+        basicMapper.updateAdmin(admin);
+    }
+    
     public Admin getAdminByAdminId(int adminId)
     {
         return basicMapper.getAdminByAdminId(adminId);

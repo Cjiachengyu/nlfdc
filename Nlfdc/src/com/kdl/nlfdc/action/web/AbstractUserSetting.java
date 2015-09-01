@@ -41,7 +41,7 @@ public abstract class AbstractUserSetting extends AbstractActionBean
         }
 
         Admin admin = getCurrentAdmin();
-        String oldPwd = realUser.getPassword();
+        String oldPwd = admin.getPassword();
         String newPwd = getParam("newPwd");
         if (!oldPwd.equals(getParam("oldPwd")))
         {
@@ -53,18 +53,17 @@ public abstract class AbstractUserSetting extends AbstractActionBean
             return getStringResolution("length_exception");
         }
 
-        realUser.setPassword(newPwd);
+        admin.setPassword(newPwd);
         try
         {
-            log("update " + realUser.getUserName() + "'s pwd from " + oldPwd + " to " + newPwd
-                    + ", loginUser: " + getCurrentLoginUser().getUserName());
+            log("update " + admin.getAdminName() + "'s pwd from " + oldPwd + " to " + newPwd);
 
-            cmService.updateUser(realUser);
+            cmService.updateAdmin(admin);
             return getStringResolution("ok");
         }
         catch (Exception e)
         {
-            realUser.setPassword(oldPwd);
+            admin.setPassword(oldPwd);
             return getStringResolution("error");
         }
     }
