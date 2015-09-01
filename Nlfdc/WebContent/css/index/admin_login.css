@@ -20,8 +20,8 @@ body {background-color: #eaeaea; }
 
 .login_box { width: 560px; margin: 0 auto; background: #F4F0FF; }
 .tab_item { cursor: pointer; float: left; background: #FAB2B0; color: white; padding-top: 20px;  font-size: 25px; width: 100%; text-align: center; }
-.tab_selected { color: #339966; background: white; } 
-.input_btn { width: 360px; padding: 8px 10px; background: #339966; font-size: 1em; color: white; border: none; border-radius: 5px; cursor: pointer; }
+.tab_selected { color: #0B53A3; background: white; } 
+.input_btn { width: 360px; padding: 8px 10px; background: #0B53A3; font-size: 2em; color: white; border: none; border-radius: 5px; cursor: pointer; }
 
 #footer { bottom: 0; width: 100%; text-align: center; font-size: 15px; font-family: Arial; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000); background: rgb(255, 255, 255); }
 .header { margin-top: 40px; height: 180px; position: relative; text-align: right; }

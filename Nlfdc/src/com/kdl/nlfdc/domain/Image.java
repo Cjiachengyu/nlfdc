@@ -17,7 +17,7 @@ public class Image implements Serializable
     private int type;
     private String imageUrl;
     private int notificationId;
-    
+    private String notificationTitle;
     
     public int getImageId()
     {
@@ -50,6 +50,14 @@ public class Image implements Serializable
     public void setNotificationId(int notificationId)
     {
         this.notificationId = notificationId;
+    }
+    public String getNotificationTitle()
+    {
+        return notificationTitle;
+    }
+    public void setNotificationTitle(String notificationTitle)
+    {
+        this.notificationTitle = notificationTitle;
     }
     
 }

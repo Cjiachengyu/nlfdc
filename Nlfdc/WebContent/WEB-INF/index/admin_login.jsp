@@ -5,7 +5,7 @@
 
 <link href="css/index/admin_login.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
-<div id="wrap" style="min-height: 500px; margin-top: 140px; padding: 0 70px;" >
+<div id="wrap" style="text-align: center; height: 50%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;" >
 
 	<div class="login_box">
 		<div>
@@ -43,6 +43,10 @@
     
 </div>
 
+<img id="bg_img" style="position: fixed; top:0; left:0; z-index:-100; " src="image/index/admin_index_bg.png" />
+
+<!-- 
+ -->
 <div id="footer">
     <div style=" top: 0px; width: 100%; text-align: center; font-size: 15px; font-family: Arial; color: gray; line-height: 4em; position: relative; " >
         <p>Copyright &copy; 宁陵县房地产发展保障管理中心</p>

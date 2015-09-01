@@ -260,9 +260,9 @@
 
 	<select id="getImageList" parameterType="int" resultType="Image">
 		select 
-			*
+			image.*, notification.title as notificationTitle
 		from 
-			image
+			image join notification using (notificationId)
 		where
 			type = #{type}
 	</select>

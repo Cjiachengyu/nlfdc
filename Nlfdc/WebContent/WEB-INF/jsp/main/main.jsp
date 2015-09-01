@@ -54,16 +54,20 @@ span, li, a { font-size: 12px; }
 	<div class="row1_box">
 	 	<div class="row1_left_big">
 	 		<div class="row1_left_big_left">
-	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[0].notificationId }">
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[0].notificationId }"
+	 				title="${actionBean.newsImageList[0].notificationTitle }">
 	 			<img id="dot_image_1" src="${actionBean.newsImageList[0].imageUrl }" class="show_img ">	
 	 			</a>
-	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[1].notificationId }">
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[1].notificationId }"
+	 				title="${actionBean.newsImageList[1].notificationTitle }">
 	 			<img id="dot_image_2" src="${actionBean.newsImageList[1].imageUrl }" class="show_img hide">
 	 			</a>	
-	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[2].notificationId }">
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[2].notificationId }"
+	 				title="${actionBean.newsImageList[2].notificationTitle }">
 	 			<img id="dot_image_3" src="${actionBean.newsImageList[2].imageUrl }" class="show_img hide">
 	 			</a>	
-	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[3].notificationId }">
+	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[3].notificationId }"
+	 				title="${actionBean.newsImageList[3].notificationTitle }">
 	 			<img id="dot_image_4" src="${actionBean.newsImageList[3].imageUrl }" class="show_img hide">
 	 			</a>
 	 			<div class="image_selector">
@@ -85,7 +89,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[1] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -107,7 +112,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[2] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -130,7 +136,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[3] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -151,7 +158,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[4] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -177,7 +185,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[5] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -197,7 +206,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[7] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -214,25 +224,32 @@ span, li, a { font-size: 12px; }
 	 			<img src="image/common/act_pic_03.png" style="margin: 12px 5px; display: inline-block;">
 				
 				<div id="rolling_img_box" class="rolling_img_box">
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }"
+					title="${actionBean.rollImageList[0].notificationTitle }">
 				<img id="sample1" src="${actionBean.rollImageList[0].imageUrl }" class="roll_img" index="7" style="left: 7px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }"
+					title="${actionBean.rollImageList[1].notificationTitle }">
 				<img id="sample2" src="${actionBean.rollImageList[1].imageUrl }" class="roll_img" index="160" style="left: 160px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }"
+					title="${actionBean.rollImageList[2].notificationTitle }">
 				<img id="sample3" src="${actionBean.rollImageList[2].imageUrl }" class="roll_img" index="313" style="left: 313px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[3].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[3].notificationId }"
+					title="${actionBean.rollImageList[3].notificationTitle }">
 				<img id="sample4" src="${actionBean.rollImageList[3].imageUrl }" class="roll_img" index="466" style="left: 466px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }"
+					title="${actionBean.rollImageList[0].notificationTitle }">
 				<img id="sample5" src="${actionBean.rollImageList[0].imageUrl }" class="roll_img" index="617" style="left: 617px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }"
+					title="${actionBean.rollImageList[1].notificationTitle }">
 				<img id="sample6" src="${actionBean.rollImageList[1].imageUrl }" class="roll_img" index="772" style="left: 772px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }"
+					title="${actionBean.rollImageList[2].notificationTitle }">
 				<img id="sample7" src="${actionBean.rollImageList[2].imageUrl }" class="roll_img" index="925" style="left: 925px;">
 				</a>
 				</div>
@@ -249,7 +266,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[8] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
@@ -269,7 +287,8 @@ span, li, a { font-size: 12px; }
 						<c:forEach var="notification" items="${actionBean.firstMenuNotificationList[9] }">
 							<li>
 							[${notification.secondMenuName }] 
-							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }">
+							<a class="notification_link" href="commonusernotificationmain?viewnotification=&notificationId=${notification.notificationId }"
+								title="${notification.title }">
 								${notification.shortTitle }
 							</a>
 							<span class="right gray">${notification.createDateString }</span>
