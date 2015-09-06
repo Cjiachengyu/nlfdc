@@ -1,3 +1,4 @@
+* {margin: 0; padding: 0; font-size: 12px; }
 .top_root { background-color: #0a4773; }
 .top_root a:hover {color: white; }
 .top_main_menu_div { margin: 0 20px; display: inline-block; position: relative}

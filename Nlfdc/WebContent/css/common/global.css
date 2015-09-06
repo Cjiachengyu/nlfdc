@@ -1,4 +1,4 @@
-﻿* {margin: 0; padding: 0; font-size: 12px; font-family: 微软雅黑; }
+﻿* { padding: 0; font-family: 微软雅黑; }
 body {min-width: 1020px; font-size: 17px; }
 
 a { color: blue; text-decoration: none; cursor: pointer; }
@@ -88,7 +88,7 @@ ul { list-style: none; }
 .font29 { font-size: 29px; }
 .font30 { font-size: 30px; }
 .font_big{font-size: 24px;}
-.font_middle{font-size: 17px;}
+.font_middle{font-size: 12px;}
 .font_small{font-size: 14px;}
 .font_tiny{font-size: 12px;}
 .font_yahei{font-family: 微软雅黑;}

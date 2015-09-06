@@ -3,7 +3,6 @@ package com.kdl.nlfdc.action;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 public class Constants
 {
@@ -19,6 +18,12 @@ public class Constants
     // --------------------------------------------------------------------------------
     public static String PATH_FILE = "/var/webapp/file.war/nlfdc/";
 
+    static
+    {
+        readSystemConfig();
+
+        System.out.println("current file path: " + PATH_FILE);
+    }
     // 其它常数
     // --------------------------------------------------------------------------------
     public static final String URL_FILE = "../file/nlfdc/";
@@ -267,6 +272,38 @@ public class Constants
         public static final String ALL_TEACHER_STRING   = "全体老师";
         public static final String ALL_PARENT_STRING    = "全体家长";
         public static final String SOME_CLASS_STRING    = "部分班级";
+    }
+
+    private static void readSystemConfig()
+    {
+        try
+        {
+            if (!Utils.fileExist(PATH_FILE))
+            {
+                System.out.println("dir not exist");
+                String[] otherPaths = {
+                        "D:\\var\\webapp\\file.war\\youjiao\\"
+                };
+
+                for (String p : otherPaths)
+                {
+                    if (Utils.fileExist(p))
+                    {
+                        PATH_FILE = p;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                
+                System.out.println("dir exist");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
     }
 
 }

@@ -233,6 +233,7 @@
 		from notification
 		where 
 			title like #{searchText}
+			and isDeleted = 0
 	</select>
 	
 	<select id="getSearchNotificationList" resultType="Notification">
@@ -240,6 +241,7 @@
 		from notification join second_menu using (secondMenuId)
 		where 
 			title like #{searchText}
+			and isDeleted = 0
 		limit #{limitBegin}, #{pageSize}
 	</select>
 		

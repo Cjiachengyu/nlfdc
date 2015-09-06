@@ -186,7 +186,6 @@ public class AdminManage extends AbstractActionBean
 
         if (image == null)
         {
-            System.out.println("image == null");
             return getStringTimeoutResolution();
         }
 

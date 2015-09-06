@@ -28,7 +28,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 .tip_box { width: 100%; height: 36px; background-color: #458FCD; position: relative; }
 .tip_box span { display: inline-block; color: white; margin: 12px 20px; margin-left: 30px; margin-right: 0; }
 .content { width: 80%; min-height: 600px; }
-.search_btn {float: right; display: inline-block; background-color: white; width: 60px; height:24px; margin: 8px; padding: 4px 0; text-align: center; }
+.search_btn {float: right; display: inline-block; background-color: white; width: 60px; height:24px; margin: 8px; text-align: center; }
 .search_text { float: right; margin-top: 8px; height: 18px; }
 </style>
 
@@ -58,7 +58,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 	</div>
 	
 	<div class="tip_box">
-		<span>欢迎访问宁陵县房地产发展保障管理中心！</span>
+		<span>欢迎访问宁陵县房地产发展保障管理中心</span>
 		<span id="date_info"></span>
 		<input type="button" id="search_btn" class="search_btn" value="搜索" onclick="search()">		
 		<input type="text" id="search_text" class="search_text" onkeydown="checkEnter(event)">
