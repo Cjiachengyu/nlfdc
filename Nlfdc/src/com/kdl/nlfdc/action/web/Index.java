@@ -31,6 +31,8 @@ public class Index extends AbstractActionBean
     private static final long serialVersionUID = -6965961964257758466L;
     private static final String MAIN_PAGE = "/WEB-INF/jsp/main/main.jsp";
     private static final String NAVIGATION_PAGE = "/WEB-INF/jsp/main/navigation.jsp";
+    
+    private static final String TIP = "/WEB-INF/index/wait.html";
 
     private static final int[] max_notification_num = {0, 11, 11, 9, 9, 9, 9, 9, 8, 8};
     
@@ -119,6 +121,12 @@ public class Index extends AbstractActionBean
         return new ForwardResolution(NAVIGATION_PAGE);
     }
    
+    @HandlesEvent("showtip")
+    public Resolution showTip()
+    {
+        return new ForwardResolution(TIP);
+    }
+    
     //  private
     // -----------------------------------------------------------------
     private int generateTime()
@@ -147,4 +155,5 @@ public class Index extends AbstractActionBean
     }
     
 
+    
 }

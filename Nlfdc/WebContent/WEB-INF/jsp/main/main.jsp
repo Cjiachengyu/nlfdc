@@ -125,8 +125,11 @@
 		    </div>
 	 	</div>
 	 	
-	 	<div class="row2_col3">
-	 		<h3>图片链接</h3>
+	 	<div class="row2_col3" style="text-align: center; ">
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 33px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 33px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 33px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 33px;"></a>
 	 	</div>
 	</div>
 	

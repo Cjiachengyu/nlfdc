@@ -75,7 +75,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 <script type="text/javascript">
 var date = new Date();
 var year = date.getFullYear();
-var month = date.getMonth();
+var month = date.getMonth() + 1;
 var day = date.getDate();
 var weekDay = date.getDay();
 
