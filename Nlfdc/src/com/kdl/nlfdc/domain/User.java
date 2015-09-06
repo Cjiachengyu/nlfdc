@@ -36,38 +36,6 @@ public class User implements Serializable
     // 附加存取器
     // --------------------------------------------------------------------------------
 
-    public boolean isMaster()
-    {
-        return userRole == Constants.UserRole.YJ_MASTER;
-    }
-
-    public boolean isYjTeacher()
-    {
-        return userRole == Constants.UserRole.YJ_TEACHER;
-    }
-
-    public boolean isYjParent()
-    {
-        return userRole == Constants.UserRole.YJ_PARENT;
-    }
-
-    public String getUserRoleString()
-    {
-        switch (userRole)
-        {
-        case Constants.UserRole.YJ_PARENT:
-            return "家长";
-        case Constants.UserRole.YJ_TEACHER:
-            return "老师";
-        case Constants.UserRole.YJ_MASTER:
-            return "校长";
-        case Constants.UserRole.YJ_EDITOR:
-            return "编辑";
-        case Constants.UserRole.YJ_ADMIN:
-            return "管理员";
-        }
-        return "未知角色";
-    }
 
     // 存取器
     // --------------------------------------------------------------------------------
