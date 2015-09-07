@@ -60,7 +60,7 @@ a {color: #2c65a9}
 						${actionBean.menuSelector.currentFirstMenu.firstMenuName }
 					</span>
 			</div>
-			<div>
+			<div style="padding-bottom: 60px;">
 				<h2 style="text-align: center;">${actionBean.viewIngNotification.title }</h2 >
 				<span style="display: inline-block; width: 100%; text-align: center; ">发布时间： ${actionBean.viewIngNotification.createTimeString }
 				&nbsp;|&nbsp;
@@ -70,6 +70,14 @@ a {color: #2c65a9}
 				<pre id="notification_content" class="normal_text">
 					${actionBean.viewIngNotification.content }
 				</pre>
+				<!-- 
+				 -->
+				<hr style="margin-top: 100px; ">
+				<div class="bottom_operation_div">
+					<a href="#top" class="right">【返回顶部】</a>
+					<a href="javascript:closeWindow();" class="right">【关闭窗口】</a>
+					<a class="right">【打印本页】</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -90,9 +98,13 @@ function setFontSize(index)
 	{
 		$("#notification_content").attr("class", "big_text");
 	}
-	
 }
 
+function closeWindow()
+{
+	window.location.href="about:config";
+	window.close(); 
+}
 
 </script>
 <%@ include file="../component/CommonBottom.jsp"%>
