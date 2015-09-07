@@ -27,10 +27,10 @@
 	 			<img id="dot_image_4" src="${actionBean.newsImageList[3].imageUrl }" class="show_img hide">
 	 			</a>
 	 			<div class="image_selector">
-	 				<a id="dot1" class="dot" href="##" onmouseover="chooseDot(1)"></a>
-	 				<a id="dot2" class="dot" href="##" onmouseover="chooseDot(2)"></a>
+	 				<a id="dot4" class="dot" href="##" onmouseover="chooseDot(4)"></a>
 	 				<a id="dot3" class="dot" href="##" onmouseover="chooseDot(3)"></a>
-	 				<a id="dot4" class="choosed" href="##" onmouseover="chooseDot(4)"></a>
+	 				<a id="dot2" class="dot" href="##" onmouseover="chooseDot(2)"></a>
+	 				<a id="dot1" class="choosed" href="##" onmouseover="chooseDot(1)"></a>
 	 			</div>	
 	 		</div>
 	 		
@@ -267,12 +267,16 @@
 
 <script type="text/javascript">
 	var rollingImageLength = $("#rolling_img_box img").length;
+	var newImageIndex = 1;
 	
 	$(function(){
 		var speed=50//速度数值越大速度越慢
 		var MyMar3=setInterval(move,speed)
 		rolling_img_box.onmouseover = function() {clearInterval(MyMar3)}
 		rolling_img_box.onmouseout = function() {MyMar3=setInterval(move,speed)}
+		
+		
+		setInterval(autoChooseDot, 3000);
 	});
 	
 	function move()
@@ -297,6 +301,17 @@
 		$("#dot_image_"+index).attr("class", "show_img");
 		$(".choosed").attr("class", "dot");
 		$("#dot"+index).attr("class", "choosed");
+	}
+	
+	function autoChooseDot()
+	{
+		newImageIndex++;
+		if (newImageIndex > 4)
+		{
+			newImageIndex = newImageIndex % 4;
+		}
+		
+		chooseDot(newImageIndex);
 	}
 </script>
 
