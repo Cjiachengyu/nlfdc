@@ -4,7 +4,6 @@
 
 <title>查看通知</title>
 
-<link href="css/common/global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 <style>
 .wrap_main { width: 1080px; background-color: white; margin: auto;}
 .main_content {float: left; width: 740px; margin-top: 15px; padding: 10px 20px 0px 30px; min-height: 670px; }
