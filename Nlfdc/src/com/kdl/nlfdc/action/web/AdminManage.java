@@ -379,7 +379,9 @@ public class AdminManage extends AbstractActionBean
                 + secondMenuId
                 + " limitBegin: " + limitBegin + ", pageSize: " + pageSize);
 
-        int notificationCount = cmService.getAdminNotificationCount(firstMenuId, secondMenuId);
+        int notificationCount = 0;
+        
+        notificationCount = cmService.getAdminNotificationCount(firstMenuId, secondMenuId);
 
         notificationList = cmService.getAdminNotificationList(firstMenuId, secondMenuId, limitBegin, pageSize);
 

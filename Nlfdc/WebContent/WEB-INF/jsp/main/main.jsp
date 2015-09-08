@@ -124,12 +124,13 @@
 					</ul>
 		    </div>
 	 	</div>
-	 	
+	 
+	 	<!-- to_be_replaced -->	
 	 	<div class="row2_col3" style="text-align: center; ">
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 33px;"></a>
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic2.png" style="margin-top: 33px;"></a>
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic3.png" style="margin-top: 33px;"></a>
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic4.png" style="margin-top: 33px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 30px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic2.png" style="margin-top: 30px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic3.png" style="margin-top: 30px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic4.png" style="margin-top: 30px;"></a>
 	 	</div>
 	</div>
 	
