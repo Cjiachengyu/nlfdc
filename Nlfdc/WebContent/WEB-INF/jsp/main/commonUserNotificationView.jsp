@@ -61,7 +61,7 @@ a {color: #2c65a9}
 					</span>
 			</div>
 			<div style="padding-bottom: 60px;">
-				<h2 style="text-align: center;">${actionBean.viewIngNotification.title }</h2 >
+				<h2 style="text-align: center;" id="notifictaion_title">${actionBean.viewIngNotification.title }</h2 >
 				<span style="display: inline-block; width: 100%; text-align: center; ">发布时间： ${actionBean.viewIngNotification.createTimeString }
 				&nbsp;|&nbsp;
 				字号：【<a href="javascript:setFontSize(3)">大</a>&nbsp;<a href="javascript:setFontSize(2)">中</a>&nbsp;<a href="javascript:setFontSize(1)">小</a>】
@@ -75,8 +75,8 @@ a {color: #2c65a9}
 				<hr style="margin-top: 100px; ">
 				<div class="bottom_operation_div">
 					<a href="#top" class="right">【返回顶部】</a>
-					<a href="javascript:closeWindow();" class="right">【关闭窗口】</a>
-					<a class="right">【打印本页】</a>
+					<a href="javascript:window.close()" class="right">【关闭窗口】</a>
+					<a href="javascrīpt:printme()" target="_self" class="right">【打印本页】</a>
 				</div>
 			</div>
 		</div>
@@ -100,11 +100,11 @@ function setFontSize(index)
 	}
 }
 
-function closeWindow()
-{
-	window.location.href="about:config";
-	window.close(); 
-}
+function printme() 
+{ 
+	document.body.innerHTML = $("#notifictaion_title").html() + "<br/>" + $("#notification_content").html();
+	window.print();
+} 
 
 </script>
 <%@ include file="../component/CommonBottom.jsp"%>
