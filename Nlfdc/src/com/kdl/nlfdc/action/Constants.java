@@ -103,7 +103,7 @@ public class Constants
             {
                 System.out.println("dir not exist");
                 String[] otherPaths = {
-                        "D:\\var\\webapp\\file.war\\youjiao\\"
+                        "D:\\var\\webapp\\file.war\\nlfdc\\"
                 };
 
                 for (String p : otherPaths)

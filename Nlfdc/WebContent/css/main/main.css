@@ -1,11 +1,10 @@
-span, li, a { font-size: 12px; }
 .line_box {display: inline-block; }
 .clear { clear: both; }
 .hide {display: none; }
 .right { float: right; }
 .gray { color: grey; }
-.main_content { width: 1080px; height: 1245px; margin: auto; margin-top: 5px; background-color: white; position: relative;  }
-.row1_box { width: 1070px; margin: 5px; height: 300px; border: solid 1px white; }
+.main_content { width: 1080px; height: 1245px; margin: auto;  background-color: white; position: relative;  }
+.row1_box { width: 1070px; margin: 5px; margin-top: 0; height: 300px; border: solid 1px white; }
 .row2_box { width: 1070px; margin: 5px; height: 250px; border: solid 1px white; }
 .row3_box { width: 1070px; margin: 5px; height: 250px; border: solid 1px white; }
 .row3_plus_box { width: 1068px; margin: 5px; height: 162px; border: solid 1px #0099CC; }

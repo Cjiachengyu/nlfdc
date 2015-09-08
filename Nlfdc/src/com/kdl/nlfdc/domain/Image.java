@@ -14,7 +14,7 @@ public class Image implements Serializable
     private static final long serialVersionUID = 7969284775604022068L;
     
     private int imageId;
-    private int type;
+    private int type;               // 1-新闻图片， 2-滚动图片
     private String imageUrl;
     private int notificationId;
     private String notificationTitle;
