@@ -75,7 +75,7 @@ a {color: #2c65a9}
 				<hr style="margin-top: 100px; ">
 				<div class="bottom_operation_div">
 					<a href="#top" class="right">【返回顶部】</a>
-					<a href="javascript:window.close()" class="right">【关闭窗口】</a>
+					<a href="javascript:closeWindows()" class="right">【关闭窗口】</a>
 					<a href="javascrīpt:printme()" target="_self" class="right">【打印本页】</a>
 				</div>
 			</div>
@@ -106,5 +106,10 @@ function printme()
 	window.print();
 } 
 
+function closeWindows() {
+	window.opener=null;      
+	window.open('','_self');      
+	window.close();     
+}
 </script>
 <%@ include file="../component/CommonBottom.jsp"%>
