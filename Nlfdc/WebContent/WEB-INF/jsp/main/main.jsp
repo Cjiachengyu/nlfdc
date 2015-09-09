@@ -200,17 +200,17 @@
 					title="${actionBean.rollImageList[3].notificationTitle }">
 				<img id="sample4" src="${actionBean.rollImageList[3].imageUrl }" class="roll_img" index="466" style="left: 466px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }"
-					title="${actionBean.rollImageList[0].notificationTitle }">
-				<img id="sample5" src="${actionBean.rollImageList[0].imageUrl }" class="roll_img" index="617" style="left: 617px;">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[4].notificationId }"
+					title="${actionBean.rollImageList[4].notificationTitle }">
+				<img id="sample5" src="${actionBean.rollImageList[4].imageUrl }" class="roll_img" index="617" style="left: 617px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[1].notificationId }"
-					title="${actionBean.rollImageList[1].notificationTitle }">
-				<img id="sample6" src="${actionBean.rollImageList[1].imageUrl }" class="roll_img" index="772" style="left: 772px;">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[5].notificationId }"
+					title="${actionBean.rollImageList[5].notificationTitle }">
+				<img id="sample6" src="${actionBean.rollImageList[5].imageUrl }" class="roll_img" index="772" style="left: 772px;">
 				</a>
-				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[2].notificationId }"
-					title="${actionBean.rollImageList[2].notificationTitle }">
-				<img id="sample7" src="${actionBean.rollImageList[2].imageUrl }" class="roll_img" index="925" style="left: 925px;">
+				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[6].notificationId }"
+					title="${actionBean.rollImageList[6].notificationTitle }">
+				<img id="sample7" src="${actionBean.rollImageList[6].imageUrl }" class="roll_img" index="925" style="left: 925px;">
 				</a>
 				</div>
 	</div>
