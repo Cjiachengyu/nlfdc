@@ -76,7 +76,7 @@ a {color: #2c65a9}
 				<div class="bottom_operation_div">
 					<a href="#top" class="right">【返回顶部】</a>
 					<a href="javascript:closeWindows()" class="right">【关闭窗口】</a>
-					<a href="javascrīpt:printme()" target="_self" class="right">【打印本页】</a>
+					<a href="javascript:window.print();" class="right">【打印本页】</a>
 				</div>
 			</div>
 		</div>
