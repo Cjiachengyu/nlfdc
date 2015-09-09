@@ -11,26 +11,29 @@
 	 	<div class="row1_left_big">
 	 		<div class="row1_left_big_left">
 	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[0].notificationId }"
-	 				title="${actionBean.newsImageList[0].notificationTitle }">
+	 				id="news_image_href_1" title="${actionBean.newsImageList[0].notificationTitle }">
 	 			<img id="dot_image_1" src="${actionBean.newsImageList[0].imageUrl }" class="show_img ">	
 	 			</a>
 	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[1].notificationId }"
-	 				title="${actionBean.newsImageList[1].notificationTitle }">
+	 				id="news_image_href_2" title="${actionBean.newsImageList[1].notificationTitle }">
 	 			<img id="dot_image_2" src="${actionBean.newsImageList[1].imageUrl }" class="show_img hide">
 	 			</a>	
 	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[2].notificationId }"
-	 				title="${actionBean.newsImageList[2].notificationTitle }">
+	 				id="news_image_href_3" title="${actionBean.newsImageList[2].notificationTitle }">
 	 			<img id="dot_image_3" src="${actionBean.newsImageList[2].imageUrl }" class="show_img hide">
 	 			</a>	
 	 			<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.newsImageList[3].notificationId }"
-	 				title="${actionBean.newsImageList[3].notificationTitle }">
+	 				id="news_image_href_4" title="${actionBean.newsImageList[3].notificationTitle }">
 	 			<img id="dot_image_4" src="${actionBean.newsImageList[3].imageUrl }" class="show_img hide">
 	 			</a>
 	 			<div class="image_selector">
-	 				<a id="dot4" class="dot" href="##" onmouseover="chooseDot(4)"></a>
-	 				<a id="dot3" class="dot" href="##" onmouseover="chooseDot(3)"></a>
-	 				<a id="dot2" class="dot" href="##" onmouseover="chooseDot(2)"></a>
-	 				<a id="dot1" class="choosed" href="##" onmouseover="chooseDot(1)"></a>
+	 				<span id="news_image_title" class="left" style="color: white; margin: 7px 2px; text-align: left; height: 18px; width: 160px; overflow: hidden; ">
+	 					${actionBean.newsImageList[0].notificationTitle }
+	 				</span>
+	 				<a id="dot4" class="dot" href="##" onmouseover="chooseDot(4)" ></a>
+	 				<a id="dot3" class="dot" href="##" onmouseover="chooseDot(3)" ></a>
+	 				<a id="dot2" class="dot" href="##" onmouseover="chooseDot(2)" ></a>
+	 				<a id="dot1" class="choosed" href="##" onmouseover="chooseDot(1)" ></a>
 	 			</div>	
 	 		</div>
 	 		
@@ -276,8 +279,7 @@
 		rolling_img_box.onmouseover = function() {clearInterval(MyMar3)}
 		rolling_img_box.onmouseout = function() {MyMar3=setInterval(move,speed)}
 		
-		
-		setInterval(autoChooseDot, 3000);
+		setInterval(autoChooseDot, 4000);
 	});
 	
 	function move()
@@ -298,10 +300,13 @@
 	
 	function chooseDot(index)
 	{
+		newImageIndex = index;
 		$(".show_img").addClass("hide");
 		$("#dot_image_"+index).attr("class", "show_img");
 		$(".choosed").attr("class", "dot");
 		$("#dot"+index).attr("class", "choosed");
+		
+		$("#news_image_title").html($("#news_image_href_"+index).attr("title"));
 	}
 	
 	function autoChooseDot()
