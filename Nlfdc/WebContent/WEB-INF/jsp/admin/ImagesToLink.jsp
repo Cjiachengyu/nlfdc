@@ -15,7 +15,7 @@
 .ok_btn { float: right; width: 200px; margin-bottom: 10px; }
 </style>
 <!-- 弹出框-添加班级，不需要添加title -->
-<div style="width: 100%; oveflow: scroll; ">
+<div style="width: 100%; overflow-y: scroll; height: 455px;">
 	<div class="news_image_box">
 		<span class="title">新闻图片：</span>
 		<br>
@@ -40,9 +40,10 @@
 		</div>	
 	</div>
 	
-	<div class="operation_box">
-		<a class="blue_button ok_btn" href="javascript:doLinkImage();">确定</a>
-	</div>
+</div>
+
+<div class="operation_box">
+	<a class="blue_button ok_btn" href="javascript:doLinkImage();">确定</a>
 </div>
 
 <script>
