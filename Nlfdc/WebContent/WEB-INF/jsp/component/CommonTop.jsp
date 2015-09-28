@@ -24,10 +24,10 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 .head_links span { border-right: solid 1px white; margin-top: 8px; }
 .mar_left_20 { margin-left: 20px; }
 .mar_right_20 { margin-right: 20px; }
-.lead_links { width: 100%; height: 40px; background-color: #276ABB; border-radius: 5px; }
+.lead_links { width: 100%; height: 40px; background-color: red; border-radius: 5px; }
 .lead_links a { display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: white;}
-.lead_links a:hover {color: red; }
-.tip_box { width: 100%; height: 36px; background-color: #458FCD; position: relative; }
+.lead_links a:hover { background-color: white; color: black; }
+.tip_box { width: 100%; height: 36px; background-color: red; position: relative; }
 .tip_box span { display: inline-block; color: white; margin: 12px 20px; margin-left: 30px; margin-right: 0; }
 .content { width: 80%; min-height: 600px; }
 .search_btn {float: right; display: inline-block; background-color: white; width: 60px; height:24px; margin: 8px; text-align: center; }
@@ -39,7 +39,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 <div class="wrap1">
 	<div class="box_title">
 		<div class="head_links">
-		 	<a class="mar_left_20" href="javascript:void(0);" onclick="SetHome(this,'http://www.baidu.com');" >设为首页</a>
+		 	<a class="mar_left_20" href="javascript:void(0);" onclick="SetHome(this,'');" >设为首页</a>
 		 	<span></span>
 		 	<a href="javascript:void(0);" onclick="AddFavorite('脚本之家','http://www.baidu.com')">加入收藏</a>
 		 	<span></span>

@@ -8,7 +8,7 @@
 .col_1 { display: inline-block; width: 70%; margin-top: 10px; }
 .col_2 { display: inline-block; width: 10%; float: right; margin-top: 10px; text-align: right; }
 .col_3 { display: inline-block; width: 15%; float: right; margin-top: 10px; text-align: center; }
-.notification_link {color: blue; text-decoration: none; }
+.notification_link {color: black; text-decoration: none; }
 .notification_link:hover {color: red; text-decoration: none; }
 .operation_link {color: black; }
 .operation_link:hover {color: red; }

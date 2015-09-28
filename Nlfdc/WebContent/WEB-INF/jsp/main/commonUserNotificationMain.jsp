@@ -10,7 +10,7 @@
 .right_border_box { height: 610px; width: 16px; float: left; margin: 5px 0px; background-image: url(image/common/long_fenge_03.png);}
 .left_link { height: 610px; width: 242px; margin: 5px 0px; }
 .link { height: 24px; width: 200px; margin: auto; margin-top: 20px; border-bottom: solid 1px #c7c7c7; }
-.second_menu_link { color: #2c65a9; }
+.second_menu_link { color: black; }
 .second_menu_link:hover { color: red; }
 .location { height: 24px; margin-top: 5px; }
 .location a { color: #2c65a9; }

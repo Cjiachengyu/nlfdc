@@ -25,7 +25,7 @@
 
 .box_header { width: 98%; height: 30px; border-bottom: solid 1px #0099CC; position: relative; }
 .box_header span { display: inline-block; color: white; text-align: center; padding: 4px 0; font-size: 14px; font-weight: bolder; 
-	 margin: 6px 10px 4px 10px; width: 86px; height:17px; background-color: #0066CC; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+	 margin: 6px 10px 4px 10px; width: 86px; height:17px; background-color: red; border-top-left-radius: 6px; border-top-right-radius: 6px; }
 .box_header a { float: right; display: inline-block; width: 46px; height: 16px; margin: 7px; background-image: url(../../image/common/more_03.png); }
 .box_content { width: 99%; position: relative; } 
 .box_content ul {width: 96%; padding-left: 22px; }
@@ -34,7 +34,7 @@
 .image_selector { width: 300px; height: 30px; margin: -4px 5px 5px 5px; background: black; text-align: center; position: relative;  }
 .dot { display: inline-block; width: 10px; height: 10px; margin: 10px; border-radius: 50%; background-color: white; float: right;}
 .choosed {display: inline-block; width: 10px; height: 10px; margin: 10px; border-radius: 50%; background-color: green; float: right; }
-.notification_link {color: blue; text-decoration: none; }
+.notification_link {color: black; text-decoration: none; }
 .notification_link:hover {color: red; text-decoration: none; }
 
 .rolling_img_box {display: inline-block; width: 925px; height: 146px; margin: 6px 40px; position: relative; overflow: hidden; border: solid 1px black; }
