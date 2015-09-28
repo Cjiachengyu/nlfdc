@@ -12,7 +12,7 @@
 <style type="text/css">
 span, li, a {font-size: 12px;}
 a {text-decoration: none; }
-body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
+body {margin: 0; background: white; }
 .wrap1 { width: 1080px; margin: auto; background-image: url(image/commonTop/logo_05.png); }
 .wrap2 { width: 1080px; margin: auto; }
 .box_title {width: 100%; height: 37px; position: relative; }
@@ -24,7 +24,7 @@ body {margin: 0; background: url(image/commonTop/body_1px_02.png); }
 .head_links span { border-right: solid 1px white; margin-top: 8px; }
 .mar_left_20 { margin-left: 20px; }
 .mar_right_20 { margin-right: 20px; }
-.lead_links { width: 100%; height: 40px; background-color: red; border-radius: 5px; }
+.lead_links { width: 100%; height: 40px; background-color: red; }
 .lead_links a { display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: white;}
 .lead_links a:hover { background-color: white; color: black; }
 .tip_box { width: 100%; height: 36px; background-color: red; position: relative; }
