@@ -25,10 +25,13 @@ body {margin: 0; background: white; }
 .mar_left_20 { margin-left: 20px; }
 .mar_right_20 { margin-right: 20px; }
 .lead_links { width: 100%; height: 40px; background-color: red; }
-.lead_links a { display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: white;}
-.lead_links a:hover { background-color: white; color: black; }
-.tip_box { width: 100%; height: 36px; background-color: red; position: relative; }
-.tip_box span { display: inline-block; color: white; margin: 12px 20px; margin-left: 30px; margin-right: 0; }
+.selected_first_menu { background-color: white; display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: black; }
+.not_selected_frist_menu { display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: white;}
+.lead_second_links {width: 100%; height: 50px; background-color: white; border-bottom: solid 2px gray;  }
+.lead_second_links a { display: inline-block; width: 120px; color: black; text-align: center; margin: 18px 0 10px 0px; border-right: solid 1px black; }
+.lead_second_links a:hover { color: red; }
+.tip_box { width: 100%; height: 36px; background-color: #eaeaea; position: relative; }
+.tip_box span { display: inline-block; color: black; margin: 12px 20px; margin-left: 30px; margin-right: 0; }
 .content { width: 80%; min-height: 600px; }
 .search_btn {float: right; display: inline-block; background-color: white; width: 60px; height:24px; margin: 8px; text-align: center; }
 .search_text { float: right; margin-top: 8px; height: 18px; }
@@ -52,10 +55,25 @@ body {margin: 0; background: white; }
 
 <div class="wrap2">
 	<div class="lead_links">
-		<c:forEach var="firstMenu" items="${actionBean.menuSelector.firstMenuList }">
-			<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${firstMenu.firstMenuId }">
+		<c:forEach var="firstMenu" items="${actionBean.menuSelector.firstMenuList }" varStatus="status">
+			<a href="commonusernotificationmain?handlefirstmenu=&firstmenuid=${firstMenu.firstMenuId }"
+				id="first_menu_links_${firstMenu.firstMenuId }"
+				<c:if test="${status.index == 0 }"> class="selected_first_menu"</c:if>
+				<c:if test="${status.index != 0 }"> class="not_selected_frist_menu"</c:if>
+				 onmouseover="selectFirstMenu(${firstMenu.firstMenuId })"
+			>
 				${firstMenu.firstMenuName }
 			</a>
+		</c:forEach>
+	</div>
+	<div class="lead_second_links">
+		<c:forEach var="firstMenu" items="${actionBean.menuSelector.firstMenuList }" >
+			<div id="second_menu_box_${firstMenu.firstMenuId }" class="hide">
+				<c:forEach var="secondMenu" items="${firstMenu.secondMenuList }" >
+					<a href="commonusernotificationmain?selectfirstandsecondmenu=&firstmenuid=${firstMenu.firstMenuId }&secondMenuId=${secondMenu.secondMenuId}" >
+					${secondMenu.secondMenuName }</a>
+				</c:forEach>
+			</div>
 		</c:forEach>
 	</div>
 	
@@ -136,5 +154,13 @@ function search()
 		return false;
 	}
 	window.location.href = "commonusersearch?searchnotification=&searchText="+searchText;
+}
+
+function selectFirstMenu(firstMenuId)
+{
+	$("#first_menu_links_"+firstMenuId).siblings().removeClass("selected_first_menu").attr("class", "not_selected_frist_menu");
+	$("#first_menu_links_"+firstMenuId).attr("class", "selected_first_menu");
+	$("#second_menu_box_"+firstMenuId).siblings().hide();
+	$("#second_menu_box_"+firstMenuId).show();
 }
 </script>
