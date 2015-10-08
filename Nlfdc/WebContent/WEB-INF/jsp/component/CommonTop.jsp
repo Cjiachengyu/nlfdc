@@ -5,19 +5,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 
 <link href="css/common/global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
-
-<html >
 <head>
 
 <style type="text/css">
 span, li, a {font-size: 12px;}
 a {text-decoration: none; }
 body {margin: 0; background: white; }
-.wrap1 { width: 1080px; margin: auto; background-image: url(image/commonTop/logo_05.png); }
+.wrap1 { width: 1080px; margin: auto; background-image: url(image/commonTop/tempTop2.gif); }
 .wrap2 { width: 1080px; margin: auto; }
 .box_title {width: 100%; height: 37px; position: relative; }
 .back { width: 100%; height: 214px; }
-.head_links { width: 370px; height: 34px; float: right; margin: 0 100px; border: none; 
+.head_links { width: 370px; height: 32px; float: right; margin: 0 100px; border: none; 
 	background-image: url(image/commonTop/main_web.png);}
 .head_links a { display: inline-block; height: 33px; width: 100px; text-align: center; color: white; margin-top: 8px;}
 .head_links a:hover {color: red; }

@@ -25,7 +25,7 @@
 
 .box_header { width: 98%; height: 30px; border-bottom: solid 1px #0099CC; position: relative; }
 .box_header span { display: inline-block; color: white; text-align: center; padding: 4px 0; font-size: 14px; font-weight: bolder; 
-	 margin: 6px 10px 4px 10px; width: 86px; height:17px; background-color: red; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+	 margin: 6px 10px 4px 10px; width: 86px; height:17px; background-color: #0099CC; border-top-left-radius: 6px; border-top-right-radius: 6px; }
 .box_header a { float: right; display: inline-block; width: 46px; height: 16px; margin: 7px; background-image: url(../../image/common/more_03.png); }
 .box_content { width: 99%; position: relative; } 
 .box_content ul {width: 96%; padding-left: 22px; }
