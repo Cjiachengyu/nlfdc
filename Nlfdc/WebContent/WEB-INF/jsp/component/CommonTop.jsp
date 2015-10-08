@@ -22,9 +22,10 @@ body {margin: 0; background: white; }
 .head_links span { border-right: solid 1px white; margin-top: 8px; }
 .mar_left_20 { margin-left: 20px; }
 .mar_right_20 { margin-right: 20px; }
-.lead_links { width: 100%; height: 40px; background-color: red; }
-.selected_first_menu { background-color: white; display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: black; }
-.not_selected_frist_menu { display: inline-block; width: 9%; height:37px; margin: 0; padding-top: 12px; text-align:center; color: white;}
+.lead_links { width: 100%; height: 40px; background-color: red; border-bottom: solid 2px gray; position: relative; }
+.selected_first_menu { border-bottom: solid 2px white; background-color: white; float: left; width: 9%; height:20px; padding: 10px 0px; 
+			text-align:center; color: black; font-size: 14px; font-weight: bolder; }
+.not_selected_frist_menu {float: left; width: 9%; height:20px; padding: 10px 0px; text-align:center; color: white; font-size: 14px; }
 .lead_second_links {width: 100%; height: 50px; background-color: white; border-bottom: solid 2px gray;  }
 .lead_second_links a { display: inline-block; width: 120px; color: black; text-align: center; margin: 18px 0 10px 0px; border-right: solid 1px black; }
 .lead_second_links a:hover { color: red; }
