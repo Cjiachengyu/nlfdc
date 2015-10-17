@@ -19,8 +19,6 @@ span, li, a { font-size: 12px; }
 .left_link { height: 610px; width: 240px; float: left; margin: 5px 0px; }
 .link { height: 24px; width: 200px; margin: auto; margin-top: 20px; border-bottom: solid 1px #c7c7c7; }
 .location { height: 24px; padding-left: 20px; margin-top: 20px; }
-.location a { color: black; }
-.location a:hover { color: red; }
 .location_tip { height: 30px; width: 100%; margin: 0; background-color: #d0e2f9; }
 .detail_link { height: 530px; width: 100%; padding-left: 20px; }
 .second_menu { display: inline-block; min-width: 80px; color: black; }

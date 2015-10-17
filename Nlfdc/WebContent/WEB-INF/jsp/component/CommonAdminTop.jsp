@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<html style="background: white;">
+<link href="image/common/blank.ico" type="image/x-icon" rel="shortcut icon" /> 
+
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
@@ -13,7 +14,7 @@
     
 <!--[if lt IE 9]><style>.shadow { border: solid 1px lightgray; }</style><![endif]-->
 </head>
-<body>
+<body style="background: white;">
 
 <div class="top_root" >
 	<!-- 用户信息设置，语言 -->

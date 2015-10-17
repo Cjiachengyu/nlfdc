@@ -1,6 +1,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../jsp/component/CommonTopSimple.jsp"%>
 
+<link href="image/common/blank.ico" type="image/x-icon" rel="shortcut icon" /> 
 <title>宁陵县房地产发展保障管理局</title>
 
 <link href="css/index/admin_login.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
