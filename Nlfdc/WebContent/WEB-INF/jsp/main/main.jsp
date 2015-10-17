@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page pageEncoding="utf-8" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="../component/CommonTop.jsp" %>
