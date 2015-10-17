@@ -2,7 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="../component/CommonTop.jsp" %>
 
-<title>宁陵县房地产发展保障管理中心</title>
+<title>宁陵县房地产发展保障管理局</title>
 <link href="css/main/main.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
 <div class="main_content">
@@ -184,7 +184,7 @@
 	
 	<div class="row3_plus_box">
 		<!-- 第四行 滚动图 -->
-	 			<img src="image/common/act_pic_03.png" style="margin: 12px 5px; display: inline-block;">
+	 			<img src="image/common/act_pic_03.png" style="margin: 17px 5px; display: inline-block;">
 				
 				<div id="rolling_img_box" class="rolling_img_box">
 				<a href="commonusernotificationmain?viewnotification=&notificationId=${actionBean.rollImageList[0].notificationId }"
@@ -274,7 +274,7 @@
 	var newImageIndex = 1;
 	
 	$(function(){
-		var speed=50//速度数值越大速度越慢
+		var speed=20//速度数值越大速度越慢
 		var MyMar3=setInterval(move,speed)
 		rolling_img_box.onmouseover = function() {clearInterval(MyMar3)}
 		rolling_img_box.onmouseout = function() {MyMar3=setInterval(move,speed)}

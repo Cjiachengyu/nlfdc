@@ -37,5 +37,5 @@
 .notification_link {color: black; text-decoration: none; }
 .notification_link:hover {color: red; text-decoration: none; }
 
-.rolling_img_box {display: inline-block; width: 925px; height: 146px; margin: 6px 40px; position: relative; overflow: hidden; border: solid 1px black; }
+.rolling_img_box {display: inline-block; width: 925px; height: 146px; margin: 6px 40px; position: relative; overflow: hidden; border: solid 1px white; }
 .roll_img { width: 148px; height: 146px; position: absolute; }

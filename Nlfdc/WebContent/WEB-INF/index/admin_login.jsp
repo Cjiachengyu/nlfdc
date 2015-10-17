@@ -1,7 +1,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../jsp/component/CommonTopSimple.jsp"%>
 
-<title>宁陵县房地产发展保障管理中心</title>
+<title>宁陵县房地产发展保障管理局</title>
 
 <link href="css/index/admin_login.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
@@ -49,7 +49,7 @@
  -->
 <div id="footer">
     <div style=" top: 0px; width: 100%; text-align: center; font-size: 15px; font-family: Arial; color: gray; line-height: 4em; position: relative; " >
-        <p>Copyright &copy; 宁陵县房地产发展保障管理中心</p>
+        <p>Copyright &copy; 宁陵县房地产发展保障管理中局</p>
     </div>
 </div>
 
