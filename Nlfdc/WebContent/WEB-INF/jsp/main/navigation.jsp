@@ -19,9 +19,11 @@ span, li, a { font-size: 12px; }
 .left_link { height: 610px; width: 240px; float: left; margin: 5px 0px; }
 .link { height: 24px; width: 200px; margin: auto; margin-top: 20px; border-bottom: solid 1px #c7c7c7; }
 .location { height: 24px; padding-left: 20px; margin-top: 20px; }
+.location a { color: black; }
+.location a:hover { color: red; }
 .location_tip { height: 30px; width: 100%; margin: 0; background-color: #d0e2f9; }
 .detail_link { height: 530px; width: 100%; padding-left: 20px; }
-.second_menu { display: inline-block; min-width: 80px; }
+.second_menu { display: inline-block; min-width: 80px; color: black; }
 .second_menu:hover { color: red; }
 </style>
 
@@ -29,10 +31,6 @@ span, li, a { font-size: 12px; }
 	<div class="wrap_box">
 		<div class="left_bar">
 			<div class="left_link">
-				<!-- 
-				<h4 style="text-align: center; color: #3d6390;"></h4>
-				 -->
-				
 				<div class="link">
 					<img src="image/common/sanjiao_red_03.png" style="width: 6px; height: 6px;">
 					<a href="index?websitenavigation">网站导航</a>

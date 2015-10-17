@@ -22,4 +22,4 @@
 var htmlVal = { htmlUrl: "adminsettingaction" };
 </script>
 
-<%@ include file="../component/CommonBottom.jsp"%>
+<%@ include file="../component/CommonAdminBottom.jsp"%>

@@ -1,0 +1,1 @@
+update nlfdc.first_menu set firstMenuName = '¼à²ìÖ´·¨' where firstMenuId = 9;
