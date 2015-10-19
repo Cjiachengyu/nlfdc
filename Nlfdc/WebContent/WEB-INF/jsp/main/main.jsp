@@ -3,7 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="../component/CommonTop.jsp" %>
 
-<title>宁陵县房地产发展保障管理局</title>
+<title>宁陵县房地产管理局</title>
 <link href="css/main/main.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
 <div class="main_content">

@@ -79,7 +79,7 @@ body {margin: 0; background: white; }
 	</div>
 	
 	<div class="tip_box">
-		<span>欢迎访问宁陵县房地产发展保障管理局</span>
+		<span>欢迎访问宁陵县房地产管理局</span>
 		<span id="date_info"></span>
 		<input type="button" id="search_btn" class="search_btn" value="搜索" onclick="search()">		
 		<input type="text" id="search_text" class="search_text" onkeydown="checkEnter(event)">

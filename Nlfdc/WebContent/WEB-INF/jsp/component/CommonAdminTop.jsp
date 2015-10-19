@@ -49,7 +49,7 @@
 			<div style="padding: 20px 0 0 10px;">
 				<div class="left" style="margin: 12px 20px;">
 					<p class="school_header_color font_big font_yahei" style="padding: 0 0 5px 0">
-                           	宁陵县房地产发展保障管理局
+                           	宁陵县房地产管理局
 					</p>
 				</div>
 				<div class="clear"></div>
