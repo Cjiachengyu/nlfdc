@@ -3,8 +3,12 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="../component/CommonTop.jsp" %>
 
+<head>
 <title>宁陵县房地产管理局</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <link href="css/main/main.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
+</head>
 
 <div class="main_content">
 		
@@ -131,10 +135,14 @@
 	 
 	 	<!-- to_be_replaced -->	
 	 	<div class="row2_col3" style="text-align: center; ">
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 30px;"></a>
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic2.png" style="margin-top: 30px;"></a>
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic3.png" style="margin-top: 30px;"></a>
-	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic4.png" style="margin-top: 30px;"></a>
+	 		<div class="box_header">
+					<span style="float: left;">网上办事</span>
+			</div>
+			
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic1.png" style="margin-top: 25px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic2.png" style="margin-top: 25px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic3.png" style="margin-top: 25px;"></a>
+	 		<a href="index?showtip" target="_blank"><img src="image/common/link_pic4.png" style="margin-top: 25px;"></a>
 	 	</div>
 	</div>
 	

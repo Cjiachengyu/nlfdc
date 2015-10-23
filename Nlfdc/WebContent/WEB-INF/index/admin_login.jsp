@@ -50,7 +50,7 @@
  -->
 <div id="footer">
     <div style=" top: 0px; width: 100%; text-align: center; font-size: 15px; font-family: Arial; color: gray; line-height: 4em; position: relative; " >
-        <p>Copyright &copy; 宁陵县房地产发展保障管理中局</p>
+        <p>Copyright &copy; 宁陵县房地产管理局</p>
     </div>
 </div>
 

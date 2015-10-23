@@ -4,10 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 
-<link href="image/common/blank.ico" type="image/x-icon" rel="shortcut icon" /> 
-
-<link href="css/common/global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 <head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<link href="image/common/blank.ico" type="image/x-icon" rel="shortcut icon" /> 
+<link href="css/common/global.css?jscssimgversion=${actionBean.jsCssImgVersion}" rel="stylesheet" />
 
 <style type="text/css">
 span, li, a {font-size: 12px;}
